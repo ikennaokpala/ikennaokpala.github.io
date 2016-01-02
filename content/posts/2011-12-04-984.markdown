@@ -1,0 +1,35 @@
+---
+author: 'Ikenna Okpala'
+comments: true
+date: 2011-12-04 10:22:31
+layout: post
+slug: '984'
+title: Vagrant could not detect VirtualBox!
+wordpress_id: 984
+categories:
+- RUBY
+- VAGRANT
+---
+
+if you run into this error
+
+
+{% highlight bash %}
+
+=====================================================================
+Vagrant experienced an error!
+
+Vagrant could not detect VirtualBox! Make sure VirtualBox is properly installed.
+If VirtualBox is installed, it may be an incorrect version. Vagrant currently
+requires VirtualBox 3.2.x. Please install the proper version to continue.
+=====================================================================
+{% endhighlight %}
+
+<!--more-->
+Know ye! that you may be using an older version of vagrant...
+
+Solution is to do gem install vagrant -v='0.8.8' or edit your Gemfile to include gem 'vagrant', '=0.8.8'
+
+hope that helps..
+
+
