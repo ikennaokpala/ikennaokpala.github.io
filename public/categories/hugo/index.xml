@@ -1,33 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Hugo on Hugo Blog Template for GitHub Pages </title>
-      <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://spencerlyon2.github.io/categories/hugo/index.xml</link>
-    
-    
-    
-    <updated>Sat, 29 Mar 2014 00:00:00 UTC</updated>
+    <title>Hugo on There is not traffic in the extra mile.</title>
+    <link>http://ikennaokpala.com/categories/hugo/</link>
+    <description>Recent content in Hugo on There is not traffic in the extra mile.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 29 Mar 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://ikennaokpala.com/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Just another sample post</title>
-      <link>http://spencerlyon2.github.io/posts/newest</link>
-      <pubDate>Sat, 29 Mar 2014 00:00:00 UTC</pubDate>
+      <link>http://ikennaokpala.com/posts/2006-04-14-when-is-the-future/</link>
+      <pubDate>Sat, 29 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://spencerlyon2.github.io/posts/newest</guid>
-      <description>
+      <guid>http://ikennaokpala.com/posts/2006-04-14-when-is-the-future/</guid>
+      <description>&lt;p&gt;In my early years, I conceived the future as a distant state along the dimension of time waiting to happen; but as I grew up I got to learn that such a view of the future is not only naive, but ironically, unrealistic. Even though the literary perception of futuristic concepts suggests the above, it is flayed in the fact that it is practically unreal.&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_0&#34;&gt;First Heading&lt;/h2&gt;
+&lt;p&gt;The future is now. Today was the future of yesterday. This moment was the future a nanosecond ago. This view has helped me gain some control of my life&amp;rsquo;s direction based on the underlying principle of cause and effect. Since this realization, I have treated every futuristic phenonemon from the perspective of the network of causes, events, reactions and effects.&lt;/p&gt;
 
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, consequatur aspernatur omnis iste. Voluptates, id inventore ea natus ab sed amet ipsa ratione sunt dignissimos. Soluta illum aliquid repellendus recusandae.&lt;/p&gt;
-
-&lt;h3 id=&#34;toc_1&#34;&gt;Sub&lt;/h3&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, perferendis saepe voluptatem a nesciunt architecto voluptas deleniti dolor tempora quasi quidem odit rem fugit magnam minima quam dolores vel id?&lt;/p&gt;
-
-&lt;h2 id=&#34;toc_2&#34;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, numquam ipsa ad! Quasi, deleniti quae sint consequatur error corporis dicta inventore alias soluta dignissimos? Molestias, quia ab deserunt repellat ut.&lt;/p&gt;
+&lt;p&gt;By Roland Ukor&lt;/p&gt;
 </description>
     </item>
     
