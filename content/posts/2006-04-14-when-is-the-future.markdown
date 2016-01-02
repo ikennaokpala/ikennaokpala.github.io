@@ -1,7 +1,7 @@
 ---
 author: 'Ikenna Okpala'
 comments: true
-date: 2006-04-14 13:23:00
+date: 2006-04-14
 layout: post
 slug: when-is-the-future
 title: When is the future?
