@@ -14,4 +14,3 @@ categories:
 Great talk by [Christopher League](http://contrapunctus.net/). In this [video](http://vimeo.com/13304075), Chris talks on Continuations and Monads as functional programming design patterns which offer Control and Data flow respectively..
 
 <!--more-->
-{% video http://vimeo.com/13304075 650 500 https://secure-b.vimeocdn.com/ts/761/352/76135238_640.jpg %}
