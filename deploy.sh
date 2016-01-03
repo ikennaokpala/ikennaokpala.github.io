@@ -5,7 +5,7 @@ echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 # Build the project.
 hugo -t freelancer
 
-echo www.ikennaokpala.com > CNAME
+echo www.ikennaokpala.com > public/CNAME
 
 # Add changes to git.
 git add -A
