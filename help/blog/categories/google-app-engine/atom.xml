@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Google App Engine | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/google-app-engine/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2016-01-03T17:36:17+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Google App Engine Support for Netbeans 6.7.1 & 6.8 Now Available..]]></title>
+    <link href="http://ikennaokpala.com/blog/google-app-engine-support-for-netbeans-6-7-1-6-8-now-available"/>
+    <updated>2009-08-23T18:56:00+01:00</updated>
+    <id>http://ikennaokpala.com/blog/google-app-engine-support-for-netbeans-6-7-1-6-8-now-available</id>
+    <content type="html"><![CDATA[<p>This <a href="http://kenai.com/projects/nbappengine/pages/NBInstall">link</a> has it all, for the "Google App Engine" Netbeans Plugin for 6.7.1 and 6.8</p>
+
+<p>or you could.... just do the following quickly:</p>
+
+<!--more-->
+
+
+<ul>
+<li>Click Tools on your Netbeans menu, then click Plugins and then select Settings tab</li>
+<li>Click Add button and type 'Google App Engine' as tag for this Update center and any URL below into URL text field. Click to OK button.</li>
+<li>For NetBeans 6.7.1:  http://kenai.com/downloads/nbappengine/1.0_NetBeans671/updates.xml</li>
+<li>For NetBeans 6.8 : http://kenai.com/downloads/nbappengine/Latest_NetBeans68/updates.xml</li>
+<li>Move to Available Plugins tab and select Google App Engine modules (server, configuration, deployment, editor hints)</li>
+<li>Finally, Click the Install button</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

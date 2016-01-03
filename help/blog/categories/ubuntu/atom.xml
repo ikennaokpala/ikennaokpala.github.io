@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: UBUNTU | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2016-01-03T17:36:17+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Install Teradata ODBC for Ruby development]]></title>
+    <link href="http://ikennaokpala.com/blog/install-teradata-odbc-for-ruby-development"/>
+    <updated>2013-05-15T02:23:58+01:00</updated>
+    <id>http://ikennaokpala.com/blog/install-teradata-odbc-for-ruby-development</id>
+    <content type="html"><![CDATA[<p><strong>To install Teradata for ruby development, first it is advisable to install it on a 32 bit linux based VM.</strong></p>
+
+<p>  <strong><em> Given the above, the following steps should work ok:</em></strong></p>
+
+<ul>
+<li><p>Download the teradata CLIv2 and ODBC Driver from <a href="http://downloads.teradata.com/download">http://downloads.teradata.com/download</a></p></li>
+<li><p> Download Teradata's Ruby native access interface from <a href="http://downloads.teradata.com/download">http://sourceforge.net/projects/rubycli/</a></p></li>
+</ul>
+
+
+<!--more-->
+
+
+<ul>
+<li><p>Install RPM:
+<code>bash
+  sudo apt-get install rpm
+</code></p></li>
+<li><p> Open up the cliv2:</p>
+
+<p><code>bash
+  tar -xvf  cliv2_LINUX_indep.14.00.00.07.tar.gz
+</code></p></li>
+<li><p> Change directory  and Install cliv2:</p>
+
+<p><code>bash
+  sudo rpm -ivh --nodeps cliv2-14.00.00.07-1.noarch.rpm
+</code></p></li>
+<li><p> Change directory to tdicu:</p>
+
+<p><code>bash
+   sudo rpm -ivh --nodeps tdicu-14.00.00.00-1.noarch.rpm
+</code></p></li>
+<li><p> Change directory to TeraGSS and install:
+<code>bash
+  sudo rpm -ivh --nodeps TeraGSS_linux_x64-14.00.02.07-1.noarch.rpm
+</code></p></li>
+<li><p> Open up tdodbc:</p>
+
+<p><code>bash
+  tar -xvf tdodbc__linux_indep.14.00.00.04-1.tar.gz
+</code></p></li>
+<li><p> Change dorectory to tdodbc:</p>
+
+<p><code>bash
+  sudo rpm -ivh --nodeps tdodbc-14.00.00.04-1.noarch.rpm
+</code></p></li>
+</ul>
+
+
+<p>NB: tdodbc may also contain tdicu and TeraGSS you may want to ignore these as you may have already installed them.</p>
+
+<ul>
+<li><p>Change directory to rubycli-1.0.0 and run the following commands:
+<code>bash
+  make unix &amp;&amp; ruby setup.rb install
+</code></p></li>
+<li><p>Add these paths to your .zshrc or .bashrc or .bash_profile files</p>
+
+<p>```bash</p>
+
+<h1>export LD_LIBRARY_PATH=/opt/teradata/client/14.00/lib</h1>
+
+<p>export COPLIB=/opt/teradata/client/14.00/lib
+export COPERR=/opt/teradata/client/14.00/lib
+export LD_LIBRARY_PATH=/opt/teradata/client/14.00/tbuild/lib:/opt/teradata/client/14.00/lib
+```</p></li>
+<li><p> Finally download or obtain the the 32bit version of the following files:
+bteq, fastload, fexp, mload, ppcmain</p>
+
+<p>```bash
+sudo mkdir -p  /opt/teradata/client/14.00/bin</p>
+
+<h1>copy files from where you have downloaded them to</h1>
+
+<p>sudo cp -R bin/<em> /opt/teradata/client/14.00/bin
+sudo chown -R root:root /opt/teradata/client/14.00/bin/</em>
+sudo chmod +x /opt/teradata/client/14.00/bin/*
+```</p></li>
+</ul>
+
+
+<p>NB: Check that all the dependencies for each of the bin stubs are present.
+example:</p>
+
+<pre><code>```bash
+  ldd fexp
+```
+</code></pre>
+
+<p>You may observe that the libpm.so file 32 bit version is not present, so you then copy the file like this:</p>
+
+<p>  <code>bash
+  cp /path to /client/14.00/lib/libpm.so /opt/teradata/client/14.00/lib
+ </code></p>
+
+<p>After this you should be rarring and ready to go.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fix ubuntu virtual box (windows) full screen problem]]></title>
+    <link href="http://ikennaokpala.com/blog/fix-ubuntu-virtual-box-windows-full-screen-problem"/>
+    <updated>2013-04-03T16:44:38+01:00</updated>
+    <id>http://ikennaokpala.com/blog/fix-ubuntu-virtual-box-windows-full-screen-problem</id>
+    <content type="html"><![CDATA[<p>NOTE the 4.2.0 version of virtual box does not support the 3d graphic libraries for 12.11</p>
+
+<p>You need to download the latest guest additions iso from here http://download.virtualbox.org/virtualbox/</p>
+
+<!--more-->
+
+
+<p>Secondly mount it on by clicking Devices -> CD/DVD Devices and then run the installation process.</p>
+
+<p>After this restart and your VM should be able to render in full screen mode properly.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Remote access to PostgreSQL server and Removing Postgres]]></title>
+    <link href="http://ikennaokpala.com/blog/remote-access-to-postgresql-server-14"/>
+    <updated>2012-06-08T15:43:50+01:00</updated>
+    <id>http://ikennaokpala.com/blog/remote-access-to-postgresql-server-14</id>
+    <content type="html"><![CDATA[<p>This is a very common requirement for remote staging environments.</p>
+
+<p>All that is required is edit postgressql.conf and pg_hba.conf files.</p>
+
+<p>To get going on this it maybe worthy of note to first search for these files.</p>
+
+<!--more-->
+
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;find / -name &quot;postgresql.conf&quot;</code></pre>
+</div>
+</p>
+
+<p>Because locations for these files may differ per operating system (i.e Linux distros)</p>
+
+<p>For this post the location should match Ubuntu/Debian.</p>
+
+<p>For Ubuntu these files are located in "/etc/postgresql/9.1/main" so cd there.</p>
+
+<p>First edit the postgresql.conf, by adding this to the file "listen_addresses = '*'"</p>
+
+<p><div>
+  <pre><code class='bash'>listen_addresses = &#39;*&#39;</code></pre>
+</div>
+</p>
+
+<p>Next stop edit the pg_hba.conf, add the below close to the end of the file.</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;host    all             all             0.0.0.0/0               md5</code></pre>
+</div>
+</p>
+
+<p>Finally restart postgresql:</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;service postgresql restart</code></pre>
+</div>
+</p>
+
+<p>OR</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;/etc/init.d/postgresql restart</code></pre>
+</div>
+</p>
+
+<p>To remove the EnterpriseDB One-Click install of PostgreSQL 9.1:</p>
+
+<p>Open a terminal window</p>
+
+<p>Utilities->Terminal</p>
+
+<p>Run the uninstaller</p>
+
+<p>sudo /Library/PostgreSQL/9.1/uninstall-postgresql.app/Contents/MacOS/installbuilder.sh</p>
+
+<p>If you installed with the Postgres Installer, you can do:</p>
+
+<p>open /Library/PostgreSQL/9.2/uninstall-postgresql.app</p>
+
+<p>It will ask for the administrator password and run the uninstaller.</p>
+
+<p>Remove the PostgreSQL and data folders (Wizard will notify you that these were not removed)</p>
+
+<p>sudo rm -rf /Library/PostgreSQL</p>
+
+<p>Remove the ini file</p>
+
+<p>sudo rm /etc/postgres-reg.ini</p>
+
+<p>Remove the PostgreSQL user</p>
+
+<p>System Preferences -> Users &amp; Groups</p>
+
+<p>Unlock the settings panel by clicking on the padlock and enter your password</p>
+
+<p>Select the PostgreSQL user and click on the minus button.</p>
+
+<p>Restore your shared memory settings</p>
+
+<p>sudo rm /etc/sysctl.conf</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting the permissions for Webserver ]]></title>
+    <link href="http://ikennaokpala.com/blog/set-the-permissions-for-webserver"/>
+    <updated>2011-11-24T02:25:27+00:00</updated>
+    <id>http://ikennaokpala.com/blog/set-the-permissions-for-webserver</id>
+    <content type="html"><![CDATA[<p>Sometimes when i deploy via tools like ruby's capistrano, there is a certain tendency to get permissions brutally wrong.</p>
+
+<p>and also very easy to encounter the 403 forbidden error "you don't have permission to access on this server"</p>
+
+<p>For apache to render web files, it require read permissions.</p>
+
+<!--more-->
+
+
+<p>I ran into this and used this commands to resolve the matter: :P</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;sudo chmod -R a+rx ~/public_html # this is the web site folder
+sudo chmod a+rx ~ # this is current or deployment user home directory&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>the first ensures that public_html directory is readable and accessible to all users on the system.</p>
+
+<p>The next command sets current or deployment user's home directory to be readable and accessible to all.</p>
+
+<p>If you add more directories for additional virtual domains later, run that first command again to make sure the new directories are accessible as well.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Guide to Setup Ruby On Rails in an Ubuntu Server]]></title>
+    <link href="http://ikennaokpala.com/blog/guide-to-setup-ruby-on-rails-in-an-ubuntu-server"/>
+    <updated>2011-11-07T13:07:05+00:00</updated>
+    <id>http://ikennaokpala.com/blog/guide-to-setup-ruby-on-rails-in-an-ubuntu-server</id>
+    <content type="html"><![CDATA[<p>Find attached a very imperative guide to setting up ruby on rails Ubuntu. Click the link below.</p>
+
+<p>I found it very useful. :)
+<a href="http://ikennaokpala.files.wordpress.com/2011/11/installation_ruby-on-rails_for_ubuntu-linux-mint_www-mirceagoia-com.pdf">Installation_Ruby-on-Rails_for_Ubuntu-Linux-Mint_www-mirceagoia-com</a></p>
+
+<!--more-->
+
+
+<p>However, with Ubuntu you may encounter this problem "no such file to load -- openssl (LoadError)".
+With rvm the solution is as follows:</p>
+
+<p><div>
+  <pre><code class='bash'>sudo apt-get install libssl-dev
+cd ~/.rvm/src/ruby-1.8.7/ext/openssl
+ruby extconf.rb
+make &amp;amp;&amp;amp; make install</code></pre>
+</div>
+
+Also you may encounter errors connected with the readline  extension.
+Roll up you sleeve and do :) :</p>
+
+<p><div>
+  <pre><code class='bash'>sudo apt-get install libreadline5-dev
+cd ~/.rvm/src/ruby-1.8.7/ext/readline
+ruby extconf.rb
+make &amp;amp;&amp;amp; make install</code></pre>
+</div>
+</p>
+]]></content>
+  </entry>
+  
+</feed>

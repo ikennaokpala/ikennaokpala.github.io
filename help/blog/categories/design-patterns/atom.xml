@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: DESIGN PATTERNS | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/design-patterns/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2016-01-03T17:36:17+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Strategy Design Pattern]]></title>
+    <link href="http://ikennaokpala.com/blog/the-strategy-design-pattern"/>
+    <updated>2008-10-01T08:13:00+01:00</updated>
+    <id>http://ikennaokpala.com/blog/the-strategy-design-pattern</id>
+    <content type="html"><![CDATA[<p><a href="http://exciton.cs.rice.edu/javaresources/DesignPatterns/Strategy.jpg"><img src="http://exciton.cs.rice.edu/javaresources/DesignPatterns/Strategy.jpg" alt="" /></a></p>
+
+<p>The Strategy Design Pattern (also refered to as the <strong>policy pattern</strong>) basically consists of decoupling an algorithm from its parent, and encapsulating the algorithm into a separate class. Simply put, an object and its behaviour are separated and put into two different classes. This allows you to switch the algorithm that you are using at any time.</p>
+
+<!--more-->
+
+
+<p>There are several advantages to doing this. First, if you have several different behaviours that you want an object to perform, it is much simpler to keep track of them if each behaviour is a separate class, and not buried in the body of some method. Should you ever want to add, remove, or change any of the behaviours, it is a much simpler task, since each one is its own class. Each such behaviour or algorithm encapsulated into its own class is called a Strategy.</p>
+
+<p>When you have several objects that are basically the same, and differ only in their behaviour, it is a good idea to make use of the Strategy Pattern.. Using Strategies, you can reduce these several objects to one class that uses several Strategies. The use of strategies also provides a nice alternative to subclassing an object to achieve different behaviours. When you subclass an object to change its behaviour, that behaviour that it executes is static. If you wanted to change what it does, you'd have to create a new instance of a different subclass and replace that object with it. With Strategies, however, all you need to do is switch the object's strategy, and it will immediately change how it behaves. Using Strategies also eliminates the need for many conditional statements. When you have several behaviours together in one class, it is difficult to choose among them without resorting to conditional statements. If you use Strategies you won't need to check for anything, since whatever the current strategy is just executes without asking questions.</p>
+
+<p>Reference Antonio García</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Ideal Architect......]]></title>
+    <link href="http://ikennaokpala.com/blog/the-ideal-architect"/>
+    <updated>2008-05-24T12:24:00+01:00</updated>
+    <id>http://ikennaokpala.com/blog/the-ideal-architect</id>
+    <content type="html"><![CDATA[<p>“The ideal architect should be a person of letters, a mathematician, familiar with historical studies, a diligent student of philosophy, acquainted with music, not ignorant of medicine, learned in the responses of jurisconsults, familiar with astronomy and astronomical calculations.”
+—Vitruvius, circa 25 BC</p>
+
+<!--more-->
+
+
+<p>Vitruvius was not referring to a software architect, but the basic idea is that the architect should have the following characteristics. An architect should be a person who is well-rounded, mature, experienced, educated, learns quickly, a leader, communicates well and can make the difficult decision when necessary.</p>
+
+<p>For architects to be well-rounded, they must have a working knowledge of the business or problem domain. They can gain this knowledge through experience or education.</p>
+
+<p>In addition, architects must have a broad knowledge of technology. An architect might have first-hand experience with a particular technology, but they must have at least a general understanding of competing technologies to make informed decisions about which technology can work best.</p>
+
+<p>A good architect evaluates all possible solutions to a problem regardless of the technology being used.</p>
+
+<ul>
+<li>Sun Certified Enterprise Architect for J2EE™ Technology Study Guide, First Edition.
+Mark Cade and Simon Roberts. Prentice Hall PTR.2002. ISBN:0-13-044916-4.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PROS/CONS OF USING DESIGN PATTERNS.]]></title>
+    <link href="http://ikennaokpala.com/blog/proscons-of-using-design-patterns"/>
+    <updated>2008-04-14T11:51:00+01:00</updated>
+    <id>http://ikennaokpala.com/blog/proscons-of-using-design-patterns</id>
+    <content type="html"><![CDATA[<p>Pros.</p>
+
+<ul>
+<li><p>Quality, Flexibility and Re-Use
+Design Patterns capture solutions to common computing problems and represent the time, effort and experience gained from applying these solutions over numerous domains/iterations. Generally systems that use Design Patterns are elegant, flexible and have more potential for reuse.</p></li>
+<li><p>Provide a common frame of reference for discussion of designs</p></li>
+</ul>
+
+
+<!--more-->
+
+
+<ul>
+<li><p>Patterns can be combined to solve one or more common computing problems</p></li>
+<li><p>Provide a common format for pattern specification Intent, Motivation, Applicability, Structure, Participants, Collaborations, Consequences</p></li>
+</ul>
+
+
+<p>Cons.</p>
+
+<ul>
+<li>Complexity. Design Patterns require a reasonable degree of study and can be difficult for some designers to grasp. Junior designers/developers may not have encountered Design Patterns and have to learn them before they can be productive on a project.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OBJECT ORIENTED DESIGN PATTERNS.]]></title>
+    <link href="http://ikennaokpala.com/blog/object-oriented-design-patterns"/>
+    <updated>2007-12-26T07:53:00+00:00</updated>
+    <id>http://ikennaokpala.com/blog/object-oriented-design-patterns</id>
+    <content type="html"><![CDATA[<p>When I first encountered the term “DESIGN PATTERNS” it seamed a little strange to me. But, in actuality, design patterns are expedient ways of reusing object-oriented code between developers. The concept of design patterns is basic collection of common interactions between objects that software developers over time found useful.</p>
+
+<!--more-->
+
+
+<p>Design patterns dates back to the early 1980s. Then, languages like Smalltalk were the most common OO language and C++ was still in its burgeoning stage and structured programming was the lead concept and OO programming was not yet as widely supported. The idea of programming frameworks was acknowledged however, and as frameworks developed, some of what we now called design patterns began to materialize.</p>
+
+<p>The Model-View-Controller framework for Smalltalk which separated and provided three interface parts. The parts were referred to as a data model which contain the primary domain parts of the program, the view, which presented the user interface, and the controller, which interacted between the user and the view.</p>
+
+<p>Every one of these segments is a separate object and each has its own convention for managing its data. Communication between the user, the GUI and the data should be carefully controlled and this separation of functions accomplished that very nicely. Three objects talking to each other using this restrained set of connections is an example of a powerful design pattern.</p>
+
+<p>Design patterns portray how objects communicate without being entangled in each other’s data models and methods. Maintaining this partition has at all times been an objective of good OO programming, and if you have been trying to make objects mind their own business, you are probably using some of the common design patterns already. Captivatingly enough, the MVC pattern has reappeared now and we find it used in Java EE 5.0 and Ruby etc.</p>
+
+<p>Design patterns began to be renowned more formally in the early 1990s as a result of discussions, a number of technical meetings and the publishing of the book Design Patterns Elements of Reusable Software, by Gamma, Helm, Johnson and Vlissides. This book, commonly referred to as the Gang of Four or “GoF” book, has had an influential impact on those seeking to understand how to use design patterns and has become an all time best seller.</p>
+
+<p>Design patterns can be at many levels from very low level specific solutions to broadly generalized system issues. Hundreds of patterns exist today  in the literature. They have been discussed in articles, blog and at conferences of all levels of granularity.</p>
+
+<p> The process of looking for these patterns is termed “pattern mining,” and can be said to be another research study.</p>
+
+<p>The design patterns selected for inclusion in the GoF Design Patterns book were ones which had several known applications and which were on the focal point level of generality, where they could easily cross
+application areas and encompass several objects.</p>
+
+<p>Design Patterns are divided into three types creational, structural and behavioral.</p>
+
+<ul>
+<li><p>Creational patterns construct objects, than having the developer instantiate objects directly. This gives the developer’s program more flexibility in deciding which objects need to be created for a given situation.</p></li>
+<li><p>Structural patterns makes up groups of objects into larger structures, such as multifaceted user interfaces or financial data.</p></li>
+<li><p>Behavioral patterns define the communication between objects in the system and how the flow is controlled in a composite program.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

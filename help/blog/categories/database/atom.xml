@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: DATABASE | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/database/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2016-01-03T17:36:17+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A Look At Teradata AMPs]]></title>
+    <link href="http://ikennaokpala.com/blog/a-look-at-Teradata-AMPs-"/>
+    <updated>2013-10-09T03:22:18+01:00</updated>
+    <id>http://ikennaokpala.com/blog/a-look-at-Teradata-AMPs-</id>
+    <content type="html"><![CDATA[<p>If you are from a music background and may be reading/hearing this for the first time, then 'NO', this article is not about measuring the change over individual spatial periods (sound amplification).</p>
+
+<p>This article 'YES' seeks to share my own notes on Teradata's Access Module Processor or AMP for short.</p>
+
+<p>AMP is a Virtual processor that exist within the confines of the parallel-processing environment of the Teradata Database.</p>
+
+<!--more-->
+
+
+<p>AMP manages communication through Boardless BYNET interface, performs database (Output data conversion, Manage Disk space, Accounting, Journaling, Locking, Joining, Sorting, Agreegation) disk subsytem manipulation and database file subsytem task management.</p>
+
+<p>An individual AMP instance within teradata takes charge of access and manipulation of data. In this respect, an AMP is allocated a portion of the database as an area of operation, this includes physical disk for storing its tables. Teradata's AMP acquires some space in the disk through its association with a virtual disk (vdisk).</p>
+
+<p>This then allows it to read and write to disk, these then make-up the AMP steps to physical blocks of data that were queried. It takes handles the accessing, processing and manipulation of the data. More than one AMP may exist in one node, communicating with themselves through BYNET.</p>
+
+<p>AMPs offers basic SQL query parallelism to data blocks/jobs in Teradata. The parallel processing through occurs after, Teradata has pre-defined the number of AMP nodes be used. This is highly influenced by indexes and how many data blocks that can be derived from the query.</p>
+
+<p>Teradata divides these to the defined AMPs using hash functions to enable subquery-level parallel processing.</p>
+
+<p>Base on this teradata's query transaction executes in a parallel manner across the defined AMPs, with associated chunks of data processed independently though in a simultaneous manner.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Postgres gem native extension error]]></title>
+    <link href="http://ikennaokpala.com/blog/postgres-native-extension-error"/>
+    <updated>2011-12-27T01:27:33+00:00</updated>
+    <id>http://ikennaokpala.com/blog/postgres-native-extension-error</id>
+    <content type="html"><![CDATA[<p>I hit this error when installing the pg gem for using postgresql with rails apps.</p>
+
+<!--more-->
+
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    /Users/userx/.rvm/rubies/ruby-1.9.2-p290/bin/ruby extconf.rb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;checking for pg_config... no
+No pg_config... trying anyway. If building fails, please try again with
+ --with-pg-config=/path/to/pg_config
+checking for libpq-fe.h... no
+Can&#39;t find the &#39;libpq-fe.h header
+&lt;strong&gt;&lt;em&gt; extconf.rb failed &lt;/em&gt;&lt;/strong&gt;
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.&lt;/p&gt;
+
+&lt;p&gt;Provided configuration options:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;--with-opt-dir
+--without-opt-dir
+--with-opt-include
+--without-opt-include=${opt-dir}/include
+--with-opt-lib
+--without-opt-lib=${opt-dir}/lib
+--with-make-prog
+--without-make-prog
+--srcdir=.
+--curdir
+--ruby=/Users/kengimel/.rvm/rubies/ruby-1.9.2-p290/bin/ruby
+--with-pg
+--without-pg
+--with-pg-dir
+--without-pg-dir
+--with-pg-include
+--without-pg-include=${pg-dir}/include
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>I already have postgres installed, so what? it appears postgres does not know when to find the its native extension files.</p>
+
+<p>To solve you need to locate bin directory for your postgresql in the Library directory. Depending the version of postgres you are running, the path to the bin folder may differ.</p>
+
+<p>including the below to you .bashrc or .bash_profile or .profile or .zshrc will do the trick :)
+<div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;PATH=${PATH}:/Library/PostgreSQL/9.1/bin
+source .zshrc
+gem install pg</code></pre>
+</div>
+</p>
+
+<p>For centos users <a href="http://serverfault.com/questions/316703/how-to-install-libpq-dev-on-centos-5-5">this post</a> could be of help.
+ and/or
+Prepend with a variable assignment for PATH with the location of the pg_config file, for example:</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;export PATH=/usr/pgsql-9.1/bin:$PATH
+source .bashrc
+gem install pg</code></pre>
+</div>
+</p>
+
+<p>Check that postgres is running:</p>
+
+<p>service postgresql-9.1 status</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Scala API for database proceedings (ScalaQuery)]]></title>
+    <link href="http://ikennaokpala.com/blog/a-scala-api-for-database-scalaquery"/>
+    <updated>2011-11-10T01:37:56+00:00</updated>
+    <id>http://ikennaokpala.com/blog/a-scala-api-for-database-scalaquery</id>
+    <content type="html"><![CDATA[<p>Back in the days making calls or connections to a database with jdbc took this much:</p>
+
+<p>(Below is an excerpt code i wrote in 2005... :()</p>
+
+<!--more-->
+
+
+<p><div>
+  <pre><code class='java'>Connection con = null;
+String url = &quot;jdbc:mysql://localhost:3306/&quot;;
+String db = &quot;dblocal&quot;;
+String driver = &quot;com.mysql.jdbc.Driver&quot;;
+String user = &quot;dbuser&quot;;
+String pass = &quot;dbuser&quot;;
+try {
+  Class.forName(driver);
+  con = DriverManager.getConnection(url + db, user, pass);
+  System.out.println(&quot;jdbc driver for mysql : &quot; + driver);
+  System.out.println(&quot;Connection url : &quot; + url + db);
+  System.out.println(&quot;Connection is established...&quot;);
+  con.close();
+  System.out.println(&quot;Connection is closed...&quot;);
+} catch (Exception e) {
+System.out.println(e);
+}</code></pre>
+</div>
+ 
+The level of abstraction here is very low.
+Then came ORM's with some abstraction but also giving us leaving us with the mountain to climb whilst leaving us with the <a href="http://www.codinghorror.com/blog/2006/06/object-relational-mapping-is-the-vietnam-of-computer-science.html">vietnam war of the impedance mis-match.</a></p>
+
+<p> The capability of OOP (imperative) programming languages to tackle  high-level concepts like relational algebra has been questioned, this obviously has given room for Functional programming languages to shine.</p>
+
+<p>One of such i recently have found within the JVM space is <a href="http://scalaquery.org">ScalaQuery</a>. I stumble across <a href="http://scalaquery.org/doc/ScalaQuery_Commerzbank_2011.pdf">this</a> on twitter, and began to look closer, though being a Scala fan and community member i had heard of ScalaQuery in it's early days, but did not take any real interest.</p>
+
+<p>With the API in question connection to a database is more concise with named/default arguments (parameters) from scala land:</p>
+
+<p><div>
+  <pre><code class='scala'>import org.scalaquery.session._
+import org.scalaquery.session.Database.threadLocalSession&lt;/p&gt;
+
+&lt;p&gt;val db = Database.forURL(
+  &quot;jdbc:mysql://localhost:3306/&quot;,
+  driver = &quot;com.mysql.jdbc.Driver&quot;,
+  user=&quot;dbuser&quot;,
+  password=&quot;dbuser&quot;
+)</code></pre>
+</div>
+</p>
+
+<p>ScalaQuery takes a better object oriented approach when mapping objects to tables:</p>
+
+<p><div>
+  <pre><code class='scala'>import org.scalaquery.ql.extended.{ExtendedTable =&gt; DBTable}
+import org.scalaquery.ql.TypeMapper.&lt;em&gt;
+import org.scalaquery.ql.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;case class Country (id:Int, name:String)
+val Country = new DBTable&lt;a href=&quot;&quot; title=&quot;countries&quot;&gt;(Int, String)&lt;/a&gt; {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def id = column[Int](&quot;id&quot;, O.NotNull, O.PrimaryKey, O.AutoInc)
+def name = column[String](&quot;name&quot;, O.NotNull, O.DBType &quot;varchar(50)&quot;)
+def * = id ~ name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  }&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;object country extends new DBTable&lt;a href=&quot;&quot; title=&quot;countries&quot;&gt;(Int, String)&lt;/a&gt; {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def id = column[Int](&quot;id&quot;, O.NotNull, O.PrimaryKey, O.AutoInc)
+def name = column[String](&quot;name&quot;, O.NotNull, O.DBType &quot;varchar(50)&quot;)
+def * = id ~ name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  }&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Now one of the uses of case classes i love the most is using it as a value object, because with a case class we get the equals, hash and toString methods for free.</p>
+
+<p><div>
+  <pre><code class='scala'>case class Country (id:Int, name:String)
+val countries = List(&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Country(1, &quot;Nigeria&quot;),
+Country(2, &quot;United Kingdom&quot;),
+Country(3, &quot;United States of America&quot;),
+Country(4, &quot;Canada&quot;),
+Country(5, &quot;France&quot;),
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  )&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>With the above playing with a dataset from the database becomes fun, as scala provides a collection library that is pack with goodness..</p>
+
+<p>The following Query with for comprehensions.</p>
+
+<p><div>
+  <pre><code class='scala'>val nigeria = for {c &amp;lt;- countries if c.id == 1}yield c.id ~ c.name</code></pre>
+</div>
+</p>
+
+<p>happy days... only now i have to look for some project to use it in.</p>
+
+<p><a href="http://ikennaokpala.files.wordpress.com/2011/11/scalaquery_commerzbank_2011.pdf">ScalaQuery Slides 2011 by Stefan Zeiger</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Persisting many to many Relationship (JPA and Spring Strategy)]]></title>
+    <link href="http://ikennaokpala.com/blog/persisting-jpa-many-to-many-relationship"/>
+    <updated>2010-06-18T17:13:43+01:00</updated>
+    <id>http://ikennaokpala.com/blog/persisting-jpa-many-to-many-relationship</id>
+    <content type="html"><![CDATA[<p>This post is inspired by the <a href="http://wiki.netbeans.org/TS_65_Entity_Classes_From_Database">"Netbeans Generate Entity Class From Database" </a>feature which literally spits out vanilla JPA Entity classes for you while you have some coffee. For many to many relationship types Netbeans reads and generates an JPA Entity class for the join table and an extra class which holds the Primary key values for the two tables involved in a many to many relationship. This class is annotated with the @Embeddable JPA annotation. This i found very cool.</p>
+
+<p>In this post i would like to show how to persist data from the respective tables to the join table.</p>
+
+<!--more-->
+
+
+<p>The database create statement for the chosen table goes as follows:</p>
+
+<p><a href="http://ikennaokpala.files.wordpress.com/2010/06/m_m1.png"><img src="http://ikennaokpala.files.wordpress.com/2010/06/m_m1.png?w=300" alt="" /></a></p>
+
+<p><div>
+  <pre><code class='sql'>create table Author (author_id int(10) not null auto_increment, name varchar(55) not null, email varchar(55) not null, primary key (author_id));
+create table Book (book_id int(10) not null auto_increment, name varchar(55) not null, publisher varchar(55) not null, primary key (book_id));
+create table Author_Book (author_id int(10) not null, book_id int(10) not null, primary key (author_id, book_id));
+alter table Author_Book add index FKAuthor_Boo670752 (author_id), add constraint FKAuthor_Boo670752 foreign key (author_id) references Author (author_id);
+alter table Author_Book add index FKAuthor_Boo981679 (book_id), add constraint FKAuthor_Boo981679 foreign key (book_id) references Book (book_id);</code></pre>
+</div>
+</p>
+
+<p>Netbeans generates the following for you.. No skin pain :)</p>
+
+<p>Class Author Entity</p>
+
+<p><div>
+  <pre><code class='java'>@Entity
+@Table(name = &quot;Author&quot;)
+@NamedQueries({&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@NamedQuery(name = &quot;Author.findAll&quot;, query = &quot;SELECT a FROM Author a&quot;),
+@NamedQuery(name = &quot;Author.findByAuthorId&quot;, query = &quot;SELECT a FROM Author a WHERE a.authorId = :authorId&quot;),
+@NamedQuery(name = &quot;Author.findByName&quot;, query = &quot;SELECT a FROM Author a WHERE a.name = :name&quot;),
+@NamedQuery(name = &quot;Author.findByEmail&quot;, query = &quot;SELECT a FROM Author a WHERE a.email = :email&quot;)})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;public class Author implements Serializable {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private static final long serialVersionUID = 1L;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Basic(optional = false)
+@Column(name = &quot;author_id&quot;)
+private Integer authorId;
+@Basic(optional = false)
+@Column(name = &quot;name&quot;)
+private String name;
+@Basic(optional = false)
+@Column(name = &quot;email&quot;)
+private String email;
+
+public Author() {
+}
+
+public Author(Integer authorId) {
+    this.authorId = authorId;
+}
+
+public Author(Integer authorId, String name, String email) {
+    this.authorId = authorId;
+    this.name = name;
+    this.email = email;
+}
+
+public Integer getAuthorId() {
+    return authorId;
+}
+
+public void setAuthorId(Integer authorId) {
+    this.authorId = authorId;
+}
+
+public String getName() {
+    return name;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+
+public String getEmail() {
+    return email;
+}
+
+public void setEmail(String email) {
+    this.email = email;
+}
+
+@Override
+public int hashCode() {
+    int hash = 0;
+    hash += (authorId != null ? authorId.hashCode() : 0);
+    return hash;
+}
+
+@Override
+public boolean equals(Object object) {
+    // TODO: Warning - this method won&#39;t work in the case the id fields are not set
+    if (!(object instanceof Author)) {
+        return false;
+    }
+    Author other = (Author) object;
+    if ((this.authorId == null &amp;amp;&amp;amp; other.authorId != null) || (this.authorId != null &amp;amp;&amp;amp; !this.authorId.equals(other.authorId))) {
+        return false;
+    }
+    return true;
+}
+
+@Override
+public String toString() {
+    return &quot;com.testing.jsf.Author[authorId=&quot; + authorId + &quot;]&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>Class For Book Entity..</p>
+
+<p><div>
+  <pre><code class='java'>@Entity
+@Table(name = &quot;Book&quot;)
+@NamedQueries({&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@NamedQuery(name = &quot;Book.findAll&quot;, query = &quot;SELECT b FROM Book b&quot;),
+@NamedQuery(name = &quot;Book.findByBookId&quot;, query = &quot;SELECT b FROM Book b WHERE b.bookId = :bookId&quot;),
+@NamedQuery(name = &quot;Book.findByName&quot;, query = &quot;SELECT b FROM Book b WHERE b.name = :name&quot;),
+@NamedQuery(name = &quot;Book.findByPublisher&quot;, query = &quot;SELECT b FROM Book b WHERE b.publisher = :publisher&quot;)})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;public class Book implements Serializable {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private static final long serialVersionUID = 1L;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Basic(optional = false)
+@Column(name = &quot;book_id&quot;)
+private Integer bookId;
+@Basic(optional = false)
+@Column(name = &quot;name&quot;)
+private String name;
+@Basic(optional = false)
+@Column(name = &quot;publisher&quot;)
+private String publisher;
+
+public Book() {
+}
+
+public Book(Integer bookId) {
+    this.bookId = bookId;
+}
+
+public Book(Integer bookId, String name, String publisher) {
+    this.bookId = bookId;
+    this.name = name;
+    this.publisher = publisher;
+}
+
+public Integer getBookId() {
+    return bookId;
+}
+
+public void setBookId(Integer bookId) {
+    this.bookId = bookId;
+}
+
+public String getName() {
+    return name;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+
+public String getPublisher() {
+    return publisher;
+}
+
+public void setPublisher(String publisher) {
+    this.publisher = publisher;
+}
+
+@Override
+public int hashCode() {
+    int hash = 0;
+    hash += (bookId != null ? bookId.hashCode() : 0);
+    return hash;
+}
+
+@Override
+public boolean equals(Object object) {
+    // TODO: Warning - this method won&#39;t work in the case the id fields are not set
+    if (!(object instanceof Book)) {
+        return false;
+    }
+    Book other = (Book) object;
+    if ((this.bookId == null &amp;amp;&amp;amp; other.bookId != null) || (this.bookId != null &amp;amp;&amp;amp; !this.bookId.equals(other.bookId))) {
+        return false;
+    }
+    return true;
+}
+
+@Override
+public String toString() {
+    return &quot;com.testing.jsf.Book[bookId=&quot; + bookId + &quot;]&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>Class for the join Table Author_Book</p>
+
+<p><div>
+  <pre><code class='java'>@Entity
+@Table(name = &quot;Author_Book&quot;)
+@NamedQueries({&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@NamedQuery(name = &quot;AuthorBook.findAll&quot;, query = &quot;SELECT a FROM AuthorBook a&quot;),
+@NamedQuery(name = &quot;AuthorBook.findByAuthorId&quot;, query = &quot;SELECT a FROM AuthorBook a WHERE a.authorBookPK.authorId = :authorId&quot;),
+@NamedQuery(name = &quot;AuthorBook.findByBookId&quot;, query = &quot;SELECT a FROM AuthorBook a WHERE a.authorBookPK.bookId = :bookId&quot;)})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;public class AuthorBook implements Serializable {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private static final long serialVersionUID = 1L;
+@EmbeddedId
+protected AuthorBookPK authorBookPK;
+
+public AuthorBook() {
+}
+
+public AuthorBook(AuthorBookPK authorBookPK) {
+    this.authorBookPK = authorBookPK;
+}
+
+public AuthorBook(int authorId, int bookId) {
+    this.authorBookPK = new AuthorBookPK(authorId, bookId);
+}
+
+public AuthorBookPK getAuthorBookPK() {
+    return authorBookPK;
+}
+
+public void setAuthorBookPK(AuthorBookPK authorBookPK) {
+    this.authorBookPK = authorBookPK;
+}
+
+@Override
+public int hashCode() {
+    int hash = 0;
+    hash += (authorBookPK != null ? authorBookPK.hashCode() : 0);
+    return hash;
+}
+
+@Override
+public boolean equals(Object object) {
+    // TODO: Warning - this method won&#39;t work in the case the id fields are not set
+    if (!(object instanceof AuthorBook)) {
+        return false;
+    }
+    AuthorBook other = (AuthorBook) object;
+    if ((this.authorBookPK == null &amp;amp;&amp;amp; other.authorBookPK != null) || (this.authorBookPK != null &amp;amp;&amp;amp; !this.authorBookPK.equals(other.authorBookPK))) {
+        return false;
+    }
+    return true;
+}
+
+@Override
+public String toString() {
+    return &quot;com.testing.jsf.AuthorBook[authorBookPK=&quot; + authorBookPK + &quot;]&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>Below we have the class that holds the primary key values of the participating tables, also generated for you by netbeans:</p>
+
+<p><div>
+  <pre><code class='java'>@Embeddable
+public class AuthorBookPK implements Serializable {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Basic(optional = false)
+@Column(name = &quot;author_id&quot;)
+private int authorId;
+@Basic(optional = false)
+@Column(name = &quot;book_id&quot;)
+private int bookId;
+
+public AuthorBookPK() {
+}
+
+public AuthorBookPK(int authorId, int bookId) {
+    this.authorId = authorId;
+    this.bookId = bookId;
+}
+
+public int getAuthorId() {
+    return authorId;
+}
+
+public void setAuthorId(int authorId) {
+    this.authorId = authorId;
+}
+
+public int getBookId() {
+    return bookId;
+}
+
+public void setBookId(int bookId) {
+    this.bookId = bookId;
+}
+
+@Override
+public int hashCode() {
+    int hash = 0;
+    hash += (int) authorId;
+    hash += (int) bookId;
+    return hash;
+}
+
+@Override
+public boolean equals(Object object) {
+    // TODO: Warning - this method won&#39;t work in the case the id fields are not set
+    if (!(object instanceof AuthorBookPK)) {
+        return false;
+    }
+    AuthorBookPK other = (AuthorBookPK) object;
+    if (this.authorId != other.authorId) {
+        return false;
+    }
+    if (this.bookId != other.bookId) {
+        return false;
+    }
+    return true;
+}
+
+@Override
+public String toString() {
+    return &quot;com.testing.jsf.AuthorBookPK[authorId=&quot; + authorId + &quot;, bookId=&quot; + bookId + &quot;]&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>At this point in order to persist, we require a component, service and repository (DAO) objects to do this.
+For the view component, what ever is your web framework of choice, be it jsf, spring mvc, gwt or wicket, etc all you need to do is inject the service and call the respective method for saving that you have defined in your service object. the below is based on JSF.</p>
+
+<p>Note: at this point you need to persist both sides of the divide at the same time (the join table entity in this case AuthorBook and anyone of the participating sides). For the AuthorBook Entity you instantiate the constructor for the join table entity class that accepts the ids of the participating table (for this example this is achieved by passing to the constructor the get method for retrieving the ids for the participating tables for the join table.) Like this</p>
+
+<p><div>
+  <pre><code class='java'>&lt;/p&gt;
+
+&lt;p&gt;authorBookService.save(new AuthorBook(book.getBookId(), author.getAuthorId()));</code></pre>
+</div>
+</p>
+
+<p>The code for this goes as follows:</p>
+
+<p><div>
+  <pre><code class='java'>@Component
+@Scope(&quot;request&quot;)
+public class ComponentBean implements Serializable {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private AuthorBook authorbook = new AuthorBook();
+private Author author = new Author();
+private Book book = new Book();
+private AuthorService authorSerivce;
+private AuthorBookService authorbookSerivce;
+
+@Autowired
+public ComponentBean(AuthorService authorSerivce, AuthorBookService authorbookSerivce) {
+    this.authorSerivce = authorSerivce;
+    this.authorbookSerivce = authorbookSerivce;
+}
+
+public Author getAuthor() {
+    return author;
+}
+
+public void setAuthor(Author author) {
+    this.author = author;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;public void setAuthorbook(AuthorBook authorbook) {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    this.authorbook = authorbook;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt; public AuthorBook getAuthorbook() {
+ return authorbook;
+ }&lt;/p&gt;
+
+&lt;p&gt; public void setBook(Book book) {
+ this.book = book;
+ }
+public Book getBook() {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    return book;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;public void save(ActionEvent actionEvent) {
+ authorService.save(author);
+ authorBookService.save(new AuthorBook(book.getBookId(), author.getAuthorId())); // you instantiate the constructor for the join table entity  class and pass it the get method for retrieving the ids for the participating tables for the join table&lt;/p&gt;
+
+&lt;p&gt; }
+}</code></pre>
+</div>
+</p>
+
+<p>Service interface to define the the save operation:</p>
+
+<p><div>
+  <pre><code class='java'>public interface AuthorBookService {&lt;/p&gt;
+
+&lt;p&gt;public void save(AuthorBook authorBook);
+}</code></pre>
+</div>
+</p>
+
+<p>Next the implementation for the AuthorBookService Service Interface:</p>
+
+<p><div>
+  <pre><code class='java'>&lt;/p&gt;
+
+&lt;p&gt;@Service(&quot;authorBookService&quot;)
+public AuthorBookServiceImpl implements AuthorBookService  {
+private AuthorBookDAO authorbookdao;
+@Autowired
+public ModelServiceImpl(AuthorBookDAO authorbookdao) {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    this. authorbookdao = authorbookdao;
+}
+@Transactional
+public void save(AuthorBook authorBook) {
+    authorbookdao.persist(AuthorBook authorBook);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>The Data Access object interface:</p>
+
+<p><div>
+  <pre><code class='java'>public interface AuthorBookDAO {&lt;/p&gt;
+
+&lt;p&gt;public void persist(AuthorBook authorBook);
+}</code></pre>
+</div>
+</p>
+
+<p>The Data Access object implementation proper:</p>
+
+<p><div>
+  <pre><code class='java'>@Repository
+public class AuthorBookDAOImpl implements ModelDAO {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@PersistenceContext
+protected EntityManager entityMgr;
+
+public EntityManager getEntityMgr() {
+    return entityMgr;
+}
+
+public void setEntityMgr(EntityManager entityMgr) {
+    this.entityMgr = entityMgr;
+}
+
+public void persist(AuthorBook authorBook) {
+
+  this.entityMgr.persist(authorBook)
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>Note: the service and repository for Author and Book will follow the same pattern. See the my previous blog post for more hints.. Ciao for now..</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2002 – Can’t connect to local MySQL server through socket ‘/var/mysql/mysql.sock’]]></title>
+    <link href="http://ikennaokpala.com/blog/2002-cant-connect-to-local-mysql-server-through-socket-varmysqlmysql-sock"/>
+    <updated>2009-08-11T01:18:00+01:00</updated>
+    <id>http://ikennaokpala.com/blog/2002-cant-connect-to-local-mysql-server-through-socket-varmysqlmysql-sock</id>
+    <content type="html"><![CDATA[<p>Today, i stopped being a fan of MAMP for integrating PHP Apache and MYSQL, and i decided to setup Apache, MYSQL and PHP stack on my MAC OS X 10.5.7 (leopard) the good old way...</p>
+
+<p>But, i encountered this error: 2002 - Can't connect to local MySQL server through socket '/var/mysql/mysql.sock' (2).</p>
+
+<p>Wow... i then discovered funny enough, that MYSQL instance was running perfectly and i was able to connect MYSQL</p>
+
+<!--more-->
+
+
+<p>via the MYSQL Admin GUI tool.</p>
+
+<p>I made a lucky guess asserting, that the PHP config file may be missing some info, Hmmm...</p>
+
+<p>Well the solution goes as follows:</p>
+
+<p>I searched for "mysql.lock" and i discovered that the MYSQL Socket file was located in "/tmp/mysql.lock.</p>
+
+<p>Also, in the my PHP.ini file the value for "mysql.default_socket" was entirely empty "".</p>
+
+<p>ehhhh... Run this command in Terminal to view hidden files "defaults write com.apple.finder AppleShowAllFiles TRUE" and then followed by "killall Finder".</p>
+
+<p>Then Go to "private/etc/PHP.ini". (note: private is a hidden folder).</p>
+
+<p>If prior to this, in "private/etc/ "folder, the PHP.ini file does not exist copy and paste it there first.</p>
+
+<p>Now open the PHP.ini file with say BBedit or TextWrangler.</p>
+
+<p>Use command + F to find "mysql.default_socket" and paste "/tmp/mysql.sock" as it's new value.</p>
+
+<p>Finally restart your Apache web server with Terminal using "sudo apachectl graceful".</p>
+
+<p>After restart, PHP will be able to make connection calls to MYSQL with no further a do or hassle.</p>
+]]></content>
+  </entry>
+  
+</feed>

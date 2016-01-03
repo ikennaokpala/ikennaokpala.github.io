@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: SPRING | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/spring/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2016-01-03T17:35:48+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Persisting many to many Relationship (JPA and Spring Strategy)]]></title>
+    <link href="http://ikennaokpala.com/blog/persisting-jpa-many-to-many-relationship"/>
+    <updated>2010-06-18T17:13:43+01:00</updated>
+    <id>http://ikennaokpala.com/blog/persisting-jpa-many-to-many-relationship</id>
+    <content type="html"><![CDATA[<p>This post is inspired by the <a href="http://wiki.netbeans.org/TS_65_Entity_Classes_From_Database">"Netbeans Generate Entity Class From Database" </a>feature which literally spits out vanilla JPA Entity classes for you while you have some coffee. For many to many relationship types Netbeans reads and generates an JPA Entity class for the join table and an extra class which holds the Primary key values for the two tables involved in a many to many relationship. This class is annotated with the @Embeddable JPA annotation. This i found very cool.</p>
+
+<p>In this post i would like to show how to persist data from the respective tables to the join table.</p>
+
+<!--more-->
+
+
+<p>The database create statement for the chosen table goes as follows:</p>
+
+<p><a href="http://ikennaokpala.files.wordpress.com/2010/06/m_m1.png"><img src="http://ikennaokpala.files.wordpress.com/2010/06/m_m1.png?w=300" alt="" /></a></p>
+
+<p><div>
+  <pre><code class='sql'>create table Author (author_id int(10) not null auto_increment, name varchar(55) not null, email varchar(55) not null, primary key (author_id));
+create table Book (book_id int(10) not null auto_increment, name varchar(55) not null, publisher varchar(55) not null, primary key (book_id));
+create table Author_Book (author_id int(10) not null, book_id int(10) not null, primary key (author_id, book_id));
+alter table Author_Book add index FKAuthor_Boo670752 (author_id), add constraint FKAuthor_Boo670752 foreign key (author_id) references Author (author_id);
+alter table Author_Book add index FKAuthor_Boo981679 (book_id), add constraint FKAuthor_Boo981679 foreign key (book_id) references Book (book_id);</code></pre>
+</div>
+</p>
+
+<p>Netbeans generates the following for you.. No skin pain :)</p>
+
+<p>Class Author Entity</p>
+
+<p><div>
+  <pre><code class='java'>@Entity
+@Table(name = &quot;Author&quot;)
+@NamedQueries({&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@NamedQuery(name = &quot;Author.findAll&quot;, query = &quot;SELECT a FROM Author a&quot;),
+@NamedQuery(name = &quot;Author.findByAuthorId&quot;, query = &quot;SELECT a FROM Author a WHERE a.authorId = :authorId&quot;),
+@NamedQuery(name = &quot;Author.findByName&quot;, query = &quot;SELECT a FROM Author a WHERE a.name = :name&quot;),
+@NamedQuery(name = &quot;Author.findByEmail&quot;, query = &quot;SELECT a FROM Author a WHERE a.email = :email&quot;)})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;public class Author implements Serializable {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private static final long serialVersionUID = 1L;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Basic(optional = false)
+@Column(name = &quot;author_id&quot;)
+private Integer authorId;
+@Basic(optional = false)
+@Column(name = &quot;name&quot;)
+private String name;
+@Basic(optional = false)
+@Column(name = &quot;email&quot;)
+private String email;
+
+public Author() {
+}
+
+public Author(Integer authorId) {
+    this.authorId = authorId;
+}
+
+public Author(Integer authorId, String name, String email) {
+    this.authorId = authorId;
+    this.name = name;
+    this.email = email;
+}
+
+public Integer getAuthorId() {
+    return authorId;
+}
+
+public void setAuthorId(Integer authorId) {
+    this.authorId = authorId;
+}
+
+public String getName() {
+    return name;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+
+public String getEmail() {
+    return email;
+}
+
+public void setEmail(String email) {
+    this.email = email;
+}
+
+@Override
+public int hashCode() {
+    int hash = 0;
+    hash += (authorId != null ? authorId.hashCode() : 0);
+    return hash;
+}
+
+@Override
+public boolean equals(Object object) {
+    // TODO: Warning - this method won&#39;t work in the case the id fields are not set
+    if (!(object instanceof Author)) {
+        return false;
+    }
+    Author other = (Author) object;
+    if ((this.authorId == null &amp;amp;&amp;amp; other.authorId != null) || (this.authorId != null &amp;amp;&amp;amp; !this.authorId.equals(other.authorId))) {
+        return false;
+    }
+    return true;
+}
+
+@Override
+public String toString() {
+    return &quot;com.testing.jsf.Author[authorId=&quot; + authorId + &quot;]&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>Class For Book Entity..</p>
+
+<p><div>
+  <pre><code class='java'>@Entity
+@Table(name = &quot;Book&quot;)
+@NamedQueries({&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@NamedQuery(name = &quot;Book.findAll&quot;, query = &quot;SELECT b FROM Book b&quot;),
+@NamedQuery(name = &quot;Book.findByBookId&quot;, query = &quot;SELECT b FROM Book b WHERE b.bookId = :bookId&quot;),
+@NamedQuery(name = &quot;Book.findByName&quot;, query = &quot;SELECT b FROM Book b WHERE b.name = :name&quot;),
+@NamedQuery(name = &quot;Book.findByPublisher&quot;, query = &quot;SELECT b FROM Book b WHERE b.publisher = :publisher&quot;)})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;public class Book implements Serializable {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private static final long serialVersionUID = 1L;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Basic(optional = false)
+@Column(name = &quot;book_id&quot;)
+private Integer bookId;
+@Basic(optional = false)
+@Column(name = &quot;name&quot;)
+private String name;
+@Basic(optional = false)
+@Column(name = &quot;publisher&quot;)
+private String publisher;
+
+public Book() {
+}
+
+public Book(Integer bookId) {
+    this.bookId = bookId;
+}
+
+public Book(Integer bookId, String name, String publisher) {
+    this.bookId = bookId;
+    this.name = name;
+    this.publisher = publisher;
+}
+
+public Integer getBookId() {
+    return bookId;
+}
+
+public void setBookId(Integer bookId) {
+    this.bookId = bookId;
+}
+
+public String getName() {
+    return name;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+
+public String getPublisher() {
+    return publisher;
+}
+
+public void setPublisher(String publisher) {
+    this.publisher = publisher;
+}
+
+@Override
+public int hashCode() {
+    int hash = 0;
+    hash += (bookId != null ? bookId.hashCode() : 0);
+    return hash;
+}
+
+@Override
+public boolean equals(Object object) {
+    // TODO: Warning - this method won&#39;t work in the case the id fields are not set
+    if (!(object instanceof Book)) {
+        return false;
+    }
+    Book other = (Book) object;
+    if ((this.bookId == null &amp;amp;&amp;amp; other.bookId != null) || (this.bookId != null &amp;amp;&amp;amp; !this.bookId.equals(other.bookId))) {
+        return false;
+    }
+    return true;
+}
+
+@Override
+public String toString() {
+    return &quot;com.testing.jsf.Book[bookId=&quot; + bookId + &quot;]&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>Class for the join Table Author_Book</p>
+
+<p><div>
+  <pre><code class='java'>@Entity
+@Table(name = &quot;Author_Book&quot;)
+@NamedQueries({&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@NamedQuery(name = &quot;AuthorBook.findAll&quot;, query = &quot;SELECT a FROM AuthorBook a&quot;),
+@NamedQuery(name = &quot;AuthorBook.findByAuthorId&quot;, query = &quot;SELECT a FROM AuthorBook a WHERE a.authorBookPK.authorId = :authorId&quot;),
+@NamedQuery(name = &quot;AuthorBook.findByBookId&quot;, query = &quot;SELECT a FROM AuthorBook a WHERE a.authorBookPK.bookId = :bookId&quot;)})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;public class AuthorBook implements Serializable {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private static final long serialVersionUID = 1L;
+@EmbeddedId
+protected AuthorBookPK authorBookPK;
+
+public AuthorBook() {
+}
+
+public AuthorBook(AuthorBookPK authorBookPK) {
+    this.authorBookPK = authorBookPK;
+}
+
+public AuthorBook(int authorId, int bookId) {
+    this.authorBookPK = new AuthorBookPK(authorId, bookId);
+}
+
+public AuthorBookPK getAuthorBookPK() {
+    return authorBookPK;
+}
+
+public void setAuthorBookPK(AuthorBookPK authorBookPK) {
+    this.authorBookPK = authorBookPK;
+}
+
+@Override
+public int hashCode() {
+    int hash = 0;
+    hash += (authorBookPK != null ? authorBookPK.hashCode() : 0);
+    return hash;
+}
+
+@Override
+public boolean equals(Object object) {
+    // TODO: Warning - this method won&#39;t work in the case the id fields are not set
+    if (!(object instanceof AuthorBook)) {
+        return false;
+    }
+    AuthorBook other = (AuthorBook) object;
+    if ((this.authorBookPK == null &amp;amp;&amp;amp; other.authorBookPK != null) || (this.authorBookPK != null &amp;amp;&amp;amp; !this.authorBookPK.equals(other.authorBookPK))) {
+        return false;
+    }
+    return true;
+}
+
+@Override
+public String toString() {
+    return &quot;com.testing.jsf.AuthorBook[authorBookPK=&quot; + authorBookPK + &quot;]&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>Below we have the class that holds the primary key values of the participating tables, also generated for you by netbeans:</p>
+
+<p><div>
+  <pre><code class='java'>@Embeddable
+public class AuthorBookPK implements Serializable {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Basic(optional = false)
+@Column(name = &quot;author_id&quot;)
+private int authorId;
+@Basic(optional = false)
+@Column(name = &quot;book_id&quot;)
+private int bookId;
+
+public AuthorBookPK() {
+}
+
+public AuthorBookPK(int authorId, int bookId) {
+    this.authorId = authorId;
+    this.bookId = bookId;
+}
+
+public int getAuthorId() {
+    return authorId;
+}
+
+public void setAuthorId(int authorId) {
+    this.authorId = authorId;
+}
+
+public int getBookId() {
+    return bookId;
+}
+
+public void setBookId(int bookId) {
+    this.bookId = bookId;
+}
+
+@Override
+public int hashCode() {
+    int hash = 0;
+    hash += (int) authorId;
+    hash += (int) bookId;
+    return hash;
+}
+
+@Override
+public boolean equals(Object object) {
+    // TODO: Warning - this method won&#39;t work in the case the id fields are not set
+    if (!(object instanceof AuthorBookPK)) {
+        return false;
+    }
+    AuthorBookPK other = (AuthorBookPK) object;
+    if (this.authorId != other.authorId) {
+        return false;
+    }
+    if (this.bookId != other.bookId) {
+        return false;
+    }
+    return true;
+}
+
+@Override
+public String toString() {
+    return &quot;com.testing.jsf.AuthorBookPK[authorId=&quot; + authorId + &quot;, bookId=&quot; + bookId + &quot;]&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>At this point in order to persist, we require a component, service and repository (DAO) objects to do this.
+For the view component, what ever is your web framework of choice, be it jsf, spring mvc, gwt or wicket, etc all you need to do is inject the service and call the respective method for saving that you have defined in your service object. the below is based on JSF.</p>
+
+<p>Note: at this point you need to persist both sides of the divide at the same time (the join table entity in this case AuthorBook and anyone of the participating sides). For the AuthorBook Entity you instantiate the constructor for the join table entity class that accepts the ids of the participating table (for this example this is achieved by passing to the constructor the get method for retrieving the ids for the participating tables for the join table.) Like this</p>
+
+<p><div>
+  <pre><code class='java'>&lt;/p&gt;
+
+&lt;p&gt;authorBookService.save(new AuthorBook(book.getBookId(), author.getAuthorId()));</code></pre>
+</div>
+</p>
+
+<p>The code for this goes as follows:</p>
+
+<p><div>
+  <pre><code class='java'>@Component
+@Scope(&quot;request&quot;)
+public class ComponentBean implements Serializable {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private AuthorBook authorbook = new AuthorBook();
+private Author author = new Author();
+private Book book = new Book();
+private AuthorService authorSerivce;
+private AuthorBookService authorbookSerivce;
+
+@Autowired
+public ComponentBean(AuthorService authorSerivce, AuthorBookService authorbookSerivce) {
+    this.authorSerivce = authorSerivce;
+    this.authorbookSerivce = authorbookSerivce;
+}
+
+public Author getAuthor() {
+    return author;
+}
+
+public void setAuthor(Author author) {
+    this.author = author;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;public void setAuthorbook(AuthorBook authorbook) {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    this.authorbook = authorbook;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt; public AuthorBook getAuthorbook() {
+ return authorbook;
+ }&lt;/p&gt;
+
+&lt;p&gt; public void setBook(Book book) {
+ this.book = book;
+ }
+public Book getBook() {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    return book;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;public void save(ActionEvent actionEvent) {
+ authorService.save(author);
+ authorBookService.save(new AuthorBook(book.getBookId(), author.getAuthorId())); // you instantiate the constructor for the join table entity  class and pass it the get method for retrieving the ids for the participating tables for the join table&lt;/p&gt;
+
+&lt;p&gt; }
+}</code></pre>
+</div>
+</p>
+
+<p>Service interface to define the the save operation:</p>
+
+<p><div>
+  <pre><code class='java'>public interface AuthorBookService {&lt;/p&gt;
+
+&lt;p&gt;public void save(AuthorBook authorBook);
+}</code></pre>
+</div>
+</p>
+
+<p>Next the implementation for the AuthorBookService Service Interface:</p>
+
+<p><div>
+  <pre><code class='java'>&lt;/p&gt;
+
+&lt;p&gt;@Service(&quot;authorBookService&quot;)
+public AuthorBookServiceImpl implements AuthorBookService  {
+private AuthorBookDAO authorbookdao;
+@Autowired
+public ModelServiceImpl(AuthorBookDAO authorbookdao) {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    this. authorbookdao = authorbookdao;
+}
+@Transactional
+public void save(AuthorBook authorBook) {
+    authorbookdao.persist(AuthorBook authorBook);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>The Data Access object interface:</p>
+
+<p><div>
+  <pre><code class='java'>public interface AuthorBookDAO {&lt;/p&gt;
+
+&lt;p&gt;public void persist(AuthorBook authorBook);
+}</code></pre>
+</div>
+</p>
+
+<p>The Data Access object implementation proper:</p>
+
+<p><div>
+  <pre><code class='java'>@Repository
+public class AuthorBookDAOImpl implements ModelDAO {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@PersistenceContext
+protected EntityManager entityMgr;
+
+public EntityManager getEntityMgr() {
+    return entityMgr;
+}
+
+public void setEntityMgr(EntityManager entityMgr) {
+    this.entityMgr = entityMgr;
+}
+
+public void persist(AuthorBook authorBook) {
+
+  this.entityMgr.persist(authorBook)
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>Note: the service and repository for Author and Book will follow the same pattern. See the my previous blog post for more hints.. Ciao for now..</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Populating JSF Combo Box with Database values. (or drop down list)...]]></title>
+    <link href="http://ikennaokpala.com/blog/populating-jsf-combo-box-with-database-values"/>
+    <updated>2010-05-30T02:19:45+01:00</updated>
+    <id>http://ikennaokpala.com/blog/populating-jsf-combo-box-with-database-values</id>
+    <content type="html"><![CDATA[<p>I am presently working on my AISD project, and i am using jsf(<a href="http://www.primefaces.org">primefaces</a>) spring and jpa to build the system.</p>
+
+<p>I would like to commend the efforts of the brains behind <a href="http://www.javaserverfaces.org/specification/expert-group">jsf</a> 2.0 and <a href="http://www.primefaces.org">primefaces</a> (1.<em> and 2.</em>) :) in particular for making the life of java web devs much easier.</p>
+
+<p>I remember back in the days the first versions of <a href="http://www.javaserverfaces.org/specification/expert-group">jsf</a> were simply nightmares, which lead my cohorts and i  to move to frameworks like <a href="http://wicket.apache.org/">wicket</a> :).</p>
+
+<!--more-->
+
+
+<p>This blog post seeks to show how to populate a <a href="http://www.javaserverfaces.org/specification/expert-group">jsf</a> Combo box with values from a database table and also you would notice that the implementation for this case includes both jsf 1.<em> and jsf 2.</em>. I assume some familiarity with spring jpa and <a href="http://www.javaserverfaces.org/specification/expert-group">jsf</a>.</p>
+
+<p>Most relational database records have a primary key to uniquely identify it. This key appears on other tables as foreign keys. In my application i needed to display one or more of the attributes of a record from a table on a form and persist its unique identifier .</p>
+
+<p>Below i provide some sample code that gives some hint on how this can be achieved using plain old java objects..</p>
+
+<p>First lets paint the screen.. For JSF 1.*:</p>
+
+<p><div>
+  <pre><code class='xml'>&lt;/p&gt;
+
+&lt;p&gt;&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;
+xmlns:h=&quot;http://java.sun.com/jsf/html&quot;
+xmlns:f=&quot;http://java.sun.com/jsf/core&quot;
+xmlns:p=&quot;http://primefaces.prime.com.tr/ui&quot;&gt;
+&lt;head&gt;
+&amp;lt;p:resources /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&amp;lt;h:form prependId=&quot;false&quot; styleClass=&quot;cmxform&quot;&gt;
+&lt;fieldset&gt;
+  &lt;legend&gt; &lt;/legend&gt;
+&amp;lt;p:panel id=&quot;panel&quot; header=&quot;Combo Box Example&quot;&gt;
+&amp;lt;h:panelGrid columns=&quot;2&quot;  columnClasses=&quot;label,value&quot; styleClass=&quot;grid&quot;&gt;
+&amp;lt;h:outputLabel for=&quot;cb&quot; value=&quot;comboItem&quot; /&gt;
+&amp;lt;h:selectOneMenu id=&quot;selectOneCb&quot; value=&quot;#{pageBean.model.modelid}&quot;&gt;
+&amp;lt;f:selectItem itemLabel=&quot;Select Model&quot; itemValue=&quot;&quot; /&gt;
+&amp;lt;f:selectItems value=&quot;#{pageBean.myModelValues}&quot; /&gt;
+&amp;lt;/h:selectOneMenu&gt;
+&amp;lt;/h:panelGrid&gt;
+&amp;lt;/p:panel&gt;
+&lt;/fieldset&gt;
+&amp;lt;/h:form&gt;
+&lt;/body&gt;
+&lt;/html&gt;&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>For JSF 2.* this is even easier (thanks to <a href="http://cagataycivici.wordpress.com/">Çağatay Çivici</a> the <a href="http://www.primefaces.org">primefaces</a> lead for pointing this out to me :)):</p>
+
+<p><div>
+  <pre><code class='xml'>&lt;/p&gt;
+
+&lt;p&gt;&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;
+xmlns:h=&quot;http://java.sun.com/jsf/html&quot;
+xmlns:f=&quot;http://java.sun.com/jsf/core&quot;
+xmlns:p=&quot;http://primefaces.prime.com.tr/ui&quot;&gt;
+&lt;head&gt;
+&amp;lt;p:resources /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&amp;lt;h:form prependId=&quot;false&quot; styleClass=&quot;cmxform&quot;&gt;
+&lt;fieldset&gt;
+  &lt;legend&gt; &lt;/legend&gt;
+&amp;lt;p:panel id=&quot;panel&quot; header=&quot;Combo Box Example&quot;&gt;
+&amp;lt;h:panelGrid columns=&quot;2&quot;  columnClasses=&quot;label,value&quot; styleClass=&quot;grid&quot;&gt;
+&amp;lt;h:outputLabel for=&quot;cb&quot; value=&quot;comboItem&quot; /&gt;
+&amp;lt;h:selectOneMenu id=&quot;selectOneCb&quot; value=&quot;#{pageBean.model.modelid}&quot;&gt;
+&amp;lt;f:selectItem itemLabel=&quot;Select Model&quot; itemValue=&quot;&quot; /&gt;
+&amp;lt;f:selectItems value=&quot;#{pageBean.mlist}&quot; var=&quot;model&quot; itemLabel=&quot;#{model.modelvalue}&quot; itemValue=&quot;#{model.modelId}&quot;/&gt;
+&amp;lt;/h:selectOneMenu&gt;
+&amp;lt;/h:panelGrid&gt;
+&amp;lt;/p:panel&gt;
+&lt;/fieldset&gt;
+&amp;lt;/h:form&gt;
+&lt;/body&gt;
+&lt;/html&gt;&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Next lets define the backing page bean... For JSF 1.* this is ok :</p>
+
+<p><div>
+  <pre><code class='java'>&lt;/p&gt;
+
+&lt;p&gt;@Component(&quot;pageBean&quot;)
+@Scope(&quot;request&quot;)
+public class PageBean implements Serializable {
+private model = new Model();
+private ModelService modelService;
+private Map&amp;lt;String, String&gt; myModelValues = new HashMap&amp;lt;String, String&gt;();
+private List&lt;Model&gt; mList;
+public PageBean(){
+}&lt;/p&gt;
+
+&lt;p&gt; @Autowired
+public PageBean(ModelService modelService){
+this. modelService = modelService;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    mList = modelService.findAll();
+    for (Model m : mList) {
+        myModelValues.put(m.getmyModelValue(), m.getmyModelId());
+ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}
+public Map&amp;lt;String, String&gt; getMyModelValues() {
+return myModelValues;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;public void setMyModelValues(Map&amp;lt;String, String&gt; myModelValues) {
+this.myModelValues= myModelValues;
+ }
+public Model getModel() {
+return model;
+}
+public void setModel(Model model) {
+this.model = model;
+}
+}&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>For JSF 2.* it is even better => You don't need  use a Map or Hash Map as the case may be above (thanks to <a href="http://cagataycivici.wordpress.com/">Çağatay Çivici</a> the <a href="http://www.primefaces.org">primefaces</a> lead for pointing this out ):</p>
+
+<p><div>
+  <pre><code class='java'>&lt;/p&gt;
+
+&lt;p&gt;@Component(&quot;pageBean&quot;)
+@Scope(&quot;request&quot;)
+public class PageBean implements Serializable {
+private model = new Model();
+private ModelService modelService;
+private List&lt;Model&gt; list;
+public PageBean(){
+}&lt;/p&gt;
+
+&lt;p&gt;@Autowired
+public PageBean(ModelService modelService){&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    this. modelService = modelService;
+    list = modelService.findAll();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;public List&lt;Model&gt; getList() {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;return list;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}
+public Model getModel() {
+return model;
+}
+public void setModel(Model model) {
+this.model = model;
+}
+}&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Below is a service interface to define the the findAll method:</p>
+
+<p><div>
+  <pre><code class='java'>public interface ModelService {&lt;/p&gt;
+
+&lt;p&gt;public List&amp;lt; Model&gt; findAll();
+}</code></pre>
+</div>
+</p>
+
+<p>Next the implementation for the Model Service Interface:</p>
+
+<p><div>
+  <pre><code class='java'>&lt;/p&gt;
+
+&lt;p&gt;@Service(&quot;modelService&quot;)
+public ModelServiceImpl implements ModelService  {
+private ModelDAO modeldao;
+@Autowired
+public ModelServiceImpl(ModelDAO modeldao) {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    this. modeldao = modeldao;
+}
+@Transactional(readOnly = true)
+public List&amp;lt;Model&amp;gt; findAll() {
+    return modeldao.findAll();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>The Data Access object interface:</p>
+
+<p><div>
+  <pre><code class='java'>public interface ModelDAO {&lt;/p&gt;
+
+&lt;p&gt;public List&amp;lt; Model&gt; findAll();
+}</code></pre>
+</div>
+</p>
+
+<p>The Data Access object implementation proper:</p>
+
+<p><div>
+  <pre><code class='java'>@Repository
+public class ModelDAOImpl implements ModelDAO {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@PersistenceContext
+protected EntityManager entityMgr;
+
+public EntityManager getEntityMgr() {
+    return entityMgr;
+}
+
+public void setEntityMgr(EntityManager entityMgr) {
+    this.entityMgr = entityMgr;
+}
+
+public List&amp;lt;Model&amp;gt; findAll() {
+    Query query = entityMgr.createNamedQuery(&quot;Model.findAll&quot;);
+    return query.getResultList();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}</code></pre>
+</div>
+</p>
+
+<p>Finally lets define the jpa model object:</p>
+
+<p><div>
+  <pre><code class='java'>@Entity
+@Table(name = &quot;MODEL&quot;)
+@NamedQuery(name = &quot;Model.findAll&quot;, query = &quot;SELECT m FROM Model m&quot;) // this query returns distinct values from the database.
+public class Model implements Serializable {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Id
+@Basic(optional = false)
+@Column(name = &quot;MODEL_ID&quot;)
+private String modelId;
+@Basic(optional = false)
+@Column(name = &quot;MODEL_VALUE&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;private String modelValue;
+ public Model() {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt; public Model(String modelId, String modelValue) {
+this.modelId = modelId;
+this.model = modelValue;
+}
+ public String getModelId() {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    return modelId;
+}
+
+public void setModelId(String modelId) {
+    this.modelId = modelId;
+}
+
+public String getModelValue() {
+    return modelValue;
+}
+
+public void setModelValue(String modelValue) {
+    this. modelValue = modelValue;
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>The code above steps through it all... Ciao for now..</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Configuring Spring Security..]]></title>
+    <link href="http://ikennaokpala.com/blog/configuring-spring-security"/>
+    <updated>2010-05-21T16:57:47+01:00</updated>
+    <id>http://ikennaokpala.com/blog/configuring-spring-security</id>
+    <content type="html"><![CDATA[<p>Over the years web application security has continued to be a critical issue. This area of concern is a major source of worry for most enterprise application developers.</p>
+
+<p>We as software developers, are faced with the task of securing valuable data that exist within our applications. This data could vary from  email account secured with a username / password pair or a brokerage account secured with a trading PIN, protecting an application is a important aspect of most applications, if not all.  (Walls C., 2007).</p>
+
+<!--more-->
+
+
+<p>According to <a href="http://www.jroller.com/habuma/">Craig Walls</a> (2007, pg 248), Security is a concern that transcends an application’s functionality. For the most part, an application should play no part in securing itself. Although you could write security functionality directly into your application’s code (and that’s not uncommon), it is better to keep security concerns separate from application concerns.</p>
+
+<p>One of the popular options for the enterprise java world is spring's security framework (formerly Acegi).</p>
+
+<p><a href="http://www.jroller.com/habuma/">Craigs Walls</a> in his spring in action book defined spring security as  <em>"a security framework that provides declarative security for your Spring-based applications."</em></p>
+
+<p>In this blog post, I intend to share my personal experience configuring spring security.</p>
+
+<p>Firstly there are a few requirements (jars). you will need to define the following in your maven pom.xml file.</p>
+
+<p><div>
+  <pre><code class='xml'>&lt;dependency&gt;
+ &lt;groupId&gt;org.springframework.security&lt;/groupId&gt;
+ &lt;artifactId&gt;spring-security-core&lt;/artifactId&gt;
+ &lt;version&gt;2.0.4&lt;/version&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+ &lt;groupId&gt;org.springframework.security&lt;/groupId&gt;
+ &lt;artifactId&gt;spring-security-core-tiger&lt;/artifactId&gt;
+ &lt;version&gt;2.0.4&lt;/version&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+ &lt;groupId&gt;org.springframework.security&lt;/groupId&gt;
+ &lt;artifactId&gt;spring-security-taglibs&lt;/artifactId&gt;
+ &lt;version&gt;2.0.4&lt;/version&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+ &lt;groupId&gt;org.springframework.security&lt;/groupId&gt;
+ &lt;artifactId&gt;spring-security-acl&lt;/artifactId&gt;
+ &lt;version&gt;2.0.4&lt;/version&gt;
+ &lt;/dependency&gt;
+&lt;dependency&gt;
+ &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
+ &lt;artifactId&gt;aspectjrt&lt;/artifactId&gt;
+ &lt;version&gt;1.5.4&lt;/version&gt;
+ &lt;/dependency&gt;</code></pre>
+</div>
+</p>
+
+<p>Next task is configuring the Web.xml file:</p>
+
+<p><div>
+  <pre><code class='xml'>&lt;/p&gt;
+
+&lt;p&gt; &lt;context-param&gt;
+ &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+ &lt;param-value&gt;
+ classpath:applicationContext.xml
+ &lt;/param-value&gt;
+ &lt;/context-param&gt;&lt;/p&gt;
+
+&lt;p&gt; &lt;listener&gt;
+ &lt;listener-class&gt; org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;&lt;/p&gt;
+
+&lt;p&gt; &lt;/listener&gt;&lt;/p&gt;
+
+&lt;p&gt; &lt;filter&gt;
+ &lt;filter-name&gt;springSecurityFilterChain&lt;/filter-name&gt;
+ &lt;filter-class&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;/filter-class&gt;
+ &lt;/filter&gt;&lt;/p&gt;
+
+&lt;p&gt; &lt;filter-mapping&gt;
+ &lt;filter-name&gt;springSecurityFilterChain&lt;/filter-name&gt;
+ &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+ &lt;/filter-mapping&gt;</code></pre>
+</div>
+</p>
+
+<p>Every Spring application requires an applications context, this is a primary requirement of all spring based applications, this is a trimmed down version focusing on the topic of this blog post.</p>
+
+<p><div>
+  <pre><code class='xml'>&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;MacRoman&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+xmlns:security=&quot;http://www.springframework.org/schema/security&quot;
+xmlns:lang=&quot;http://www.springframework.org/schema/lang&quot;
+xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-2.5.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security-2.0.xsd
+http://www.springframework.org/schema/lang
+http://www.springframework.org/schema/lang/spring-lang-2.5.xsd&quot;&gt;
+&amp;lt;context:component-scan base-package=&quot;com.example&quot; /&gt;
+&amp;lt;security:http auto-config=&#39;false&#39;&gt;
+&amp;lt;security:intercept-url pattern=&quot;/includes/&lt;strong&gt;&quot; access=&quot;IS_AUTHENTICATED_ANONYMOUSLY&quot; filters=&quot;none&quot; /&gt;
+&amp;lt;security:intercept-url pattern=&quot;/favicon.ico&quot; access=&quot;IS_AUTHENTICATED_ANONYMOUSLY&quot; filters=&quot;none&quot; /&gt;
+&amp;lt;security:intercept-url pattern=&quot;/login.jsp&quot; filters=&quot;none&quot;/&gt;
+&amp;lt;security:intercept-url pattern=&quot;/&lt;/strong&gt;&quot; access=&quot;ROLE_USER&quot; filters=&quot;none&quot; /&gt;
+&amp;lt;security:form-login login-page=&quot;/login.jsp&quot; authentication-failure-url=&quot;/login.jsp?login_error=1&quot; /&gt;
+&amp;lt;security:concurrent-session-control max-sessions=&quot;1&quot;/&gt;
+&amp;lt;security:logout logout-url=&quot;/logout&quot; logout-success-url=&quot;/&quot;/&gt;
+&amp;lt;/security:http&gt;
+&amp;lt;security:authentication-provider&gt;
+&amp;lt;security:password-encoder hash=&quot;md5&quot; /&gt;
+&amp;lt;security:user-service&gt;
+&amp;lt;security:user name=&quot;ikenna&quot; password=&quot;3d801aa532c1cec3ee82d87a99fdf63f&quot; authorities=&quot;ROLE_USER&quot; /&gt;
+&amp;lt;security:user name=&quot;admin&quot; password=&quot;21232f297a57a5a743894a0e4a801fc3&quot; authorities=&quot;ROLE_USER&quot; /&gt;
+&amp;lt;security:user name=&quot;test&quot; password=&quot;098f6bcd4621d373cade4e832627b4f6&quot; authorities=&quot;ROLE_USER&quot; /&gt;
+&amp;lt;/security:user-service&gt;
+&amp;lt;/security:authentication-provider&gt;
+&lt;/beans&gt;</code></pre>
+</div>
+</p>
+
+<p>Finally the login.jsp page. This page hold the form tags and should be placed in the root of the webapps foilder.</p>
+
+<p><div>
+  <pre><code class='html'>&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;%@page contentType=&quot;text/html&quot; pageEncoding=&quot;MacRoman&quot;%&gt;
+&amp;lt;%@ taglib prefix=&#39;c&#39; uri=&#39;http://java.sun.com/jstl/core_rt&#39; %&gt;
+&amp;lt;%@ page import=&quot;org.springframework.security.ui.AbstractProcessingFilter&quot; %&gt;
+&amp;lt;%@ page import=&quot;org.springframework.security.ui.webapp.AuthenticationProcessingFilter&quot; %&gt;
+&amp;lt;%@ page import=&quot;org.springframework.security.AuthenticationException&quot; %&gt;
+&amp;lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
+ &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html&gt;
+ &lt;head&gt;
+ &lt;title&gt; Login Page&lt;/title&gt;
+ &lt;link href=&quot;&lt;c:url value=&quot;includes/stylesheets/main.css&quot; /&gt;&quot; media=&quot;screen&quot;  rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; /&gt;
+ &lt;link href=&quot;&lt;c:url value=&quot;includes/stylesheets/calendar.css&quot; /&gt;&quot; media=&quot;screen&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; /&gt;
+ &lt;link href=&quot;&lt;c:url value=&quot;includes/stylesheets/forms.css&quot; /&gt;&quot; media=&quot;screen&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; /&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+ &lt;h1&gt;Login &lt;/h1&gt;
+&amp;lt;c:if test=&quot;${not empty param.login_error}&quot;&gt;
+ &lt;font color=&quot;red&quot;&gt;
+ Your login attempt was not successful, try again.&lt;br/&gt;&lt;br/&gt;
+ Reason: &amp;lt;c:out value=&quot;${SPRING_SECURITY_LAST_EXCEPTION.message}&quot;/&gt;.
+ &lt;/font&gt;
+ &amp;lt;/c:if&gt;&lt;br&gt;&lt;br&gt;
+ &lt;form name=&quot;f&quot; action=&quot;&lt;c:url value=&#39;j_spring_security_check&#39;/&gt;&quot; method=&quot;POST&quot;&gt;
+ &lt;fieldset&gt;
+ &lt;legend&gt;Log In Form&lt;/legend&gt; &lt;hr&gt;
+ &lt;ol&gt;
+ &lt;li&gt;&lt;label for=&quot;login&quot;&gt;Username:&lt;/label&gt;
+ &lt;input type=&#39;text&#39; name=&#39;j_username&#39; value=&#39;&lt;c:if test=&quot;${not empty param.login_error}&quot;&gt;&amp;lt;c:out value=&quot;${SPRING_SECURITY_LAST_USERNAME}&quot;/&gt;&amp;lt;/c:if&gt;&#39;/&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+ &lt;label for=&quot;password&quot;&gt;Password:&lt;/label&gt;
+ &lt;input type=&#39;password&#39; name=&#39;j_password&#39;/&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+ &lt;label for=&quot;remember_me&quot;&gt;Remember me:&lt;/label&gt;
+ &lt;input type=&quot;checkbox&quot; name=&quot;_spring_security_remember_me&quot;&gt;
+ &lt;/li&gt;
+ &lt;/ol&gt;
+ &lt;div&gt;
+ &lt;input name=&quot;reset&quot; type=&quot;reset&quot; value=&quot;Reset&quot;  onclick=&quot;return confirm(&#39;Are you sure you want to Clear or Reset this form&#39;);&quot;&gt;
+ &lt;input name=&quot;submit&quot; type=&quot;submit&quot; value=&quot;Log In&quot;&gt;
+ &lt;/div&gt;
+ &lt;/fieldset&gt;
+ &lt;/form
+ &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>One thing though, I struggled with is spring security not by passing the resources (<em>.js, </em>.css, and images etc..) declared the head section of my login.jsp file.</p>
+
+<p>I noticed Spring security takes into account all the resources that are declared in the *.jsp pages and will atempt to display the last resource it remembered (declared in the login.jsp page).Also modern browsers request for the favicon.ico file from the web pages, I notice spring security required me to let it know that the resources should not be a priority to it.</p>
+
+<p>I would suggest copying all your <em>.js, </em>.css, and images etc.. in to one folder (includes) and then declare the folder as IS_AUTHENTICATED_ANONYMOUSLY also setting the filters off.</p>
+
+<p><div>
+  <pre><code class='xml'>&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;security:intercept-url pattern=&quot;/includes/**&quot; access=&quot;IS_AUTHENTICATED_ANONYMOUSLY&quot; filters=&quot;none&quot; /&gt;
+&amp;lt;security:intercept-url pattern=&quot;/favicon.ico&quot; access=&quot;IS_AUTHENTICATED_ANONYMOUSLY&quot; filters=&quot;none&quot; /&gt;</code></pre>
+</div>
+</p>
+
+<p>REFERENCE:
+Walls C., Breidenbach R. 2007. Spring in Action Second Edition, Manning Publishers.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dependency injection]]></title>
+    <link href="http://ikennaokpala.com/blog/dependency-injection"/>
+    <updated>2007-10-27T14:37:00+01:00</updated>
+    <id>http://ikennaokpala.com/blog/dependency-injection</id>
+    <content type="html"><![CDATA[<p>Dependency injection is the mechanism through which the container injects the requested environmental entry to make available to the bean instance before any bean instance is invoked on that particular instance. Then the container injects these entries into bean variables or methods.</p>
+
+<!--more-->
+
+
+<p>It is a form of push configuration; the container "pushes" dependencies into application objects at runtime. This is the opposite of traditional pull configuration, in which the application object "pulls" dependencies from its environment. Thus, Dependency Injection objects never load custom properties or go to a database to load configuration — the framework is wholly responsible for actually reading configuration.</p>
+
+<p>Dependency Injection is based on Java language constructs, rather than the use of framework-specific interfaces. Instead of application code using framework APIs to resolve dependencies such as configuration parameters and collaborating objects, application classes expose their dependencies through methods or constructorsthat the framework can call with the appropriate values at runtime, based on configuration.</p>
+
+<p>It is bean provider's duty to tell the container that which method or variables should be injected at runtime. The bean provider can do this by using the deployment descriptor or annotations. Bean methods used for dependency injection should follow the java naming convention(JavaBeans) for properties in that they should follow the setXYZ() convention.</p>
+
+<p>Consider the situations like dependency injection fails due to some reasons, the container can not make available the environmental entries due to which the bean is functioning properly, in such situations the container discards the bean instances and creates new instances.</p>
+]]></content>
+  </entry>
+  
+</feed>

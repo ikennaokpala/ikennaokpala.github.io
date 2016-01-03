@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: SCALA | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/scala/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2016-01-03T17:35:48+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Functional Thinking]]></title>
+    <link href="http://ikennaokpala.com/blog/functional-thinking"/>
+    <updated>2012-01-30T21:34:56+00:00</updated>
+    <id>http://ikennaokpala.com/blog/functional-thinking</id>
+    <content type="html"><![CDATA[<p>In this talk<a href="http://www.nealford.com/"> Neal Ford</a> emphasizes the fact that functional programming uses a different way of solving a problem, thinking about the results rather than the steps to make.</p>
+
+<!--more-->
+
+
+<p>Link: <a href="http://www.infoq.com/presentations/Functional-Thinking">http://www.infoq.com/presentations/Functional-Thinking</a></p>
+
+<p>Also Read this as well: <a href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html">http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Advanced features in Scala talk]]></title>
+    <link href="http://ikennaokpala.com/blog/advance-features-in-scala-talk"/>
+    <updated>2011-11-16T23:53:31+00:00</updated>
+    <id>http://ikennaokpala.com/blog/advance-features-in-scala-talk</id>
+    <content type="html"><![CDATA[<p>From the land of scala <a href="http://www.codecommit.com/blog/">Daniel Spiewak</a> one of the very rare, who are able to explain things in simple relative terms. In this <a href="http://vimeo.com/28793245">talk</a>, Daniel talks on an advanced features in Scala.. especially, Scala's type system which to many appears very complex, but daniel in this video breaks the ice a little..</p>
+
+<!--more-->
+
+
+<p>http://vimeo.com/28793245
+BIG THANKS TO THE GUYS AT <a href="http://jz11.java.no/news.html">JAVA ZONE</a> FOR SHARING.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Scala API for database proceedings (ScalaQuery)]]></title>
+    <link href="http://ikennaokpala.com/blog/a-scala-api-for-database-scalaquery"/>
+    <updated>2011-11-10T01:37:56+00:00</updated>
+    <id>http://ikennaokpala.com/blog/a-scala-api-for-database-scalaquery</id>
+    <content type="html"><![CDATA[<p>Back in the days making calls or connections to a database with jdbc took this much:</p>
+
+<p>(Below is an excerpt code i wrote in 2005... :()</p>
+
+<!--more-->
+
+
+<p><div>
+  <pre><code class='java'>Connection con = null;
+String url = &quot;jdbc:mysql://localhost:3306/&quot;;
+String db = &quot;dblocal&quot;;
+String driver = &quot;com.mysql.jdbc.Driver&quot;;
+String user = &quot;dbuser&quot;;
+String pass = &quot;dbuser&quot;;
+try {
+  Class.forName(driver);
+  con = DriverManager.getConnection(url + db, user, pass);
+  System.out.println(&quot;jdbc driver for mysql : &quot; + driver);
+  System.out.println(&quot;Connection url : &quot; + url + db);
+  System.out.println(&quot;Connection is established...&quot;);
+  con.close();
+  System.out.println(&quot;Connection is closed...&quot;);
+} catch (Exception e) {
+System.out.println(e);
+}</code></pre>
+</div>
+ 
+The level of abstraction here is very low.
+Then came ORM's with some abstraction but also giving us leaving us with the mountain to climb whilst leaving us with the <a href="http://www.codinghorror.com/blog/2006/06/object-relational-mapping-is-the-vietnam-of-computer-science.html">vietnam war of the impedance mis-match.</a></p>
+
+<p> The capability of OOP (imperative) programming languages to tackle  high-level concepts like relational algebra has been questioned, this obviously has given room for Functional programming languages to shine.</p>
+
+<p>One of such i recently have found within the JVM space is <a href="http://scalaquery.org">ScalaQuery</a>. I stumble across <a href="http://scalaquery.org/doc/ScalaQuery_Commerzbank_2011.pdf">this</a> on twitter, and began to look closer, though being a Scala fan and community member i had heard of ScalaQuery in it's early days, but did not take any real interest.</p>
+
+<p>With the API in question connection to a database is more concise with named/default arguments (parameters) from scala land:</p>
+
+<p><div>
+  <pre><code class='scala'>import org.scalaquery.session._
+import org.scalaquery.session.Database.threadLocalSession&lt;/p&gt;
+
+&lt;p&gt;val db = Database.forURL(
+  &quot;jdbc:mysql://localhost:3306/&quot;,
+  driver = &quot;com.mysql.jdbc.Driver&quot;,
+  user=&quot;dbuser&quot;,
+  password=&quot;dbuser&quot;
+)</code></pre>
+</div>
+</p>
+
+<p>ScalaQuery takes a better object oriented approach when mapping objects to tables:</p>
+
+<p><div>
+  <pre><code class='scala'>import org.scalaquery.ql.extended.{ExtendedTable =&gt; DBTable}
+import org.scalaquery.ql.TypeMapper.&lt;em&gt;
+import org.scalaquery.ql.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;case class Country (id:Int, name:String)
+val Country = new DBTable&lt;a href=&quot;&quot; title=&quot;countries&quot;&gt;(Int, String)&lt;/a&gt; {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def id = column[Int](&quot;id&quot;, O.NotNull, O.PrimaryKey, O.AutoInc)
+def name = column[String](&quot;name&quot;, O.NotNull, O.DBType &quot;varchar(50)&quot;)
+def * = id ~ name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  }&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;object country extends new DBTable&lt;a href=&quot;&quot; title=&quot;countries&quot;&gt;(Int, String)&lt;/a&gt; {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def id = column[Int](&quot;id&quot;, O.NotNull, O.PrimaryKey, O.AutoInc)
+def name = column[String](&quot;name&quot;, O.NotNull, O.DBType &quot;varchar(50)&quot;)
+def * = id ~ name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  }&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Now one of the uses of case classes i love the most is using it as a value object, because with a case class we get the equals, hash and toString methods for free.</p>
+
+<p><div>
+  <pre><code class='scala'>case class Country (id:Int, name:String)
+val countries = List(&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Country(1, &quot;Nigeria&quot;),
+Country(2, &quot;United Kingdom&quot;),
+Country(3, &quot;United States of America&quot;),
+Country(4, &quot;Canada&quot;),
+Country(5, &quot;France&quot;),
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  )&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>With the above playing with a dataset from the database becomes fun, as scala provides a collection library that is pack with goodness..</p>
+
+<p>The following Query with for comprehensions.</p>
+
+<p><div>
+  <pre><code class='scala'>val nigeria = for {c &amp;lt;- countries if c.id == 1}yield c.id ~ c.name</code></pre>
+</div>
+</p>
+
+<p>happy days... only now i have to look for some project to use it in.</p>
+
+<p><a href="http://ikennaokpala.files.wordpress.com/2011/11/scalaquery_commerzbank_2011.pdf">ScalaQuery Slides 2011 by Stefan Zeiger</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Emacs (starter-kit and emacs for Mac OSX), Scala and Ensime Configuration steps ]]></title>
+    <link href="http://ikennaokpala.com/blog/emacs-scala-and-ensime-configuration-steps"/>
+    <updated>2011-03-18T11:36:27+00:00</updated>
+    <id>http://ikennaokpala.com/blog/emacs-scala-and-ensime-configuration-steps</id>
+    <content type="html"><![CDATA[<p><em>(Before starting with this i think you may want to delete the~/.emac, ~/.emacs.d or ~/.emacs~ files from you computer, if they already exit. this is just my view.. reason being that the settings in the .emacs file.. i noticed overshadowed the settings in the emacs start-kit version.)</em></p>
+
+<p>NB: Note that, this is <a href="https://github.com/kengimel/emacs-dotfiles">my cloned copy</a> and is specific to my system and user name.</p>
+
+<!--more-->
+
+
+<p>This post aims to guide you through the steps and get you setup based on <a href="https://github.com/kengimel/emacs-dotfiles">my cloned copy</a>.</p>
+
+<p>To get cracking with this, type the following on the terminal: clone this git repo with the following:
+<div>
+  <pre><code class='bash'>git clone git@github.com:kengimel/emacs-dotfiles.git .emacs.d
+ln -s .emacs.d emacs.d
+cd emacs.d</code></pre>
+</div>
+
+next rename ikenna.el to your username on a mac that will be you shortname: the command below will give you the current username</p>
+
+<p><div>
+  <pre><code class='bash'>whoami    # this will return to tell you your current username
+ mv kengimel.el yourusername.el</code></pre>
+</div>
+
+next rename kengimel.el to you system name, this can be gotten by typing:
+<div>
+  <pre><code class='bash'>hostname                # this will return to tell you your current hostname / system name
+ mv ikenna.el yourhostname.el</code></pre>
+</div>
+
+Sometimes the hostname may appear verbose use this command to rename it, if you rename it don't to repeat the step above:</p>
+
+<p><div>
+  <pre><code class='bash'>scutil --set HostName yournewhostname</code></pre>
+</div>
+
+NB: you have to restart your machine for this to take effect</p>
+
+<p>Next:
+<div>
+  <pre><code class='bash'>git submodule init
+ git submodule update</code></pre>
+</div>
+</p>
+
+<p>The commands above will update the ensime submodule for the project:</p>
+
+<p>Next download and install <a href="http://emacsformacosx.com/">emacs for Mac OSX</a>.
+<div>
+  <pre><code class='bash'>cd vendor/ENSIME
+ sbt update               # this may take a little while to come through
+ sbt dist
+ Stop existing ENSIME server by killing inferior-ensime-server buffer
+ Restart ENSIME with M-x ensime
+ M-x ensime-sbt #gives you ensime sbt goodness
+ M-x eshell #gives you the already embedded command line terminal</code></pre>
+</div>
+
+Next open Applications folder and click Emacs.app to start emacs for Mac (You may notice that ensime will throw an error, don't worry just carry out the next steps below)</p>
+
+<p>C-x C-f (control-x and control-f) and open the file with you system name Locate this line (i guess this will be around line number 151) (add-to-list 'load-path (concat dotfiles-dir "/vendor/ENSIME/elisp")) and edit it to this (add-to-list 'load-path (concat dotfiles-dir "/vendor/ENSIME/dist/elisp"))</p>
+
+<p>DOWNLOAD SETUP THE FOLLOWING EMACS MODES:
+<a href="http://www.thaiopensource.com/download/">NXML-MODE</a>
+<a href="http://cx4a.org/software/auto-complete/#Downloads">AUTO-COMPLETE MODE</a></p>
+
+<p>I advice to first try out your installation by debugging it with this command;
+<div>
+  <pre><code class='bash'>emacs --debug-init</code></pre>
+</div>
+</p>
+
+<p>And now you ready to start writing some wonderful concise scala code with the help of emacs ENSIME. kudos to the guys behind the emacs starter kit, <a href="https://github.com/technomancy">technomancy</a>, <a href="https://github.com/g-eorge/">george agnelli</a>, <a href="https://github.com/topfunky"> topfunky</a> and <a href="https://github.com/aemoncannon/">aemon cannon</a>.</p>
+
+<p>ROCK ON !</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Converting Java List to Scala List]]></title>
+    <link href="http://ikennaokpala.com/blog/converting-java-list-to-scala-list"/>
+    <updated>2011-01-03T03:31:05+00:00</updated>
+    <id>http://ikennaokpala.com/blog/converting-java-list-to-scala-list</id>
+    <content type="html"><![CDATA[<p>I am currently playing around with some legacy Java libraries and at some point i needed to convert a Java List to a Scala List, because, i have come to prefer using Scala's very rich set of functions like filter(), find(), foreach(), foldLeft(), flatMap() and map(), which are very handy and concise. :)</p>
+
+<p>As you may know already or according to the documentations,  <a href="http://download.oracle.com/javase/1.4.2/docs/api/java/util/List.html">Java's List is an interface</a> which is conceptual or abstract in nature, while Scala's List is an implementation of a sequence of elements that follow insertion order and do allow random access to elements within.</p>
+
+<!--more-->
+
+
+<p>I mostly have used Java's ArrayList, as they are mutable via the add(e) method which alters the existing contents of the list and has constant-time random access.</p>
+
+<p>Scala's List is an explicit implementation of a sequence. It is imported by default into scope as an immutable linked list i.e.  it's state cannot be modified after it has been instantiated and operations requiring random access take linear time.</p>
+
+<p>Based on the above Scala's List is not similar to Java's List or ArrayList and as such can't serve as a replacement for them.</p>
+
+<p>After a little while on the REPL and going through documentations:</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;scala&gt; var jList = new java.util.ArrayList&lt;a href=&quot;&quot;&gt;String&lt;/a&gt;
+jList: java.util.ArrayList[String] = []&lt;/p&gt;
+
+&lt;p&gt;scala&gt; jList.add(&quot;Ikenna&quot;); jList.add(&quot;okpala&quot;); jList.add(&quot;kengimel&quot;); jList.add(&quot;Scala&quot;); jList.add(&quot;Java&quot;)&lt;/p&gt;
+
+&lt;p&gt;scala&gt; println(jList)
+[Ikenna, okpala, kengimel, Scala, Java]&lt;/p&gt;
+
+&lt;p&gt;scala&gt; val slist = scala.collection.JavaConversions.asBuffer(jList)
+slist: scala.collection.mutable.Buffer[String] = Buffer(Ikenna, okpala, kengimel, Scala, Java)&lt;/p&gt;
+
+&lt;p&gt;scala&gt; println(slist.toList)&lt;/p&gt;
+
+&lt;p&gt;List(Ikenna, okpala, kengimel, Scala, Java)            #However, i noticed that this implicitly converts the Java List  to a mutable buffer, as you may have noticed on line 12, i used the toList function to convert it to a Scala List.&lt;/p&gt;
+
+&lt;p&gt;scala&gt; println(jList)
+[Ikenna, okpala, kengimel, Scala, Java]&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+
+One of Scala's goal is to make code as concise and functional as possible. Included in Scala 2.8 library are already baked Java to Scala conversions.
+These implicit functions are found in the scala.collection.JavaConversions package to assist the conversion of Java's List to Scala.List. All that is required is importing this package into scope and you are already benefiting from these silent actors.</p>
+
+<p><div>
+  <pre><code class='scala'>import scala.collection.JavaConversions._</code></pre>
+</div>
+
+Also in this mode, i observed that this converts the Java List  to a Buffer (i.e. scala.collection.mutable.Buffer) that extends Seq[A], as you may have noticed on line 12 above, i used the toList function to convert it to a proper Scala List, this may be an option that you may consider in your program.</p>
+
+<p>Prior to Scala 2.8 version(2.7.*) this was achieved by an implicit conversion:</p>
+
+<p><div>
+  <pre><code class='scala'>&lt;/p&gt;
+
+&lt;p&gt;implicit def toScalaListFromJavaList&lt;a href=&quot;jList:%20java.util.List[T]&quot;&gt;T&lt;/a&gt; : Seq[T] =
+new BufferWrapper&lt;a href=&quot;&quot;&gt;T&lt;/a&gt; { def underlying = jList }&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>There appears to be more grounds to cover, feel free to provide your views on this post.</p>
+
+<p>CIAO for now.</p>
+]]></content>
+  </entry>
+  
+</feed>

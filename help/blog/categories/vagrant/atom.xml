@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: VAGRANT | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/vagrant/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2016-01-03T17:36:17+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrant could not detect VirtualBox!]]></title>
+    <link href="http://ikennaokpala.com/blog/984"/>
+    <updated>2011-12-04T10:22:31+00:00</updated>
+    <id>http://ikennaokpala.com/blog/984</id>
+    <content type="html"><![CDATA[<p>if you run into this error</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;=====================================================================
+Vagrant experienced an error!&lt;/p&gt;
+
+&lt;p&gt;Vagrant could not detect VirtualBox! Make sure VirtualBox is properly installed.
+If VirtualBox is installed, it may be an incorrect version. Vagrant currently&lt;/p&gt;
+
+&lt;h1&gt;requires VirtualBox 3.2.x. Please install the proper version to continue.&lt;/h1&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<!--more-->
+
+
+<p>Know ye! that you may be using an older version of vagrant...</p>
+
+<p>Solution is to do gem install vagrant -v='0.8.8' or edit your Gemfile to include gem 'vagrant', '=0.8.8'</p>
+
+<p>hope that helps..</p>
+]]></content>
+  </entry>
+  
+</feed>

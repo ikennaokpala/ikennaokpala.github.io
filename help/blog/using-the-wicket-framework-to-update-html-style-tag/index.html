@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Using the Wicket Framework to Update style tag. - Ikenna Okpala: London Based Software Developer </title>
+  <meta name="author" content="Ikenna Okpala">
+
+  
+  <meta name="description" content="Hi, I am Ikenna Okpala, a london based software developer. This is my personal website and blog. I spend my daytime building Web Applications (Development and Architecture), Agile Coaching and Life Enrichment. Feel free to look around. There is not traffic in the extra mile. --Rickey Minor">
+  <!-- <meta name="description" content="In this post, Wicket Framework is used to update the embedded style tag. An already working sample can be found here. Let&#8217;s begin by &hellip;"> -->
+  
+  <meta name="keywords" content="web development specialist, ruby, ruby on rails, javascript and/or coffeescript, jquery, underscrore.js, backbone.js, java, scala, , postgresql, mysql, teradata, oracle, unix/linux, nginx, git, capistrano and agile methodologies">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ikennaokpala.com/blog/using-the-wicket-framework-to-update-html-style-tag">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Ikenna Okpala" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40007650-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="mailto:me@ikennaokpala.com?Subject=Hello" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ikennaokpala.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">
+        <span class="blue_light">
+            Ikenna Okpala
+        </span>
+       
+           <span class="blue_dark">
+             
+           </span>
+       
+    </a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Using the Wicket Framework to Update Style tag.</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-08T15:18:00+01:00" pubdate data-updated="true">Sep 8<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>In this post,  <a href="http://wicket.apache.org/">Wicket</a> Framework is used to update the embedded style tag.</p>
+
+<p>An already working sample can be found <a href="http://wicket1.ikennaokpala.staxapps.net/">here</a>.</p>
+
+<!--more-->
+
+
+<p>Let&#8217;s begin by configuring the web application (i.e. web.xml)</p>
+
+<div>
+  <pre><code class='xml'>&lt;web-app xmlns=&quot;http://java.sun.com/xml/ns/j2ee&quot; xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; schemalocation=&quot;http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd&quot; version=&quot;2.4&quot;&gt;
+
+&lt;display-name&gt;CSS and Wicket&lt;/display-name&gt;
+&lt;filter&gt;
+&lt;filter-name&gt;css_wicket&lt;/filter-name&gt;
+&lt;filter-class&gt;org.apache.wicket.protocol.http.WicketFilter&lt;/filter-class&gt;
+&lt;init-param&gt;
+&lt;param-name&gt;applicationClassName&lt;/param-name&gt;
+&lt;param-value&gt;com.jw.ike.pages.CssApplication&lt;/param-value&gt;
+&lt;/init-param&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+&lt;filter-name&gt;css_wicket&lt;/filter-name&gt;
+&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+
+&lt;/web-app&gt;</code></pre>
+</div>
+
+
+<p>The wicket  application class go as follows:</p>
+
+<div>
+  <pre><code class='java'>public class CssApplication extends WebApplication {
+
+public CssApplication() {
+}
+
+public Class getHomePage() {
+return CssDemo.class;
+}
+
+}</code></pre>
+</div>
+
+
+<p>The getHomePage() method returns this Page:</p>
+
+<div>
+  <pre><code class='java'>public class CssDemo extends WebPage implements Serializable {
+    private String uStyle;
+
+    public CssDemo() {
+        add(new Label(&quot;style&quot;));
+        add(new CssForm(&quot;addform&quot;));
+
+    }
+
+    public CssDemo(String userStyle) {
+        this.uStyle = userStyle;
+        this.add(new Label(&quot;style&quot;, new PropertyModel(this, &quot;uStyle&quot;)));
+add(new CssForm(&quot;addform&quot;));
+
+    }
+
+}</code></pre>
+</div>
+
+
+<p>And the accompanying HTML web page is:</p>
+
+<div>
+  <pre><code class='html'>&lt;html&gt;
+
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/style/style.css&quot;&gt;
+&lt;title&gt;Wicket Updating Style Sheet&lt;/title&gt;
+&lt;style type=&quot;text/css&quot; wicket:id=&quot;style&quot;&gt;&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id=&quot;bmain&quot;&gt;
+&lt;form wicket:id=&quot;addform&quot;&gt;
+&lt;h2&gt;Update Style Sheet...&lt;/h2&gt;
+
+&lt;span&gt;Select Pre-Defined CSS Rules &lt;/span&gt;
+
+&lt;select wicket:id=&quot;combo&quot;&gt;
+
+&lt;/select&gt;
+
+&lt;textarea id=&quot;ta&quot; wicket:id=&quot;txta&quot; rows=&quot;20&quot; cols=&quot;60&quot;&gt; rich text &lt;/textarea&gt;
+
+&lt;input id=&quot;btn&quot; type=&quot;submit&quot; value=&quot;::Post Style Sheet::&quot;&gt;&lt;/form&gt;
+&lt;a href=&quot;http://wicket.apache.org/&quot; &gt;
+&lt;img id=&quot;logo&quot; alt=&quot;Wicket&quot; src=&quot;../images/wicket-logo.png&quot; border=&quot;0&quot; width=&#39;111&#39; height=&quot;155&quot;/&gt;&lt;/a&gt;
+
+&lt;/div&gt;
+
+&lt;div id=&quot;side&quot;&gt;
+
+&lt;h1&gt;Change Me @!#%.&lt;/h1&gt;
+
+ &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+
+
+<p>And then the Form Class:</p>
+
+<div>
+  <pre><code class='java'>public class CssForm extends Form {
+
+private String style1 = &quot;Choose a style&quot;;
+private String style2 = &quot;h1{ font-size: 4.0em; font-family: Mistral; color: #dc512b; border:10px solid #bb342d; background-color: #098762;text-align: center;}&quot;;
+private String style3 = &quot;h1{ font-size: 5.0em; font-family: Comic Sans MS; color: #0066CC; border:10px solid #330066; background-color: green;text-align: center;}&quot;;
+private String style4 = &quot;h1{ font-size: 6.0em; font-family: Curlz MT; color: #CCFFFF; border:10px solid #445698; background-color: #6666CC;text-align: center;}&quot;;
+
+private static String css;
+private List cssList;
+private String selectedCss = style1;
+private DropDownChoice dropDownMenu;
+private TextArea textArea;
+
+public CssForm(String componentid) {
+super(componentid);
+
+cssList = Arrays.asList(new String[]{style1, style2, style3, style4});
+
+dropDownMenu = new DropDownChoice(&quot;combo&quot;, new PropertyModel(this, &quot;selectedCss&quot;),
+     cssList) {
+
+ @Override
+ protected void onSelectionChanged(Object newSelection) {
+
+     textArea.setModelObject(newSelection);
+
+ }
+
+ @Override
+ protected boolean wantOnSelectionChangedNotifications() {
+
+     return true;
+ }
+
+};
+add(dropDownMenu);
+
+textArea = new TextArea(&quot;txta&quot;, new PropertyModel(this, &quot;css&quot;));
+
+add(textArea);
+
+}
+
+@Override
+protected void onSubmit() {
+String definedCssRule =  textArea.getModelObject().toString();
+definedCssRule = &quot;\n\n\n&quot; + definedCssRule + &quot;\n\n\n&quot;;
+setResponsePage(new CssDemo(definedCssRule));
+textArea.setModelObject(null);
+}
+}</code></pre>
+</div>
+
+
+<p>The External Style Sheet :</p>
+
+<div>
+  <pre><code class='css'>body {
+    background-image: url(&quot;../images/cl.jpg&quot;);
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-size: 4.5em;
+    color: #4088b8;
+    margin: -300px 0 0 0;
+    position: relative;
+    left: -20px;
+    top: 10px;
+    position: relative
+}
+
+h2 {
+    color: #4088b8;
+}
+
+span {
+    font-size: 1.0em;
+    color: #4088b8;
+    padding:0 33px 0 2px;
+}
+
+#logo {
+    position: relative;
+    left: 0px;
+    top: 50px;
+    z-index: 1;
+}
+select {
+
+    position: relative;
+    left: 0px;
+    bottom: 2px;
+    width: 230px;
+}
+
+#jw {
+    position: relative;
+    left: 900px;
+    top: -50px;
+    z-index: 1;
+}
+
+#bmain {
+    width: 510px;
+    margin: 10px 0 0 0;
+    position: inherit;
+}
+
+#side {
+    float: right;
+    width: 600px;
+    margin: -150px 0 0 0;
+    padding: 1px 0 0 0;
+}
+
+#ta {
+    padding: 0 20px 0 0;
+}
+
+#btn {
+    background-color: #4088b8;
+    border-color: 4088b8;
+    color: white;
+    position: relative;
+    left: 180px;
+    top: 50px;
+}</code></pre>
+</div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ikenna Okpala</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-09-08T15:18:00+01:00" pubdate data-updated="true">Sep 8<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/css/'>CSS</a>, <a class='category' href='/blog/categories/java/'>JAVA</a>, <a class='category' href='/blog/categories/netbeans/'>NETBEANS</a>, <a class='category' href='/blog/categories/web-development/'>WEB DEVELOPMENT</a>, <a class='category' href='/blog/categories/wicket/'>WICKET</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ikennaokpala.com/blog/using-the-wicket-framework-to-update-html-style-tag" data-via="ikenna_okpala" data-counturl="http://ikennaokpala.com/blog/using-the-wicket-framework-to-update-html-style-tag" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/google-app-engine-support-for-netbeans-6-7-1-6-8-now-available" title="Previous Post: Google App Engine Support for Netbeans 6.7.1 & 6.8 Now Available..">&laquo; Google App Engine Support for Netbeans 6.7.1 & 6.8 Now Available..</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/unix-ps-command" title="Next Post: Unix "PS" command ">Unix "PS" command  &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite">
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/fix-openvpn-network-interface-mismatch">Fix OPENVPN Network Interface Mismatch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/a-look-at-Teradata-AMPs-">A Look At Teradata AMPs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/pow-ruby-version">Using .ruby-version with pow</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/install-teradata-odbc-for-ruby-development">Install Teradata ODBC for Ruby development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/prioritizing-my-backlog-with-economics">Prioritizing My Backlog With Economics</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ikennaokpala">@ikennaokpala</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ikennaokpala',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/kengimel?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/kengimel">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:kengimel">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "kengimel"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/111621580960500743451?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+<section class="twitter2">
+  <h1><a href="https://twitter.com/ikenna_okpala">@ikenna_okpala</a></h1>
+  <br/>  <br/>
+  <a href="https://twitter.com/ikenna_okpala" class="twitter-follow-button" data-show-count="false" data-lang="en" data-size="large">Follow @ikenna_okpala</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Ikenna Okpala -
+  <span class="credit"><a href="/privacy"> Privacy Policy </a></span> -
+  <span class="credit">Powered by <a href="http://octopress.org" target="_blank">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ikennaokpalasblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ikennaokpala.com/blog/using-the-wicket-framework-to-update-html-style-tag';
+        var disqus_url = 'http://ikennaokpala.com/blog/using-the-wicket-framework-to-update-html-style-tag';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </body>
+</html>

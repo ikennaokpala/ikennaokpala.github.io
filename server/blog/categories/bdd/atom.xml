@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: BDD | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/bdd/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2016-01-03T17:35:48+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A good user story vs  a bad one]]></title>
+    <link href="http://ikennaokpala.com/blog/a-good-user-story"/>
+    <updated>2012-02-03T12:13:36+00:00</updated>
+    <id>http://ikennaokpala.com/blog/a-good-user-story</id>
+    <content type="html"><![CDATA[<p>Been practicing BDD using the usual suspects like RSpec and Cucumber for user stories in conjunction with stakeholders, to reveal and document behavior, as well as drive development in a large legacy code base.</p>
+
+<p>I was asked this question yesterday at a meetup.</p>
+
+<!--more-->
+
+
+<blockquote><p>What is the difference between a good User story and a bad one?</p></blockquote>
+
+<p>From my end based on experience and reading literature i summarise thus:</p>
+
+<ul>
+<li><p>A good user story should be short and sweet;  A bad one is nothing short of being bulky and clunky.</p></li>
+<li><p>A good user story should focus on the "WHAT" and not the "HOW";  A bad one may try to capture the "WHAT" and "HOW".</p></li>
+<li><p>A good user story should reflect the vision of the product owner; A bad one would not.</p></li>
+<li><p>A good user story should be broken down properly (questionable and able to drive conversations); A bad one would be obscure and unable to drive curiosity.</p></li>
+<li><p>A good user story should paint the picture properly for the Software Engineers (who may not have domain knowledge at first) but are expected to deliver value;  A bad one will paint a totally different picture.</p></li>
+</ul>
+
+
+<p>For more information on this: <a href="http://www.allaboutagile.com/writing-good-user-stories/">http://www.allaboutagile.com/writing-good-user-stories/</a></p>
+
+<p>[youtube=http://www.youtube.com/watch?v=DaqyLWOEObY]</p>
+]]></content>
+  </entry>
+  
+</feed>

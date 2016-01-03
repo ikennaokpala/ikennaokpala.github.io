@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: JPA | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/jpa/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2016-01-03T17:35:48+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Plain Old Java Object (POJO)]]></title>
+    <link href="http://ikennaokpala.com/blog/plain-old-java-object-pojo"/>
+    <updated>2008-03-06T08:02:00+00:00</updated>
+    <id>http://ikennaokpala.com/blog/plain-old-java-object-pojo</id>
+    <content type="html"><![CDATA[<p>POJO is YAA (yet another acronym) for Plain Old Java Object, and is favoured by advocates of the idea that the simpler the design, the better. Nowadays POJO’s are everywhere. The name was coined by Martin Fowler, Rebecca Parsons and Josh MacKenzie in September 2000. Most of our development today is done using POJOs.</p>
+
+<p>In Chris Richardson’s (author) words -</p>
+
+<!--more-->
+
+
+<p>The simplicity of POJOs is attractive, especially to those working with the older Enterprise Java Beans (EJB) specification. The topic assumes a simple axiom: The simpler a framework’s design, the more extensible it is to programmers. For example, in an open letter to the Java community, Linda DeMichiel and Craig Russell talk briefly about adopting POJOs for both Java Data Objects (JDO) API 2.0 and the new EJB 3.0 specification, pronouncing the need for a single, simple persistence model. As the FAQ notes, this API “is an evolution of the work started in the JSR 220 Expert Group, which has been expanded to include several members of the JSR 243 (JDO 2.0) Expert Group.” JSR 220 covers the creation of the EJB 3.0 specification, with a stated mandate “to improve the EJB architecture by reducing its complexity from the developer’s point of view.”</p>
+
+<p>The term continues the pattern of older terms for technologies that do not use fancy new features, such as POTS (Plain Old Telephone Service) in telephony, and PODS (Plain Old Data Structures) that are defined in C++ but use only C language features.</p>
+
+<p>The term has most likely gained widespread acceptance because of the need for a common and easily understood term that contrasts with complicated object frameworks. A JavaBean is a POJO that is serializable, has a no-argument constructor, and allows access to properties using getter and setter methods. An Enterprise JavaBean is not a single class but an entire component model (again, EJB 3 reduces the complexity of Enterprise JavaBeans).</p>
+
+<p>The concept of a POJO predates the term POJO as it simply refers to the natural condition of an object class. The term serves as a reminder that simpler designs can be better, rather than incorporating a complicated framework in the architecture of a system without sufficient reason. As designs using POJOs have become more commonly-used, systems have arisen that give POJOs some of the functionality used in frameworks and more choice about which areas of functionality are actually needed. Hibernate and Spring are examples.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Seven Relationship Types.]]></title>
+    <link href="http://ikennaokpala.com/blog/the-seven-relationship-types"/>
+    <updated>2007-12-24T14:34:00+00:00</updated>
+    <id>http://ikennaokpala.com/blog/the-seven-relationship-types</id>
+    <content type="html"><![CDATA[<p>Seven types of relationships can exist between entity beans. There are four types of cardinality: one-to-one, one-to-many, many-to-one, and many-to-many. In addition, each relationship can be either unidirectional or bidirectional. These options seem to yield eight possibilities, but if you think about it, you'll realize that one-to-many and many-to-one bidirectional relationships are actually the same thing. Thus, there are only seven distinct relationship types.</p>
+
+<!--more-->
+
+
+<p>To understand relationships, it helps to think about some simple examples:</p>
+
+<p>One-to-one unidirectional</p>
+
+<p>One-to-one bidirectional</p>
+
+<p>One-to-many unidirectional</p>
+
+<p>One-to-many bidirectional</p>
+
+<p>Many-to-one unidirectional</p>
+
+<p>Many-to-many unidirectional</p>
+
+<p>Many-to-many bidirectional</p>
+
+<p>Note that these relations represent the navigability of your domain model.</p>
+
+<p>Once again, the associations defined in the metadata represent the domain object navigation only.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Features and Advantages of JPA:]]></title>
+    <link href="http://ikennaokpala.com/blog/features-and-advantages-of-jpa"/>
+    <updated>2007-11-15T14:43:00+00:00</updated>
+    <id>http://ikennaokpala.com/blog/features-and-advantages-of-jpa</id>
+    <content type="html"><![CDATA[<p>Java Persistence API is the standard API used for the management of the persistent data and object/relational mapping.</p>
+
+<p>Java Persistence API were added in Java EE 5 platform.</p>
+
+<p>Every application server compatible with Java EE 5 supports the Java Persistent APIs.
+Java Persistence API ensures the management of persistence and object/relational mapping.</p>
+
+<!--more-->
+
+
+<p>These are helpful while using the JPA in the development of applications using the platform for Java EE 5. It provides O-R mapping facility to manage relational data in java application.</p>
+
+<p>The Java Persistence API contains the following areas:</p>
+
+<p>Java Persistence API
+O-R mapping metadata
+The query language</p>
+
+<p>Java Persistence API is a lightweight framework based on POJO for object-relational mapping. Java language metadata annotations and/or XML deployment descriptor is used for the mapping between Java objects and a relational database. It allows the SQL-like query language that works for both static as well as dynamic queries. It also allows the use of the pluggable persistence API. Java Persistence APIs are mainly depends on metadata annotations.</p>
+
+<p>API includes:</p>
+
+<p>Java Persistence API
+Metadata annotations
+Java Persistence query language</p>
+
+<p>The Java Persistence API is build upon the best ideas from the persistence technologies like TopLink, JDO and Hibernate. Java Persistence API is compatible with Java SE environment as well as Java EE and allows developers to take advantages of the standard persistence API.</p>
+
+<p>Persistence of data is not so easy for most of the enterprise applications because for this they require access to the relational database like Oracle 10g. It is your responsibility to update and retrieve the database by writing the code using SQL and JDBC.</p>
+
+<p>While several object-relational (O-R) frameworks such as JBoss Hibernate and OracleTopLink make persistence challenges simpler and became popular. They let the java developer free from writing JDBC code and to concentrate only on the business logic.</p>
+
+<p>In EJB 2.x, container manage persistence (CMP) try to solve the persistence challenges but not successful completely.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Annotations]]></title>
+    <link href="http://ikennaokpala.com/blog/annotations"/>
+    <updated>2007-10-29T20:31:00+00:00</updated>
+    <id>http://ikennaokpala.com/blog/annotations</id>
+    <content type="html"><![CDATA[<p>Annotation is the method of associating the program elements with the meta tags so that the compiler can extract program behavior to support the annotated elements to generate interdependent code when necessary.</p>
+
+<p>The  objective behind annotations is to make the development ("i.e. coding")  process easier.</p>
+
+<!--more-->
+
+
+<p>Annotations behaves like the meta. The literal meaning of meta data is data about data. Java also signifies this meaning. Annotations are like meta data, means you are free to add your code and can also apply them to variables, parameters, fields type declarations, methods and constructors.</p>
+
+<p>Metadata is also used to create the documentation to perform rudimentary compile time checking and even for tracking down the dependencies in code.</p>
+
+<p>XDoclet contains all these features and is widely used.</p>
+
+<p>Annotations provide a means of indicating about methods, classes, dependencies, incompleteness and also about the references on other methods and classes respectively. Quoting from Sun's official site, "It (annotation-based development) lets us avoid writing boilerplate code under many circumstances by enabling tools to generate it from annotations in the source code. This leads to a declarative programming style where the programmer says what should be done and tools emit the code to do it."</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Dependency injection]]></title>
+    <link href="http://ikennaokpala.com/blog/dependency-injection"/>
+    <updated>2007-10-27T14:37:00+01:00</updated>
+    <id>http://ikennaokpala.com/blog/dependency-injection</id>
+    <content type="html"><![CDATA[<p>Dependency injection is the mechanism through which the container injects the requested environmental entry to make available to the bean instance before any bean instance is invoked on that particular instance. Then the container injects these entries into bean variables or methods.</p>
+
+<!--more-->
+
+
+<p>It is a form of push configuration; the container "pushes" dependencies into application objects at runtime. This is the opposite of traditional pull configuration, in which the application object "pulls" dependencies from its environment. Thus, Dependency Injection objects never load custom properties or go to a database to load configuration — the framework is wholly responsible for actually reading configuration.</p>
+
+<p>Dependency Injection is based on Java language constructs, rather than the use of framework-specific interfaces. Instead of application code using framework APIs to resolve dependencies such as configuration parameters and collaborating objects, application classes expose their dependencies through methods or constructorsthat the framework can call with the appropriate values at runtime, based on configuration.</p>
+
+<p>It is bean provider's duty to tell the container that which method or variables should be injected at runtime. The bean provider can do this by using the deployment descriptor or annotations. Bean methods used for dependency injection should follow the java naming convention(JavaBeans) for properties in that they should follow the setXYZ() convention.</p>
+
+<p>Consider the situations like dependency injection fails due to some reasons, the container can not make available the environmental entries due to which the bean is functioning properly, in such situations the container discards the bean instances and creates new instances.</p>
+]]></content>
+  </entry>
+  
+</feed>

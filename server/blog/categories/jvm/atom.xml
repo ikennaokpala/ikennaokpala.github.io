@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: JVM | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/jvm/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2016-01-03T17:35:48+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Functional Thinking]]></title>
+    <link href="http://ikennaokpala.com/blog/functional-thinking"/>
+    <updated>2012-01-30T21:34:56+00:00</updated>
+    <id>http://ikennaokpala.com/blog/functional-thinking</id>
+    <content type="html"><![CDATA[<p>In this talk<a href="http://www.nealford.com/"> Neal Ford</a> emphasizes the fact that functional programming uses a different way of solving a problem, thinking about the results rather than the steps to make.</p>
+
+<!--more-->
+
+
+<p>Link: <a href="http://www.infoq.com/presentations/Functional-Thinking">http://www.infoq.com/presentations/Functional-Thinking</a></p>
+
+<p>Also Read this as well: <a href="http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html">http://steve-yegge.blogspot.com/2006/03/execution-in-kingdom-of-nouns.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Advanced features in Scala talk]]></title>
+    <link href="http://ikennaokpala.com/blog/advance-features-in-scala-talk"/>
+    <updated>2011-11-16T23:53:31+00:00</updated>
+    <id>http://ikennaokpala.com/blog/advance-features-in-scala-talk</id>
+    <content type="html"><![CDATA[<p>From the land of scala <a href="http://www.codecommit.com/blog/">Daniel Spiewak</a> one of the very rare, who are able to explain things in simple relative terms. In this <a href="http://vimeo.com/28793245">talk</a>, Daniel talks on an advanced features in Scala.. especially, Scala's type system which to many appears very complex, but daniel in this video breaks the ice a little..</p>
+
+<!--more-->
+
+
+<p>http://vimeo.com/28793245
+BIG THANKS TO THE GUYS AT <a href="http://jz11.java.no/news.html">JAVA ZONE</a> FOR SHARING.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Scala API for database proceedings (ScalaQuery)]]></title>
+    <link href="http://ikennaokpala.com/blog/a-scala-api-for-database-scalaquery"/>
+    <updated>2011-11-10T01:37:56+00:00</updated>
+    <id>http://ikennaokpala.com/blog/a-scala-api-for-database-scalaquery</id>
+    <content type="html"><![CDATA[<p>Back in the days making calls or connections to a database with jdbc took this much:</p>
+
+<p>(Below is an excerpt code i wrote in 2005... :()</p>
+
+<!--more-->
+
+
+<p><div>
+  <pre><code class='java'>Connection con = null;
+String url = &quot;jdbc:mysql://localhost:3306/&quot;;
+String db = &quot;dblocal&quot;;
+String driver = &quot;com.mysql.jdbc.Driver&quot;;
+String user = &quot;dbuser&quot;;
+String pass = &quot;dbuser&quot;;
+try {
+  Class.forName(driver);
+  con = DriverManager.getConnection(url + db, user, pass);
+  System.out.println(&quot;jdbc driver for mysql : &quot; + driver);
+  System.out.println(&quot;Connection url : &quot; + url + db);
+  System.out.println(&quot;Connection is established...&quot;);
+  con.close();
+  System.out.println(&quot;Connection is closed...&quot;);
+} catch (Exception e) {
+System.out.println(e);
+}</code></pre>
+</div>
+ 
+The level of abstraction here is very low.
+Then came ORM's with some abstraction but also giving us leaving us with the mountain to climb whilst leaving us with the <a href="http://www.codinghorror.com/blog/2006/06/object-relational-mapping-is-the-vietnam-of-computer-science.html">vietnam war of the impedance mis-match.</a></p>
+
+<p> The capability of OOP (imperative) programming languages to tackle  high-level concepts like relational algebra has been questioned, this obviously has given room for Functional programming languages to shine.</p>
+
+<p>One of such i recently have found within the JVM space is <a href="http://scalaquery.org">ScalaQuery</a>. I stumble across <a href="http://scalaquery.org/doc/ScalaQuery_Commerzbank_2011.pdf">this</a> on twitter, and began to look closer, though being a Scala fan and community member i had heard of ScalaQuery in it's early days, but did not take any real interest.</p>
+
+<p>With the API in question connection to a database is more concise with named/default arguments (parameters) from scala land:</p>
+
+<p><div>
+  <pre><code class='scala'>import org.scalaquery.session._
+import org.scalaquery.session.Database.threadLocalSession&lt;/p&gt;
+
+&lt;p&gt;val db = Database.forURL(
+  &quot;jdbc:mysql://localhost:3306/&quot;,
+  driver = &quot;com.mysql.jdbc.Driver&quot;,
+  user=&quot;dbuser&quot;,
+  password=&quot;dbuser&quot;
+)</code></pre>
+</div>
+</p>
+
+<p>ScalaQuery takes a better object oriented approach when mapping objects to tables:</p>
+
+<p><div>
+  <pre><code class='scala'>import org.scalaquery.ql.extended.{ExtendedTable =&gt; DBTable}
+import org.scalaquery.ql.TypeMapper.&lt;em&gt;
+import org.scalaquery.ql.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;case class Country (id:Int, name:String)
+val Country = new DBTable&lt;a href=&quot;&quot; title=&quot;countries&quot;&gt;(Int, String)&lt;/a&gt; {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def id = column[Int](&quot;id&quot;, O.NotNull, O.PrimaryKey, O.AutoInc)
+def name = column[String](&quot;name&quot;, O.NotNull, O.DBType &quot;varchar(50)&quot;)
+def * = id ~ name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  }&lt;/p&gt;
+
+&lt;p&gt;OR&lt;/p&gt;
+
+&lt;p&gt;object country extends new DBTable&lt;a href=&quot;&quot; title=&quot;countries&quot;&gt;(Int, String)&lt;/a&gt; {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def id = column[Int](&quot;id&quot;, O.NotNull, O.PrimaryKey, O.AutoInc)
+def name = column[String](&quot;name&quot;, O.NotNull, O.DBType &quot;varchar(50)&quot;)
+def * = id ~ name
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  }&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Now one of the uses of case classes i love the most is using it as a value object, because with a case class we get the equals, hash and toString methods for free.</p>
+
+<p><div>
+  <pre><code class='scala'>case class Country (id:Int, name:String)
+val countries = List(&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Country(1, &quot;Nigeria&quot;),
+Country(2, &quot;United Kingdom&quot;),
+Country(3, &quot;United States of America&quot;),
+Country(4, &quot;Canada&quot;),
+Country(5, &quot;France&quot;),
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  )&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>With the above playing with a dataset from the database becomes fun, as scala provides a collection library that is pack with goodness..</p>
+
+<p>The following Query with for comprehensions.</p>
+
+<p><div>
+  <pre><code class='scala'>val nigeria = for {c &amp;lt;- countries if c.id == 1}yield c.id ~ c.name</code></pre>
+</div>
+</p>
+
+<p>happy days... only now i have to look for some project to use it in.</p>
+
+<p><a href="http://ikennaokpala.files.wordpress.com/2011/11/scalaquery_commerzbank_2011.pdf">ScalaQuery Slides 2011 by Stefan Zeiger</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Automatic Re-Start Script for Tomcat]]></title>
+    <link href="http://ikennaokpala.com/blog/automatic-re-start-script-for-tomcat"/>
+    <updated>2010-08-15T06:02:30+01:00</updated>
+    <id>http://ikennaokpala.com/blog/automatic-re-start-script-for-tomcat</id>
+    <content type="html"><![CDATA[<p>I noticed only recently that my remote tomcat instance has been frequently shutting down on it's own. This turned out to be very annoying, having to restart tomcat manually almost twice a day.</p>
+
+<p>I queried the web and consulted other resources to seek for possible solutions on how i could detect why my remote tomcat instance goes down and also to re-start it almost immediate.</p>
+
+<!--more-->
+
+
+<p>I learnt from several articles, documentations on the web and also got useful tips from friends on how to solve this problem. The steps i applied to solving this problem i have included in this blog post and  they are as follows:</p>
+
+<p>First, create a folder and i named it servchk (or you give it any meaningful name you want). I created this folder under root (top-most) directory "/". This folder contains a file which i named chksrv (ie services checker ).</p>
+
+<p><div>
+  <pre><code class='bash'>/servchk/chksrv
+mkdir servchk
+cd servchk
+nano chksrv&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Copy and paste the following to chksrv:</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+
+&lt;h1&gt;Re-start Service - Automatically restart tomcat when it goes bonkers (down)&lt;/h1&gt;
+
+&lt;p&gt;/bin/netstat -ln | /bin/grep &quot;:8080 &quot; | /usr/bin/wc -l | /bin/awk &#39;{if ($1 == 0) system(&quot;/sbin/service tomcat6 start&quot;) }&#39;</code></pre>
+</div>
+</p>
+
+<p>Control + O and hit the Return key or enter to save the file and then Control + X to exit nano. (you may choose to use any editor of your choice).</p>
+
+<p>Next i set the permissions for the file. Do this while logged in as root (very important)</p>
+
+<p><div>
+  <pre><code class='bash'>chmod 700 /servchk/chksrv&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Following the above step, is setting up a crontab. The crontab verifies if the tomcat instance is still running, and if the tomcat instance is down it will restart it.</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;crontab -l &gt; mycrontab
+echo &#39;* * * * * /servchk/chksrv &gt; /dev/null 2&gt;&amp;amp;1&#39; &gt;&gt; mycrontab
+crontab mycrontab&lt;/p&gt;
+
+&lt;h1&gt;the above line  will add the following to your crontab:&lt;/h1&gt;
+
+&lt;h1&gt;type:&lt;/h1&gt;
+
+&lt;p&gt;crontab -l&lt;/p&gt;
+
+&lt;h1&gt;to verify the contents of your crontabs list.&lt;/h1&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Test the crontab is working by manually stopping tomcat.</p>
+
+<p><div>
+  <pre><code class='bash'>service tomcat6 stop</code></pre>
+</div>
+</p>
+
+<p>Wait for a few seconds to a minute for tomcat to start again.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Higher Order Style.. (Functions)]]></title>
+    <link href="http://ikennaokpala.com/blog/the-higher-order-style-functions"/>
+    <updated>2010-05-04T00:47:31+01:00</updated>
+    <id>http://ikennaokpala.com/blog/the-higher-order-style-functions</id>
+    <content type="html"><![CDATA[<p>These past days have been a revealing period, as i wondered into <a href="http://scala-lang.org">Scala</a> land to behold it's features that have made it such a hot topic....</p>
+
+<p>My background in programming is largely imperative.. until earlier this year when i started  trying out some functional programming languages (Haskell, F#, Scala.. etc).</p>
+
+<!--more-->
+
+
+<p>One feature of functional languages that i found very interesting were Higher Order Functions.</p>
+
+<p>Higher order functions are notably a vital part, if not the most important part of functional languages.</p>
+
+<p>A higher order function  accepts a function as a parameter or can return  a function back.</p>
+
+<p>An example:</p>
+
+<p>In an imperative language like JAVA looping through characters to find a lowercase value could be:</p>
+
+<p><div>
+  <pre><code class='java'>&lt;/p&gt;
+
+&lt;p&gt;private boolean hasLowerCase = false;
+for(int i = 0; i = title.length(); i++){
+if (Character.isLowerCase(title.charAt(i))){
+hasLowerCase = true;
+break;
+}
+}&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>In <a href="http://scala-lang.org">Scala</a> this can be achieve thus:</p>
+
+<p><div>
+  <pre><code class='scala'>&lt;/p&gt;
+
+&lt;p&gt;val hasLowerCase = title.exists(_.isLowerCase)
+or
+val hasLowerCase = title.exists(title =&gt; title.isLowerCase)&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>In <a href="http://scala-lang.org">Scala</a> this is possible because <a href="http://scala-lang.org">Scala</a> functions are values, this means you can take a function and explicitly set it to a variable.</p>
+
+<p><div>
+  <pre><code class='scala'>&lt;/p&gt;
+
+&lt;p&gt;val areaOfTriangle = (l:Int, b:Int) =&gt; l * b / 2
+areaOfTriangle(2,3) = 3&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>This qualifies it to be passed as a parameter to another function.</p>
+
+<p><a href="http://scala-lang.org">Scala</a> allows it's users to define and use Higher order functions, this as shown makes code concise, putting to good use higher levels of abstractions, which to me is awesome:</p>
+
+<p>In <a href="http://scala-lang.org">Scala</a> playing or looping through Lists appears to be trivial as shown below:</p>
+
+<p><div>
+  <pre><code class='scala'>&lt;/p&gt;
+
+&lt;p&gt;List(3.5, 2.5, 1.5).map((a:Double) =&gt; a * 2)
+or
+List(3.5, 2.5, 1.5).map(a =&gt; a * 2)
+or
+List(3.5, 2.5, 1.5).map(_* 2)&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Above the code multiplies the members of the List by 2.. The last two functions rely on the implicit typing capability of the <a href="http://scala-lang.org">Scala</a> language. This makes the code even less noisy, gives us little to type and gives a similar feel of regular dynamic scripting language as the compiler does all the hard work of type inferencing.</p>
+
+<p>Programming with higher order functions, like the <code>map or exists function makes it;</code></p>
+
+<ul>
+<li><p>Expressively clear, ease to grasp what the program does and the intention of the programmer.</p></li>
+<li><p>Functions that accept Functions as arguments are more reusable than other functions.</p></li>
+<li><p>Higher order function gives us the needed syntactic sugar to build big functionalites out of tiny bits of code.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
