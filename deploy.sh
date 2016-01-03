@@ -1,11 +1,20 @@
-#! /bin/bash
-git checkout master
-git push
-hugo -t freelancer
-cp -r public/* .
+#!/bin/bash
 
-# echo www.ikennaokpala.com > CNAME
-git add --all
-git commit -m "updated $(date)"
-git push
-echo "deployed to http://www.ikennaokpala.com"
+echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
+
+# Build the project.
+hugo -t freelancer
+
+# Add changes to git.
+git add -A
+
+# Commit changes.
+msg="rebuilding site `date`"
+if [ $# -eq 1 ]
+  then msg="$1"
+fi
+git commit -m "$msg"
+
+# Push source and build repos.
+git push origin develop
+git subtree push --prefix=public git@github.com:spencerlyon2/hugo_gh_blog.git master
