@@ -35,8 +35,8 @@ theme = "freelancer"
     [params.header]
         # Copy your own image into './static/img/'' if you wish
         image = "profile.png"
-        name = "Ikenna N. Okpala"
-        subtitle = "Programmer - Enterpreneur - Soccer Buff"
+        name = ""
+        subtitle = "Programmer - Enterpreneur - Consultant"
 
 
     [params.portfolio]
@@ -56,13 +56,13 @@ theme = "freelancer"
     [params.about]
         title = "About"
         # The about text is splitted into a left and right column
-        left = "I wake up every morning seeking ways to harness imagination, technology, scientific and none-scientific methods to benefit mankind.I solve real world problems with practical yet elegant user-centred solutions based on business priorities."
-        right = "I subscribe to agile, pair programming(where required), behaviour driven (BDD), DRY, progressive enhancement, and open source approaches to software development. I’m a specialist in web development."
+        left = "I wake up every morning seeking ways to harness my imagination and technology to benefit mankind.I solve real world problems with practical yet elegant user-centred solutions based on business priorities."
+        right = "I subscribe to agile, pair programming(where required), behaviour driven (BDD), DRY, progressive enhancement, and open source approaches to software development."
 
         [params.about.button]
             text = "Read more"
-            link = "#"
-            icon = "web"
+            link = "//uk.linkedin.com/in/ikennaokpala"
+            icon = "linkedin"
 
 
     [params.contact]
