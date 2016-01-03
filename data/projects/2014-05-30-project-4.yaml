@@ -1,0 +1,9 @@
+modalID: 4
+title: "UK Government Tribunal and Court Finder"
+date: 2014-05-30
+img: court_finder.png
+client: Ministry Of Justice
+clientLink: "#"
+category: Web Development
+description: "This is an information facility that helps users find and locate the nearest court tht offer the services they require. <br/><br/> Ikenna worked as part of the information services team at MOJ. He worked on two ruby on rails government open source projects (courtfinder and tribunal decision).<br/><br/> His work ranged from bug fixes, addition of new features and a bit of devops.<br/><br/>
+Here is  <a href='https://github.com/ministryofjustice/courtfinder/graphs/contributors'>  a link </a> to the projects source repository on Github."
