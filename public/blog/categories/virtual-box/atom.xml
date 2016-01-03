@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: VIRTUAL-BOX | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/virtual-box/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2015-12-24T22:18:29+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fix ubuntu virtual box (windows) full screen problem]]></title>
+    <link href="http://ikennaokpala.com/blog/fix-ubuntu-virtual-box-windows-full-screen-problem"/>
+    <updated>2013-04-03T16:44:38+01:00</updated>
+    <id>http://ikennaokpala.com/blog/fix-ubuntu-virtual-box-windows-full-screen-problem</id>
+    <content type="html"><![CDATA[<p>NOTE the 4.2.0 version of virtual box does not support the 3d graphic libraries for 12.11</p>
+
+<p>You need to download the latest guest additions iso from here http://download.virtualbox.org/virtualbox/</p>
+
+<!--more-->
+
+
+<p>Secondly mount it on by clicking Devices -> CD/DVD Devices and then run the installation process.</p>
+
+<p>After this restart and your VM should be able to render in full screen mode properly.</p>
+]]></content>
+  </entry>
+  
+</feed>

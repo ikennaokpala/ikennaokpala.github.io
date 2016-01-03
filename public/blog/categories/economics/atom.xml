@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ECONOMICS | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/economics/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2015-12-24T22:18:29+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Prioritizing My Backlog With Economics]]></title>
+    <link href="http://ikennaokpala.com/blog/prioritizing-my-backlog-with-economics"/>
+    <updated>2013-05-07T16:44:38+01:00</updated>
+    <id>http://ikennaokpala.com/blog/prioritizing-my-backlog-with-economics</id>
+    <content type="html"><![CDATA[<p>I bumped into this <a href="http://feedproxy.google.com/~r/agilecommons/commonsblog/~3/iFH4_vtYCMA/using-economics-prioritize-your-backlog">article</a> by Alex Pukinskis and it got me thinking.</p>
+
+<p>This could be another great way to help translate/eradicate subjective connotations to actual value propositions.</p>
+
+<p>But then I don't know what kind of business emotions this may stir up.</p>
+
+<!--more-->
+
+
+<p>Also, would this be another opportunity to emphasize on the already obvious (these days everyone is aware of certain economic trends/indicators) or will it be based on what could be a potential viral revenue stream (the next BIG thing).</p>
+
+<p>And how well could the team understand and/or benefit from this together????</p>
+
+<p>Alex's article, advocates the use of adequeate job sizing practice with actual cost implications, value scoring and a couple of other latent metrics brought in, to serve as visibility into feasibility.</p>
+
+<p>According to Don Reinertsen decision could be initially reached through calculating economic models, which he termed a Weighted Shortest-Job-First (WSJF) approach.</p>
+
+<p><strong><em>Ceteris paribus</em></strong>, it is expected that the smallest of features will deliver value quickly and should take precendence at the start of the development efforts.</p>
+
+<p>All good and fine..</p>
+
+<p>On the flip side, the likes of Ron Sen would argue that in this present day information rules and I qoute:</p>
+
+<blockquote><p>"Realistically, forces affecting price (and psychology) constantly evolve, under a variety of influences. What has changed during the information age, however, is the transmission velocity. Therefore, volatility can theoretically increase (or decrease) in response to information. Much of what passes for news or commentary has the design to alter opinion or 'spin' facts."</p></blockquote>
+
+<p>This area of estimating software project is quite susceptible to a lot of news hazard and could take a sharp turn, if not crash land somewhere.</p>
+
+<p>Notwithstanding, it is gaining popularity and it appears some projects have found value in this approach. Before I forget it sounds great on paper.</p>
+
+<p>REFERENCE:</p>
+
+<ul>
+<li>Reinertsen D.G 2009. The Principles of Product Development Flow: Second Generation Lean Product Development, Celeritas Publishing.</li>
+<li>Ron Sen, MD, FCCP, 2010. The Fallacy of Ceteris Paribus. Available at: <a href="http://ronsen.blogspot.co.uk/2010/01/fallacy-of-ceteris-paribus.html">http://ronsen.blogspot.co.uk/2010/01/fallacy-of-ceteris-paribus.html</a> [Accessed on 12th of January 2013].</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

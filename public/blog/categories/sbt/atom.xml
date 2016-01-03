@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: SBT | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/sbt/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2015-12-24T22:18:29+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SBT and Netbeans Terminal Emulator..]]></title>
+    <link href="http://ikennaokpala.com/blog/sbt-on-netbeans"/>
+    <updated>2010-09-11T01:57:43+01:00</updated>
+    <id>http://ikennaokpala.com/blog/sbt-on-netbeans</id>
+    <content type="html"><![CDATA[<p>One of the new features that came bundled with <a href="http://netbeans.org/">Netbeans</a> 6.9 is the terminal emulator. This provides a shell scripting interface for <a href="http://netbeans.org/">Netbeans</a> users.</p>
+
+<p>This has been very useful especially with running build tools like maven from the terminal emulator without having to navigate out of the IDE.</p>
+
+<!--more-->
+
+
+<p>To access this feature, go to 'Window > Output > Terminal. For more on the <a href="http://netbeans.org/">Netbeans</a> Terminal Emulator click <a href="http://wiki.netbeans.org/TerminalEmulator">here</a>
+<a href="http://ikennaokpala.files.wordpress.com/2010/09/screen-shot-2010-09-11-at-02-55-37.png"><img src="http://ikennaokpala.files.wordpress.com/2010/09/screen-shot-2010-09-11-at-02-55-37.png?w=300" alt="" /></a></p>
+
+<p><a href="http://code.google.com/p/simple-build-tool/">SBT</a> (simple build tool) appears to be one of the raves of the moment, it gradually has grown on me and i am using it in my current project which obviously is Scala based.</p>
+
+<p>At the moment i do not know of any plugin for <a href="http://code.google.com/p/simple-build-tool/">SBT</a> on the <a href="http://netbeans.org/">Netbeans</a> platform.</p>
+
+<p>I Initially assumed that having successfully installed <a href="http://code.google.com/p/simple-build-tool/">SBT</a> on my computer that it would be easily accessible from the terminal emulator. But 'Lo and Behold' the <a href="http://netbeans.org/">Netbeans</a> terminal emulator was not aware of <a href="http://code.google.com/p/simple-build-tool/">SBT</a>'s location.</p>
+
+<p>In order to get <a href="http://code.google.com/p/simple-build-tool/">SBT</a> running in the terminal emulator the following commands would be appropriate, especially for MAC or Unix based PCs and already have <a href="http://code.google.com/p/simple-build-tool/">SBT</a> running. If you don't have <a href="http://code.google.com/p/simple-build-tool/">SBT</a> running already click <a href="http://code.google.com/p/simple-build-tool/wiki/Setup">here</a> to set it up.</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;sudo echo &quot;java -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256m -Xmx512M -Xss2M -jar /include/here/path/to/the/sbt-launcher.jar \&quot;\$@\&quot;&quot; | sudo tee /usr/bin/sbt #please don&#39;t forget to change the /include/here/path/to/the/sbt-launcher.jar to the relevant path on your system that points to the sbt launcher jar file.&lt;/p&gt;
+
+&lt;p&gt;whoami # this would tell you the current user if you already know the name skip this&lt;/p&gt;
+
+&lt;p&gt;cd /usr/bin # navigate to the /usr/bin folder&lt;/p&gt;
+
+&lt;p&gt;sudo chown username sbt # change owner to the required username on sbt. Also remember to change the username here  to the relevant one on you want to use
+or alternatively&lt;/p&gt;
+
+&lt;p&gt;sudo chmod u+x sbt # this will give the required operation permission to the user&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>After this has been done navigate back to your <a href="http://netbeans.org/">Netbeans</a> IDE's terminal emulator and type sbt to enjoy it's goodness within the <a href="http://netbeans.org/">Netbeans</a> IDE.</p>
+
+<p>CIAO for now..</p>
+]]></content>
+  </entry>
+  
+</feed>

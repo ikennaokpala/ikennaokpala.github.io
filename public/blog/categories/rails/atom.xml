@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: RAILS | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2015-12-24T22:18:29+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using .ruby-version with pow]]></title>
+    <link href="http://ikennaokpala.com/blog/pow-ruby-version"/>
+    <updated>2013-06-09T02:23:58+01:00</updated>
+    <id>http://ikennaokpala.com/blog/pow-ruby-version</id>
+    <content type="html"><![CDATA[<p><strong>If you probably upgraded to the latest RVM and you got the message like i did to use ruby-version and ruby-gemset and you bought the idea.. The below helps set parity with the former.</strong></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>.powrc </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">if</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;$rvm_path/scripts/rvm&quot;</span> <span class="o">]</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;.ruby-version&quot;</span> <span class="o">]</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;.ruby-gemset&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;source &quot;$rvm_path/s</span><span class="n">cripts</span><span class="o">/</span><span class="n">rvm</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="s2">rvm use `cat .ruby-version`@`cat .ruby-gemset`</span>
+</span><span class='line'><span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&lt;p&gt;  fi</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Debot gem 0.0.1 released: (Capistrano recipes for Ruby, Rails, Ngnix, Unicorn and Postgres setup)]]></title>
+    <link href="http://ikennaokpala.com/blog/debot-gem-0-0-1-released-custom-recipes-for-ruby-rails-app-ngnix-unicorn-and-postgres-setup"/>
+    <updated>2012-07-24T16:47:28+01:00</updated>
+    <id>http://ikennaokpala.com/blog/debot-gem-0-0-1-released-custom-recipes-for-ruby-rails-app-ngnix-unicorn-and-postgres-setup</id>
+    <content type="html"><![CDATA[<p>I just launched <a href="https://github.com/kengimel/debot">debot</a> a gem with custom recipes that extend capistrano for provisioning and deploying rails application to a VPS with ruby (via rubyenv), nginx, postgresql and unicorn..</p>
+
+<!--more-->
+
+
+<p>For more details <a href="https://github.com/kengimel/debot/blob/master/README.md">Click here </a></p>
+
+<p>NB: I am just pouring out ideas on this gem, as i use it on multiple projects. it is under constant development. You are welcome to contribute, try it out and give feeback</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Deployment Strategy for Rails, Passenger and Nginx server with Multiple Virtual Hosts]]></title>
+    <link href="http://ikennaokpala.com/blog/deployment-strategy-for-rails-passenger-and-nginx-server-with-multiple-virtual-hosts"/>
+    <updated>2011-12-27T05:01:04+00:00</updated>
+    <id>http://ikennaokpala.com/blog/deployment-strategy-for-rails-passenger-and-nginx-server-with-multiple-virtual-hosts</id>
+    <content type="html"><![CDATA[<p>In this blog post i intend to share notes taken during deployment exercise of rails apps on Multiple Virtual Hosts.</p>
+
+<p>I have decided to put this all down for self reference and possibly interesting debates that may help expose areas that i am not be aware of.</p>
+
+<!--more-->
+
+
+<p>Deploying rails apps from a beginners perspective (like mine) could be really confusing.</p>
+
+<p>This note will show how i have come to avoid breaking the passenger-nginx compilation and deploying rails apps to Multiple Virtual Hosts.</p>
+
+<p>The development stack/environment is based on the following technologies:</p>
+
+<ul>
+<li><p>Centos</p>
+
+<ul>
+<li><p>Run these commands to find out what version of Centos your server is.</p></li>
+<li><p><code>cat /etc/redhat-release</code> gives me: "CentOS Linux release 6.0 (Final)"</p></li>
+<li><p><code>uname -a</code> gives me: "Linux servername-xxx 2.6.32-71.29.1.el6.x86_64 #1 SMP Mon Jun 27 19:49:27 BST 2011 x86_64 x86_64 x86_64 GNU/Linux"</p></li>
+</ul>
+</li>
+<li><p>Nginx Web Server</p></li>
+<li><p>RVM 1.10.0</p></li>
+<li><p>Phusion Passenger 3.0.11</p></li>
+<li><p>Ruby 1.9.2 patch level 290</p></li>
+<li><p>Rails 3.1.3</p></li>
+</ul>
+
+
+<p>It is worthy of note that at the time of writting this post the urls and rpm are valid. if you encounter any not found kinda error, you can google to find the rpm and the include it to the centos repo file.</p>
+
+<p><div>
+  <pre><code class='bash'>sudo vim /etc/yum.repos.d/CentOS-Base.repo</code></pre>
+</div>
+</p>
+
+<p><strong>Firstly, before we get started we need to setup the following</strong></p>
+
+<p><em>Setup a deployment user account</em>
+Our rails application will run as user: deployerbot.
+To create a deployerbot, allocate it to a group, modify the deployerbot user password and then add deployerbot to sudoers file.</p>
+
+<p><div>
+  <pre><code class='bash'>groupadd staff # if staff does not exist (cat /etc/groups | grep staff)
+useradd -m -g staff -s /bin/bash deployerbot # if you need to add deploybot user to more groups  usermod -G grp1,grp2,newgrp username
+passwd deployerbot
+visudo  # edit to include deployerbot to the sudoers file.. notice that i changed this to visudo instead of vim /etc/sudoers.. this is a safer way to edit sudoers. see this link for more on visudo http://linux.about.com/library/cmd/blcmdl8_visudo.htm.. thanks to Geoff Low (gflow) for the correction..&lt;/p&gt;
+
+&lt;h1&gt;include this line below  &#39;root ALL=(ALL) ALL&#39;: to enable deployerbot to use the sudo command&lt;/h1&gt;
+
+&lt;p&gt;deployerbot ALL=(ALL) ALL&lt;/p&gt;
+
+&lt;h1&gt;or alternatively add the staff group below  &#39;root ALL=(ALL) ALL&#39;: to enable deployerbot to use the sudo command as a member of the group&lt;/h1&gt;
+
+&lt;p&gt;%staff ALL=(ALL) ALL&lt;/p&gt;
+
+&lt;h1&gt;login as the newly created user and create the ssh key&lt;/h1&gt;
+
+&lt;p&gt;ssh-keygen -t rsa -b 4096</code></pre>
+</div>
+</p>
+
+<p>More on <a href="http://ubuntuforums.org/showthread.php?t=904796">ssh and its key generation here</a>
+Now the web applications are going to run in production-mode, include this line to /etc/environment to avoid repeating it for every kind of Rails like commands:</p>
+
+<p><div>
+  <pre><code class='bash'>RAILS_ENV=production</code></pre>
+</div>
+</p>
+
+<p>_Install RVM _
+Make sure you have all the essential armoury (dependencies) :)</p>
+
+<p><div>
+  <pre><code class='bash'>yum groupinstall &quot;Development Tools&quot;  # ubuntu equivalent may be this apt-get install build-essential ruby-full libmagickcore-dev imagemagick libxml2-dev libxslt1-dev git-core ruby-devel libxml2 libxml2-devel libxslt libxslt-devel&lt;/p&gt;
+
+&lt;p&gt;yum install kernel-devel kernel-headers # this may already have been installed by default&lt;/p&gt;
+
+&lt;p&gt;yum install openssl-devel libcurl-devel ImageMagick httpd-devel ruby-libs zlib-devel libjpeg-devel giflib-devel readline-devel&lt;/p&gt;
+
+&lt;h1&gt;or this could also work as well if the above fails&lt;/h1&gt;
+
+&lt;p&gt;sudo rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm&lt;/p&gt;
+
+&lt;p&gt;yum -y install libpcap libpcap-devel libnet libnet-devel pcre pcre-devel gcc automake autoconf libtool make gcc-c++ libyaml libyaml-devel zlib zlib-devel pkgconfig ruby-devel libxml2 libxml2-devel libxslt libxslt-devel</code></pre>
+</div>
+</p>
+
+<p>Check out this <a href="http://www.openinfosecfoundation.org/doc/INSTALL.txt">link</a> for more information</p>
+
+<p>To Install RVM on Centos this following command is require (do this as the deployment user). Also make sure you already have curl and git installed.</p>
+
+<p><div>
+  <pre><code class='bash'>bash &amp;lt; &amp;lt;(curl -s https://rvm.beginrescueend.com/install/rvm) # after installation, rvm should be ready to use.. if not reboot&lt;/p&gt;
+
+&lt;p&gt;rvm notes # to find out if there are any system specific setting that require attention.. for centos you may need to create a .screenrc file with only this as its content shell -/bin/bash&lt;/p&gt;
+
+&lt;p&gt;usermod -a -G staff,rvm deployerbot  #modify deployerbot to multiple groups rvm and staff</code></pre>
+</div>
+</p>
+
+<p>For Centos depending on the version you are running on i would advise run the command below for more information</p>
+
+<p><div>
+  <pre><code class='bash'>rvm notes</code></pre>
+</div>
+</p>
+
+<p><em>Install Ruby and Upgrade RubyGems</em>
+For precautionary reason install 1.9.2 with the following packages: (do this as the deployment user)</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;rvm pkg install readline # you may want to do (--skip-autoreconf) this for each package to avoid autoreconf error: rvm --skip-autoreconf pkg install readline
+rvm pkg install zlib
+rvm pkg install openssl
+rvm install 1.9.2 --with-openssl-dir=$rvm_path/usr --with-readline-dir=$rvm_path/usr # with zlib optional rvm install 1.9.2 --with-zlib-dir=$rvm_path/usr --with-openssl-dir=$rvm_path/usr --with-readline-dir=$rvm_path/usr
+rvm use 1.9.2 # to make this the system&#39;s ruby do: rvm --default use 1.9.2&lt;/p&gt;
+
+&lt;h1&gt;Upgrade RubyGems to the latest (stable) and greatest.. :)&lt;/h1&gt;
+
+&lt;p&gt;wget http://rubyforge.org/frs/download.php/xxxxx/rubygems-x.x.x&lt;em&gt;.tgz
+tar zxvf rubygems-x.x.x&lt;/em&gt;.tgz
+cd rubygems-x.x.x*
+ruby setup.rb&lt;/p&gt;
+
+&lt;h1&gt;to confirm rubygem upgrade:&lt;/h1&gt;
+
+&lt;p&gt;gem -v</code></pre>
+</div>
+</p>
+
+<p><em>Create a Gemsets for each web application</em>
+This blog focuses on deployment on multiple virtual hosts we will be creating two gemsets demonstration purposes.</p>
+
+<p><div>
+  <pre><code class='bash'>rvm gemset create webapp1
+rvm gemset create webapp2</code></pre>
+</div>
+</p>
+
+<p>On the server create a ~/.gemrc file</p>
+
+<p><div>
+  <pre><code class='bash'>:verbose: true
+:bulk_threshold: 1000
+install: --no-ri --no-rdoc --env-shebang
+:sources:
+- http://gemcutter.org
+- http://gems.rubyforge.org/
+- http://gems.github.com
+:benchmark: false
+:backtrace: false
+update: --no-ri --no-rdoc --env-shebang
+:update_sources: true</code></pre>
+</div>
+</p>
+
+<p><strong>
+To deploy these apps on Nginx</strong>
+<em>Install and setup passenger and nginx</em>
+Passenger as i have come to know is simply mod_rails pr mod ruby for webservers like nginx.
+now here is where i have observed that i made a big mistake. Now because you have multiple virtual host sitting on the server, they are mostly likely not useing the exactly set of gems and even possibly may different rubies.</p>
+
+<p>With RVM installed on the server, your RVM directory is located here "$HOME/.rvm/" probably has taken this form.</p>
+
+<p><div>
+  <pre><code class='bash'>cd $HOME/.rvm/gems/
+ls&lt;/p&gt;
+
+&lt;h1&gt;archives  environments  help     log        README   tmp      wrappers&lt;/h1&gt;
+
+&lt;h1&gt;bin       examples      hooks    man        rubies   user&lt;/h1&gt;
+
+&lt;h1&gt;config    gems          lib      patches    scripts  usr&lt;/h1&gt;
+
+&lt;h1&gt;contrib   gemsets       LICENCE  patchsets  src      VERSION&lt;/h1&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Out of all these we are interested in two folders the gems and wrapper.</p>
+
+<p>A brief look into the gems folder you will find the following</p>
+
+<p><div>
+  <pre><code class='bash'>cd gems
+ls&lt;/p&gt;
+
+&lt;h1&gt;cache            ruby-1.9.2-p290@webapp1      ruby-1.9.2-p290@webapp2&lt;/h1&gt;
+
+&lt;h1&gt;ruby-1.9.2-p290  ruby-1.9.2-p290@global&lt;/h1&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Because we want to maintain virtual host and accommodate dissimilarities between webapp1 and webapp2</p>
+
+<p>I suggest installing passenger in the ruby-1.9.2-p290 gemset folder. This will avoid breaking passenger on each deployment of any of the two web applications, because for each time you reload or reinstall your gems , there is a big propensity of getting the passenger-nginx link broken. Hence the need to recompile passenger for nignx on the server.</p>
+
+<p>This could also lead to errors like:</p>
+
+<ul>
+<li><p>500 internal server error</p></li>
+<li><p>403 Forbidden</p></li>
+<li><p>[Tue Dec 27 22:43:57 2011] [error] *** Passenger could not be initialised because of this error: Unable to start the Phusion Passenger watchdog because it encountered the following error during startup: Unable to start the Phusion Passenger logging agent because its executable (/path/to/gems/passenger-3.0.11/agents/PassengerLoggingAgent) doesn't exist. This probably means that your Phusion Passenger installation is broken or incomplete. Please reinstall Phusion Passenger</p></li>
+</ul>
+
+
+<p>So i think it's better to have the passenger gem separate from the gemsets for the web application. This will not require recompiling passenger on every deployment, hence leaving a high chance of downtime problems.</p>
+
+<p>Now i have come across solutions like unicorn, but for now what is obtain in my environment is passenger. Burt will be checking unicorn out pretty soon.</p>
+
+<p>To achieve this do the following (perform this as the deployment user):</p>
+
+<p><div>
+  <pre><code class='bash'>rvm use 1.9.2 # load the ruby-1.9.2-p290 folder into your current session&lt;/p&gt;
+
+&lt;p&gt;gem install passenger # this should install passenger to the ruby-1.9.2-p290 folder&lt;/p&gt;
+
+&lt;p&gt;passenger-install-nginx-module # do this to setup/compile passenger with nginx</code></pre>
+</div>
+</p>
+
+<p>At a certain stage of the <em>passenger-install-nginx-module</em> you will be asked to chose to between two setup processes. For me i will take the number 1 option of installing nginx from scratch which is the recommended option. This also makes sense since so far we have not installed nginx.</p>
+
+<p><em>Nginx Virtual Host Configuration</em>
+For nginx assuming that decided to install it in /etc/nginx/ passenger will locate the nginx.conf in the conf folder. To correctly link passenger and nginx the copy the following to your nginx.conf file</p>
+
+<p><div>
+  <pre><code class='bash'>user  deployerbot staff;&lt;/p&gt;
+
+&lt;p&gt;worker_processes  2;&lt;/p&gt;
+
+&lt;p&gt;events {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;worker_connections  1024;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}
+http {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;passenger_root /usr/local/rvm/gems/ruby-1.9.2-p290/gems/passenger-3.0.11;
+passenger_ruby /usr/local/rvm/wrappers/ruby-1.9.2-p290/ruby;
+
+include       mime.types;
+default_type  application/octet-stream;
+
+access_log  /etc/nginx/logs/access.log;
+error_log  /etc/nginx/logs/error.log;
+
+sendfile        on;
+keepalive_timeout  65;
+include /etc/nginx/conf.d/*.conf;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Before the next steps create the conf.d directory. I personal prefer to keep them inside conf.d. You can chosen to keep yours somewhere else only remember to link it up.</p>
+
+<p><div>
+  <pre><code class='bash'>mkdir conf.d</code></pre>
+</div>
+</p>
+
+<p>Now for webapp1 you want to configure you server something like this</p>
+
+<p><div>
+  <pre><code class='bash'>server {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# if you&#39;re running multiple servers, instead of &quot;default&quot; you should
+# put your main domain name here
+listen 80;
+
+# you could put a list of other domain names this application answers
+server_name webapp1.com;
+
+root /var/www/path/to/webapp1/current/public;
+access_log /var/www/path/to/webapp1/logs/webapp1.access.log;
+error_log /var/path/to/webapp1/logs/webapp1.error.log;
+
+rewrite_log on;
+
+passenger_enabled on;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>And for webapp2 we have</p>
+
+<p><div>
+  <pre><code class='bash'>server {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# if you&#39;re running multiple servers, instead of &quot;default&quot; you should
+# put your main domain name here
+listen 80;
+
+# you could put a list of other domain names this application answers
+server_name webapp2.com;
+
+root /var/www/path/to/webapp2/current/public;
+access_log /var/www/path/to/webapp2/logs/webapp2.access.log;
+error_log /var/path/to/webapp2/logs/webapp2.error.log;
+
+rewrite_log on;
+
+passenger_enabled on;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Obviously the above steps do not settle it all. We need to create our web app.</p>
+
+<p><div>
+  <pre><code class='bash'>rails new webapp1
+rails new webapp2</code></pre>
+</div>
+</p>
+
+<p>Create a ~/.rvmrc to trust your .rvmrc project files and (create) load the project specific gemset</p>
+
+<p><div>
+  <pre><code class='bash'>rvm_trust_rvmrcs_flag=1&lt;/p&gt;
+
+&lt;p&gt;if [[ -s &quot;/usr/local/rvm/gems/ruby-1.9.2-p290@webapp1&quot; ]] ; then
+  . &quot;/usr/local/rvm/gems/ruby-1.9.2-p290@webapp1&quot;
+else
+  rvm --create use  &quot;1.9.2@webapp1&quot;
+fi</code></pre>
+</div>
+</p>
+
+<p>Here comes another part.</p>
+
+<p>Unlike <a href="http://httpd.apache.org/docs/2.0/mod/mod_env.html">Apache's SetEnv feature</a>, nginx does not allow setting of environment variable rather relies on the shell for environment variables.</p>
+
+<p>Passenger on the other hand is a shel script and will use the default settings of the shell if the rails application does not specify its own settings.</p>
+
+<p>To avoid this problem, you need to set environment variable for each application (webapp1 and webapp2).</p>
+
+<p>To do this edit config/production.rb with the following:</p>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;p&gt;WebApp1::Application.configure do&lt;/p&gt;
+
+&lt;h1&gt;Settings specified here will take precedence over those in config/application.rb&lt;/h1&gt;
+
+&lt;p&gt;  # Code is not reloaded between requests
+  config.cache_classes = true #..........&lt;/p&gt;
+
+&lt;h1&gt;.....................................&lt;/h1&gt;
+
+&lt;p&gt;end&lt;/p&gt;
+
+&lt;h1&gt;paste this at the bottom and edit this part with your own relevant paths&lt;/h1&gt;
+
+&lt;p&gt;ENV[&#39;GEM_HOME&#39;]=&#39;/usr/local/rvm/gems/ruby-1.9.2-p290@webapp1/gems&#39; # take note for webapp2 it will be /usr/local/rvm/gems/ruby-1.9.2-p290@webapp2/gems
+ENV[&#39;GEM_PATH&#39;]=&#39;/usr/local/rvm/gems/ruby-1.9.2-p290@webapp1/gems:/usr/local/rvm/gems/ruby-1.9.2-p290@global/gems&#39;
+ENV[&#39;PATH&#39;]=&#39;/usr/local/rvm/gems/ruby-1.9.2-p290@webapp1/bin:$PATH&#39;
+ENV[&#39;MY_RUBY_HOME&#39;]=&#39;/usr/local/rvm/wrappers/ruby-1.9.2-p290@webapp1/ruby&#39;</code></pre>
+</div>
+</p>
+
+<p>The above will set the environment variable for the rails application to the gemset folder <em>/usr/local/rvm/gems/ruby-1.9.2-p290@webapp1/gems</em> as well as all others.</p>
+
+<p>Next you need to create a in the config folder setup_load_paths.rb this is well explained in <a href="http://beginrescueend.com/integration/passenger/">this post</a>
+Copy and paste the following:</p>
+
+<p><div>
+  <pre><code class='ruby'>if ENV[&#39;MY_RUBY_HOME&#39;] &amp;amp;&amp;amp; ENV[&#39;MY_RUBY_HOME&#39;].include?(&#39;rvm&#39;)
+  begin&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rvm_path = File.dirname(File.dirname(ENV[&#39;MY_RUBY_HOME&#39;]))
+rvm_lib_path = File.join(rvm_path, &#39;lib&#39;)
+$LOAD_PATH.unshift rvm_lib_path
+require &#39;rvm&#39;
+RVM.use_from_path! File.dirname(File.dirname(__FILE__))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  rescue LoadError&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# RVM is unavailable at this point.
+raise &quot;RVM ruby lib is currently unavailable.&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  end
+end&lt;/p&gt;
+
+&lt;h1&gt;Pick the lines for your version of Bundler&lt;/h1&gt;
+
+&lt;h1&gt;If you&#39;re not using Bundler at all, remove all of them&lt;/h1&gt;
+
+&lt;h1&gt;Require Bundler 1.0&lt;/h1&gt;
+
+&lt;p&gt;ENV[&#39;BUNDLE_GEMFILE&#39;] = File.expand_path(&#39;../Gemfile&#39;, File.dirname(&lt;strong&gt;FILE&lt;/strong&gt;))
+require &#39;bundler/setup&#39;&lt;/p&gt;
+
+&lt;h1&gt;Require Bundler 0/9&lt;/h1&gt;
+
+&lt;h1&gt;if File.exist?(&quot;.bundle/environment.rb&quot;)&lt;/h1&gt;
+
+&lt;h1&gt;require &#39;.bundle/environment&#39;&lt;/h1&gt;
+
+&lt;h1&gt;else&lt;/h1&gt;
+
+&lt;h1&gt;require &#39;rubygems&#39;&lt;/h1&gt;
+
+&lt;h1&gt;require &#39;bundler&#39;&lt;/h1&gt;
+
+&lt;h1&gt;Bundler.setup&lt;/h1&gt;
+
+&lt;h1&gt;end&lt;/h1&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Now last part is the Capistrano recipe to compliment the above setting.</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;h1&gt;First of all create capistrano files with this&lt;/h1&gt;
+
+&lt;p&gt;capify .</code></pre>
+</div>
+</p>
+
+<p>Following the above copy this part to the Capfile:</p>
+
+<p><div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;h1&gt;this part goes in the Capfile which is located in the root of your rails app&lt;/h1&gt;
+
+&lt;h1&gt;Add RVM&#39;s lib directory to the load path.&lt;/h1&gt;
+
+&lt;p&gt;$:.unshift(File.expand_path(&#39;./lib&#39;, ENV[&#39;rvm_path&#39;]))&lt;/p&gt;
+
+&lt;h1&gt;Load RVM&#39;s capistrano plugin.&lt;/h1&gt;
+
+&lt;p&gt;require &quot;rvm/capistrano&quot;&lt;/p&gt;
+
+&lt;h1&gt;Set it to the ruby + gemset of your app, e.g:&lt;/h1&gt;
+
+&lt;p&gt;set :rvm_ruby_string, &#39;1.9.2@webapp1&#39;</code></pre>
+</div>
+
+<div>
+  <pre><code class='ruby'>&lt;/p&gt;
+
+&lt;h1&gt;this part goes in the deploy.rb file inside the config in your rails app&lt;/h1&gt;
+
+&lt;p&gt;require &#39;bundler/capistrano&#39;
+set :application, &quot;webapp1.com&quot;&lt;/p&gt;
+
+&lt;p&gt;set :domain, &quot;www.domain.com&quot;
+set :environment, &quot;production&quot;
+set :branch, &quot;master&quot;
+set :deploy_to, &quot;/var/www/path/to/www/webapp1&quot;&lt;/p&gt;
+
+&lt;p&gt;role :app, domain
+role :web, domain
+role :db, domain, :primary =&gt; true&lt;/p&gt;
+
+&lt;p&gt;default_run_options[:pty] = true&lt;/p&gt;
+
+&lt;p&gt;default_run_options[:shell] = &#39;bash&#39;&lt;/p&gt;
+
+&lt;p&gt;default_environment[&quot;RAILS_ENV&quot;] = &#39;production&#39;&lt;/p&gt;
+
+&lt;p&gt;set :repository, &quot;git@ domain.com/webapp1.git&quot;
+set :deploy_via, :remote_cache&lt;/p&gt;
+
+&lt;h1&gt;If you aren&#39;t using Subversion to manage your source code, specify&lt;/h1&gt;
+
+&lt;h1&gt;your SCM below:&lt;/h1&gt;
+
+&lt;p&gt;set :scm, :git
+set :scm_verbose, true
+set :use_sudo, false
+set :ssh_options, :forward_agent =&gt; true&lt;/p&gt;
+
+&lt;p&gt;set :user, &quot;deployerbot&quot;
+set :keep_releases, 7&lt;/p&gt;
+
+&lt;p&gt;set :default_environment, {&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&#39;PATH&#39; =&amp;gt; &quot;/usr/local/rvm/gems/ruby-1.9.2-p290@webapp1/gems/bin:$PATH&quot;,
+&#39;RUBY_VERSION&#39; =&amp;gt; &#39;ruby 1.9.2&#39;,
+&#39;GEM_HOME&#39; =&amp;gt; &#39;/usr/local/rvm/gems/ruby-1.9.2-p290@webapp1/gems&#39;,
+&#39;GEM_PATH&#39; =&amp;gt; &#39;/usr/local/rvm/gems/ruby-1.9.2-p290@webapp1/gems:/usr/local/rvm/gems/ruby-1.9.2-p290@global/gems&#39;,
+&#39;BUNDLE_PATH&#39; =&amp;gt; &#39;//usr/local/rvm/gems/ruby-1.9.2-p290@webapp1/gems&#39; # If using bundler.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;namespace :deploy do
+  desc &quot;restarting&quot;
+  task :restart do&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;run &quot;touch #{current_path}/tmp/restart.txt&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  end&lt;/p&gt;
+
+&lt;p&gt;  desc &quot;symlink vendor to shared vendor&quot;
+  task :symlink_vendor_to_shared_vendor do&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;run &quot;ln -s #{current_path}/../shared/vendor #{current_path}/vendor&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  end&lt;/p&gt;
+
+&lt;p&gt;  desc &quot;trust rvmrc&quot;
+  task :trust_rvmrc do&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;run &quot;rvm rvmrc trust #{release_path}&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;  end
+end&lt;/p&gt;
+
+&lt;p&gt;after &#39;deploy:symlink&#39;, &#39;deploy:symlink_vendor_to_shared_vendor&#39;, &#39;deploy:trust_rvmrc&#39;</code></pre>
+</div>
+</p>
+
+<p>Next do</p>
+
+<p><div>
+  <pre><code class='bash'>cap deploy:setup
+cap deploy:cold
+cap deploy</code></pre>
+</div>
+</p>
+
+<p>On the server you want to load each application's gemset and do bundle install</p>
+
+<p><div>
+  <pre><code class='bash'>rvm use 1.9.2@webapp1
+cd /var/www/path/to/www/webapp1
+bundle install&lt;/p&gt;
+
+&lt;p&gt;rvm use 1.9.2@webapp2
+cd /var/www/path/to/www/webapp2
+bundle install</code></pre>
+</div>
+</p>
+
+<p>Do keep in mind, that if you start nginx manually, including the sudo -E will inform sudo to preserve your environment. If this is not done, sudo will possibly reset all your environment variables.</p>
+
+<p><div>
+  <pre><code class='bash'>cd /etc/nginx/sbin/
+sudo -E ./nginx</code></pre>
+</div>
+</p>
+
+<p>After doing this, nginx is sure to use the your chosen set of configuration.</p>
+
+<p>Here ends the deployment notes, please feel free to comment below.</p>
+
+<p>And away we go ! Ciao for now..</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Postgres gem native extension error]]></title>
+    <link href="http://ikennaokpala.com/blog/postgres-native-extension-error"/>
+    <updated>2011-12-27T01:27:33+00:00</updated>
+    <id>http://ikennaokpala.com/blog/postgres-native-extension-error</id>
+    <content type="html"><![CDATA[<p>I hit this error when installing the pg gem for using postgresql with rails apps.</p>
+
+<!--more-->
+
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    /Users/userx/.rvm/rubies/ruby-1.9.2-p290/bin/ruby extconf.rb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;checking for pg_config... no
+No pg_config... trying anyway. If building fails, please try again with
+ --with-pg-config=/path/to/pg_config
+checking for libpq-fe.h... no
+Can&#39;t find the &#39;libpq-fe.h header
+&lt;strong&gt;&lt;em&gt; extconf.rb failed &lt;/em&gt;&lt;/strong&gt;
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.&lt;/p&gt;
+
+&lt;p&gt;Provided configuration options:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;--with-opt-dir
+--without-opt-dir
+--with-opt-include
+--without-opt-include=${opt-dir}/include
+--with-opt-lib
+--without-opt-lib=${opt-dir}/lib
+--with-make-prog
+--without-make-prog
+--srcdir=.
+--curdir
+--ruby=/Users/kengimel/.rvm/rubies/ruby-1.9.2-p290/bin/ruby
+--with-pg
+--without-pg
+--with-pg-dir
+--without-pg-dir
+--with-pg-include
+--without-pg-include=${pg-dir}/include
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>I already have postgres installed, so what? it appears postgres does not know when to find the its native extension files.</p>
+
+<p>To solve you need to locate bin directory for your postgresql in the Library directory. Depending the version of postgres you are running, the path to the bin folder may differ.</p>
+
+<p>including the below to you .bashrc or .bash_profile or .profile or .zshrc will do the trick :)
+<div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;PATH=${PATH}:/Library/PostgreSQL/9.1/bin
+source .zshrc
+gem install pg</code></pre>
+</div>
+</p>
+
+<p>For centos users <a href="http://serverfault.com/questions/316703/how-to-install-libpq-dev-on-centos-5-5">this post</a> could be of help.
+ and/or
+Prepend with a variable assignment for PATH with the location of the pg_config file, for example:</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;export PATH=/usr/pgsql-9.1/bin:$PATH
+source .bashrc
+gem install pg</code></pre>
+</div>
+</p>
+
+<p>Check that postgres is running:</p>
+
+<p>service postgresql-9.1 status</p>
+]]></content>
+  </entry>
+  
+</feed>

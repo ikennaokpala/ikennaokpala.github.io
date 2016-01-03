@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Database Best Practices - Ikenna Okpala: London Based Software Developer </title>
+  <meta name="author" content="Ikenna Okpala">
+
+  
+  <meta name="description" content="Hi, I am Ikenna Okpala, a london based software developer. This is my personal website and blog. I spend my daytime building Web Applications (Development and Architecture), Agile Coaching and Life Enrichment. Feel free to look around. There is not traffic in the extra mile. --Rickey Minor">
+  <!-- <meta name="description" content="These &#8220;best practices&#8221; for evolutionary/ database development are: Database refactoring. A database refactoring is a small change to your &hellip;"> -->
+  
+  <meta name="keywords" content="web development specialist, ruby, ruby on rails, javascript and/or coffeescript, jquery, underscrore.js, backbone.js, java, scala, , postgresql, mysql, teradata, oracle, unix/linux, nginx, git, capistrano and agile methodologies">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ikennaokpala.com/blog/database-best-practices">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Ikenna Okpala" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40007650-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="mailto:me@ikennaokpala.com?Subject=Hello" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ikennaokpala.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">
+        <span class="blue_light">
+            Ikenna Okpala
+        </span>
+       
+           <span class="blue_dark">
+             
+           </span>
+       
+    </a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Database Best Practices</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-09-13T15:36:00+01:00" pubdate data-updated="true">Sep 13<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><strong>These &#8220;best practices&#8221; for evolutionary/ database development are:</strong></p>
+
+<p><strong>Database refactoring.</strong>  A database refactoring is a small change to your database schema which improves its design without changing its semantics (e.g. you don&#8217;t add anything nor do you break anything).  The process of database refactoring is the evolutionary improvement of your database schema so as to improve your ability to support the new needs of your customers.</p>
+
+<!--more-->
+
+
+<p><strong>Data modeling</strong>.  With an evolutionary approach to data modeling you model the data aspects of a system iteratively and incrementally.  With an agile approach you do so in a highly collaborative manner.  You will envision the initial requirements and architecture early in the project at a high-level and then model storm the details on a just in time (JIT) basis when and if they&#8217;re needed &#8211; no more &#8220;big up front modeling (BMUF)&#8221;.
+<strong>
+Database regression testing.</strong>
+You should ensure that your database schema actually meets the requirements for it, and the best way to do that is via testing.  With a test driven development (TDD) approach you write a unit test before you write production database schema code, the end result being that you have a 100% regression test for your database schema.  Testing provides the concrete feedback that you need to ensure data quality.</p>
+
+<p><strong>Configuration management of database artifacts.</strong>  Your data models, database tests, test data, and so on are important project artifacts which should be configuration managed just like any other artifact.</p>
+
+<p><strong>Developer sandboxes</strong>.  Developers need their own working environments, called sandboxes, where they can modify the portion of the system which they are building and get it working before they integrate their work with that of their teammates.</p>
+
+<p><strong>Data normalization.</strong>  Data normalization is a process in which data attributes within a data model are organized to increase the cohesion of entity types.  In other words, the goal of data normalization is to reduce and even eliminate data redundancy, an important consideration for application developers because it is incredibly difficult to stores objects in a relational database that maintains the same information in several places.</p>
+
+<p><strong>Set a realistic primary key strategy.</strong>  The fact is that sometimes it makes sense to use natural keys and sometimes surrogate keys.  As a professional you need to understand when to apply each strategy, and to be prepared to refactor if you discover that you&#8217;ve made the wrong choice.
+<strong>
+Database encapsulation.</strong>
+A database encapsulation layer hides the implementation details of your database(s), including their physical schemas, from your business code.  In effect it provides your business objects with persistence services – the ability to read data from, write data to, and delete data from – data sources.  Ideally your business objects should know nothing about how they are persisted, it just happens.  Database encapsulation layers aren’t magic and they aren’t academic theories; database encapsulation layers are commonly used practice by both large and small applications as well as in both simple and complex applications.  Database encapsulation layers are an important technique that every agile software developer should be aware of and be prepared to use.</p>
+
+<p><strong>Train developers in basic data skills.</strong>  This enables developers to both improve their data-oriented work and to interact with data professionals more effectively.  Fundamental skills include: relational database fundamentals, data modeling, mapping objects to RDBs (O/R mapping), working with legacy data, XML, referential integrity and shared business logic, how to retrieve objects from an RDB, how to implement reports, security access control, and transactions and concurrency control.</p>
+
+<p><strong>Train DBAs in basic development skills.</strong>  Similarly, DBAs need to gain an understanding of application development so that they can play active roles on the team(s) which they support.</p>
+
+<p><strong>Common development guidelines.</strong>  Having a common, usable set of development standards which are easy to understand and to comply to can greatly improve the quality of the systems that you develop.  These guidelines may include, but not be limited to, programming guidelines, modeling style guidelines, and data naming conventions.</p>
+
+<p><strong>Lean data governance.</strong>  The goal of data governance is to ensure the quality, availability, integrity, security, and usability within an organization.  The way that you go about this is up to you.  Many traditional approaches to data governance seem to struggle in practice, I suspect in part because of the cultural impedance mismatch but also in part because traditional IT governance struggles in general. The command and control approach typical of traditional governance strategies is a lot like herding cats, you do a lot of work but nothing much gets accomplished in the long run.  Lean governance, on the other hand, is focused on enabling people and motivating them to do the right things.  A lean data governance approach promotes a healthy, collaborative relationship between data professionals and the teams that they&#8217;re supporting.
+<strong>
+</strong></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ikenna Okpala</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-09-13T15:36:00+01:00" pubdate data-updated="true">Sep 13<span>th</span>, 2007</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ikennaokpala.com/blog/database-best-practices" data-via="ikenna_okpala" data-counturl="http://ikennaokpala.com/blog/database-best-practices" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/database-modelling-using-normalization" title="Previous Post: DATABASE MODELLING USING NORMALIZATION">&laquo; DATABASE MODELLING USING NORMALIZATION</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/persistence-and-entity-beans" title="Next Post: Persistence and Entity Beans">Persistence and Entity Beans &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite">
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/fix-openvpn-network-interface-mismatch">Fix OPENVPN Network Interface Mismatch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/a-look-at-Teradata-AMPs-">A Look At Teradata AMPs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/pow-ruby-version">Using .ruby-version with pow</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/install-teradata-odbc-for-ruby-development">Install Teradata ODBC for Ruby development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/prioritizing-my-backlog-with-economics">Prioritizing My Backlog With Economics</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ikennaokpala">@ikennaokpala</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ikennaokpala',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/kengimel?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/kengimel">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:kengimel">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "kengimel"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/111621580960500743451?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+<section class="twitter2">
+  <h1><a href="https://twitter.com/ikenna_okpala">@ikenna_okpala</a></h1>
+  <br/>  <br/>
+  <a href="https://twitter.com/ikenna_okpala" class="twitter-follow-button" data-show-count="false" data-lang="en" data-size="large">Follow @ikenna_okpala</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Ikenna Okpala -
+  <span class="credit"><a href="/privacy"> Privacy Policy </a></span> -
+  <span class="credit">Powered by <a href="http://octopress.org" target="_blank">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ikennaokpalasblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ikennaokpala.com/blog/database-best-practices';
+        var disqus_url = 'http://ikennaokpala.com/blog/database-best-practices';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </body>
+</html>

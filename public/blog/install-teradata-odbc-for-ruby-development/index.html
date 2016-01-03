@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Install Teradata ODBC for Ruby development - Ikenna Okpala: London Based Software Developer </title>
+  <meta name="author" content="Ikenna Okpala">
+
+  
+  <meta name="description" content="Hi, I am Ikenna Okpala, a london based software developer. This is my personal website and blog. I spend my daytime building Web Applications (Development and Architecture), Agile Coaching and Life Enrichment. Feel free to look around. There is not traffic in the extra mile. --Rickey Minor">
+  <!-- <meta name="description" content="To install Teradata for ruby development, first it is advisable to install it on a 32 bit linux based VM. Given the above, the following steps should &hellip;"> -->
+  
+  <meta name="keywords" content="web development specialist, ruby, ruby on rails, javascript and/or coffeescript, jquery, underscrore.js, backbone.js, java, scala, , postgresql, mysql, teradata, oracle, unix/linux, nginx, git, capistrano and agile methodologies">
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ikennaokpala.com/blog/install-teradata-odbc-for-ruby-development">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Ikenna Okpala" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40007650-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="mailto:me@ikennaokpala.com?Subject=Hello" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ikennaokpala.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">
+        <span class="blue_light">
+            Ikenna Okpala
+        </span>
+       
+           <span class="blue_dark">
+             
+           </span>
+       
+    </a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Install Teradata ODBC for Ruby Development</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-15T02:23:58+01:00" pubdate data-updated="true">May 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><strong>To install Teradata for ruby development, first it is advisable to install it on a 32 bit linux based VM.</strong></p>
+
+<p>  <strong><em> Given the above, the following steps should work ok:</em></strong></p>
+
+<ul>
+<li><p>Download the teradata CLIv2 and ODBC Driver from <a href="http://downloads.teradata.com/download">http://downloads.teradata.com/download</a></p></li>
+<li><p> Download Teradata&#8217;s Ruby native access interface from <a href="http://downloads.teradata.com/download">http://sourceforge.net/projects/rubycli/</a></p></li>
+</ul>
+
+
+<!--more-->
+
+
+<ul>
+<li>Install RPM:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>install RPM </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>      sudo apt-get install rpm
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li> Open up the cliv2:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>      tar -xvf  cliv2_LINUX_indep.14.00.00.07.tar.gz
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li> Change directory  and Install cliv2:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>      sudo rpm -ivh --nodeps cliv2-14.00.00.07-1.noarch.rpm
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li> Change directory to tdicu:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>       sudo rpm -ivh --nodeps tdicu-14.00.00.00-1.noarch.rpm
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li> Change directory to TeraGSS and install:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>      sudo rpm -ivh --nodeps TeraGSS_linux_x64-14.00.02.07-1.noarch.rpm
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li> Open up tdodbc:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>      tar -xvf tdodbc__linux_indep.14.00.00.04-1.tar.gz
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li> Change dorectory to tdodbc:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>      sudo rpm -ivh --nodeps tdodbc-14.00.00.04-1.noarch.rpm
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>NB: tdodbc may also contain tdicu and TeraGSS you may want to ignore these as you may have already installed them.</p>
+
+<ul>
+<li>Change directory to rubycli-1.0.0 and run the following commands:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>      make unix <span class="o">&amp;&amp;</span> ruby setup.rb install
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Add these paths to your .zshrc or .bashrc or .bash_profile files</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>    <span class="c">#export LD_LIBRARY_PATH=/opt/teradata/client/14.00/lib</span>
+</span><span class='line'>    <span class="nb">export </span><span class="nv">COPLIB</span><span class="o">=</span>/opt/teradata/client/14.00/lib
+</span><span class='line'>    <span class="nb">export </span><span class="nv">COPERR</span><span class="o">=</span>/opt/teradata/client/14.00/lib
+</span><span class='line'>    <span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/opt/teradata/client/14.00/tbuild/lib:/opt/teradata/client/14.00/lib
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li> Finally download or obtain the the 32bit version of the following files:
+bteq, fastload, fexp, mload, ppcmain</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>    sudo mkdir -p  /opt/teradata/client/14.00/bin
+</span><span class='line'>    <span class="c">#copy files from where you have downloaded them to</span>
+</span><span class='line'>    sudo cp -R bin/* /opt/teradata/client/14.00/bin
+</span><span class='line'>    sudo chown -R root:root /opt/teradata/client/14.00/bin/*
+</span><span class='line'>    sudo chmod +x /opt/teradata/client/14.00/bin/*
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>NB: Check that all the dependencies for each of the bin stubs are present.
+example:</p>
+
+<figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>      ldd fexp
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You may observe that the libpm.so file 32 bit version is not present, so you then copy the file like this:</p>
+
+<figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  cp /path to /client/14.00/lib/libpm.so /opt/teradata/client/14.00/lib
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After this you should be rarring and ready to go.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ikenna Okpala</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-15T02:23:58+01:00" pubdate data-updated="true">May 15<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>LINUX</a>, <a class='category' href='/blog/categories/ruby/'>RUBY</a>, <a class='category' href='/blog/categories/teradata/'>TERADATA</a>, <a class='category' href='/blog/categories/ubuntu/'>UBUNTU</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ikennaokpala.com/blog/install-teradata-odbc-for-ruby-development" data-via="ikenna_okpala" data-counturl="http://ikennaokpala.com/blog/install-teradata-odbc-for-ruby-development" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/prioritizing-my-backlog-with-economics" title="Previous Post: Prioritizing My Backlog With Economics">&laquo; Prioritizing My Backlog With Economics</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/pow-ruby-version" title="Next Post: Using .ruby-version with pow">Using .ruby-version with pow &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite">
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/fix-openvpn-network-interface-mismatch">Fix OPENVPN Network Interface Mismatch</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/a-look-at-Teradata-AMPs-">A Look At Teradata AMPs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/pow-ruby-version">Using .ruby-version with pow</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/install-teradata-odbc-for-ruby-development">Install Teradata ODBC for Ruby development</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/prioritizing-my-backlog-with-economics">Prioritizing My Backlog With Economics</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ikennaokpala">@ikennaokpala</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ikennaokpala',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/kengimel?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/kengimel">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:kengimel">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "kengimel"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/111621580960500743451?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+<section class="twitter2">
+  <h1><a href="https://twitter.com/ikenna_okpala">@ikenna_okpala</a></h1>
+  <br/>  <br/>
+  <a href="https://twitter.com/ikenna_okpala" class="twitter-follow-button" data-show-count="false" data-lang="en" data-size="large">Follow @ikenna_okpala</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Ikenna Okpala -
+  <span class="credit"><a href="/privacy"> Privacy Policy </a></span> -
+  <span class="credit">Powered by <a href="http://octopress.org" target="_blank">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ikennaokpalasblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ikennaokpala.com/blog/install-teradata-odbc-for-ruby-development';
+        var disqus_url = 'http://ikennaokpala.com/blog/install-teradata-odbc-for-ruby-development';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: USEFUL QUOTES | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/useful-quotes/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2015-12-24T22:18:29+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA["Code Errors" Drive Statement ....]]></title>
+    <link href="http://ikennaokpala.com/blog/code-errors-drive-statement"/>
+    <updated>2007-11-17T11:08:00+00:00</updated>
+    <id>http://ikennaokpala.com/blog/code-errors-drive-statement</id>
+    <content type="html"><![CDATA[<p>Code Errors are necessary for success in software development process because in software engineering, as in all careers of importance, victory comes only after many struggles and countless defeats.</p>
+
+<!--more-->
+
+
+<p>Yet each struggle, each defeat, sharpens your skills and strengths, your courage and your endurance, your ability and your confidence and thus each or multiple code errors is a comrade-in-arms forcing you to become better.... or quit.</p>
+
+<p>Each rebuff is an opportunity to move forward; turn away from them, avoid them, and you throw away your future.</p>
+]]></content>
+  </entry>
+  
+</feed>

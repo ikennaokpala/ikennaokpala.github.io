@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: GIT | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2015-12-24T22:18:29+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Amending Git commits]]></title>
+    <link href="http://ikennaokpala.com/blog/amending-git-commits"/>
+    <updated>2011-12-13T16:55:57+00:00</updated>
+    <id>http://ikennaokpala.com/blog/amending-git-commits</id>
+    <content type="html"><![CDATA[<p>In my experience with <a href="http://git-scm.com/">Git</a>, i have run into situations where i had made a commit in error, especially when resolving merge conflicts or sometimes i find my commit very non descriptive and need amending.</p>
+
+<p>To remove a commit made in error entirely do:</p>
+
+<!--more-->
+
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;git reset --soft HEAD~1
+ # and then
+git reset --hard # this will reset the current branch</code></pre>
+</div>
+</p>
+
+<p>Another issue that may arise is, may be you have already push the unwanted change in error to the remote origin branch.
+No worries at all, Git is very forgiving.</p>
+
+<p>After you must have done the above steps do this to update (rewind) remote origin.</p>
+
+<p><div>
+  <pre><code class='bash'>git push origin head -f</code></pre>
+</div>
+</p>
+
+<p>To amend commit message i do:</p>
+
+<p><div>
+  <pre><code class='bash'>&lt;/p&gt;
+
+&lt;p&gt;git commit --amend</code></pre>
+</div>
+</p>
+
+<p>Another scenario where git shines is amending commits.. May be you are working from a new system and have not set the git config --globla user.email to the right email address.
+All that is required is running this command:</p>
+
+<p><div>
+  <pre><code class='bash'>git commit --amend --author=username@domain.com</code></pre>
+</div>
+</p>
+
+<p>It all depend on what part of your commit you would like to change. for a full usage guide do:</p>
+
+<p><div>
+  <pre><code class='bash'>git commit --usage&lt;/p&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>To stop tracking changes on a commited file do</p>
+
+<p><div>
+  <pre><code class='bash'>git update-index --assume-unchanged &lt;path-to-file&gt;</code></pre>
+</div>
+</p>
+
+<p>if need be to continue tracking changes again run the following command:</p>
+
+<p><div>
+  <pre><code class='bash'>git update-index --no-assume-unchanged &lt;path-to-file&gt;</code></pre>
+</div>
+</p>
+
+<p>At some point there may be a couple of commits that you would like to delete, edit or include, or possibly the commit is branching off irregularly.</p>
+
+<p>No worries this git command will interactively see you through (i advise reading through the messages as you go):</p>
+
+<p><div>
+  <pre><code class='bash'>git rebase -i HEAD~5 # 5 here is the position of the very last commit you want to edit</code></pre>
+</div>
+
+Ciao !!</p>
+]]></content>
+  </entry>
+  
+</feed>

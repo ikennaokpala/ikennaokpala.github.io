@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: EJB 3.0 | Ikenna Okpala]]></title>
+  <link href="http://ikennaokpala.com/blog/categories/ejb-3-dot-0/atom.xml" rel="self"/>
+  <link href="http://ikennaokpala.com/"/>
+  <updated>2015-12-24T22:18:29+00:00</updated>
+  <id>http://ikennaokpala.com/</id>
+  <author>
+    <name><![CDATA[Ikenna Okpala]]></name>
+    <email><![CDATA[me@ikennaokpala.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[EJB 3.0's Concurrency Control.]]></title>
+    <link href="http://ikennaokpala.com/blog/ejb-3-0s-concurrency-control"/>
+    <updated>2007-10-23T14:16:00+01:00</updated>
+    <id>http://ikennaokpala.com/blog/ejb-3-0s-concurrency-control</id>
+    <content type="html"><![CDATA[<p>Concurrency control is a necessary part of distributed systems  it house's the basics of collisions and type of collisions that can occur.  The EJB Container provides supports for various types of concurrency controls. For now we will concentrate on collision and then techniques to resolve these collisions.</p>
+
+<!--more-->
+
+
+<p>A collision can occur when two or more transactions tries to change the entities within a system of records. There are three causes  which  interfere:
+Dirty read
+Non Repeatable read
+Phantom read</p>
+
+<p>Mainly two mechanism are used to control the concurrency.
+Optimistic Locking
+Pessimistic Locking</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Persistence and Entity Beans]]></title>
+    <link href="http://ikennaokpala.com/blog/persistence-and-entity-beans"/>
+    <updated>2007-09-29T17:12:00+01:00</updated>
+    <id>http://ikennaokpala.com/blog/persistence-and-entity-beans</id>
+    <content type="html"><![CDATA[<p>Persistence is a higher-level abstraction above JDBC. The persistence layer maps objects to database storage so that they can be queried, loaded, updated, or removed without having to go through a verbose API such as JDBC. In older versions of EJB, persistence was part of the EJB platform. Starting with EJB 3.0, persistence has been spun off to its own specification, called the Java Persistence API.</p>
+
+<!--more-->
+
+
+<p>The Java Persistence API defines a way to map regular, plain old Java objects (sometimes referred to as POJOs) to a database. These plain Java objects are called entity beans. Entity beans are like any other Java class, except that they have been mapped, using Java Persistence metadata, to a database. Therefore, they may be inserted and loaded from a database without the developer writing any JDBC connection code or reading from result sets. The Java Persistence API also defines a query language that has features that parallel those in SQL, but is tailored to work with Java objects rather than a raw relational schema.</p>
+
+<p>In the EJB 2.1 specification, entity beans were very "heavyweight" and dependent on the application server and the entire Java EE runtime environment. In Java Persistence, entity beans are regular Java objects that are managed by a persistence service. Unlike their EJB 2.1 counterparts, entities in Java Persistence are not required to implement any special spec-defined interfaces or classes. Another weakness of the older specification was that it left individual vendors to decide how an object should be mapped to a particular database representation. This made EJB 2.1 entity beans mostly nonportable between vendors. The new Java Persistence specification defines a complete object to relational mapping (ORM) so that entity beans can be ported easily from vendor to vendor. Furthermore, because entity beans are now plain Java objects, they are not just portable between application servers; they can be used in regular Java applications outside of an application server and can even be used to transfer data between a client and a server. This makes designs simpler and more compact.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Enterprise JavaBeans Technology (EJB 3.0)]]></title>
+    <link href="http://ikennaokpala.com/blog/enterprise-javabeans-technology-ejb-3-0"/>
+    <updated>2007-05-31T18:20:00+01:00</updated>
+    <id>http://ikennaokpala.com/blog/enterprise-javabeans-technology-ejb-3-0</id>
+    <content type="html"><![CDATA[<p><strong>Enterprise Java Beans</strong> is a component architecture for the development and deployment of object-oriented, distributed, enterprise-level applications. Applications written using the Enterprise JavaBeans architecture are scalable, transactional, multi-user and secure.</p>
+
+<p><strong>EJB</strong> is designed to support application portability and reusability across any vendor’s enterprise middleware services.</p>
+
+<!--more-->
+
+
+<p><strong>EJB</strong> is a standard for developing and deploying server-side distributed components in Java. It defines an agreement (contract) between components and application servers that enables any component to run in any compliant application server.</p>
+
+<p>Despite the rich features, the complexity of the <strong>EJB</strong> architecture has hindered its wide adoption. Various component technologies have taken over the <strong>EJB</strong> arena. For example Toplink and the open-source Hibernate framework have overtaken <strong>EJB</strong> as a better and easier choice for developing persistence solutions.</p>
+
+<p><strong>EJB 3.0</strong> brings us closer to the dream of creating enterprise beans like regular objects. It reduces the number of programming artifacts for developers, eliminates or minimizes callback methods required to be implemented, and reduces the complexity of the entity bean programming model and O/R mapping model. With <strong>EJB 3.0</strong>, J2EE now Java EE seems accessible to a much wider audience.</p>
+
+<p>In this article, we first briefly discuss the pitfalls of <strong>EJB 2.1.</strong> Next, we describe how <strong>EJB 3.0</strong> provides solution to these difficulties by describing the significant changes.</p>
+
+<p><strong>Pitfalls of EJB 2.1.</strong></p>
+
+<p><em>EJBs with EJB 2.1 hasn't been the easiest thing to do. The reasons are easy to find:</em></p>
+
+<ul>
+<li><p>_To create a single EJB you need to create a multitude of XML deployment descriptors. _</p></li>
+<li><p>_A set of three source files must be created. _</p></li>
+<li><p><em>Multiple callback methods must be implemented that usually are never used.</em></p></li>
+<li><p>_You have to throw and catch several types of unnecessary exceptions. _</p></li>
+<li><p><em>Yet another complaint is that the EJBs are completely untestable outside the context of the container since components like container-managed entity beans are abstract classes.</em></p></li>
+<li><p>_Finally, EJB-QL in its current form is limited in functionality and difficult to use. These limitations force developers to use straight JDBC and SQL, or to use other persistence frameworks such as Toplink and Hibernate. _</p></li>
+</ul>
+
+
+<p><em>The sheer verbosity of the API has been one big annoyance, and EJB 3.0 makes a significant attempt to address most issues. This article covers the important aspects of this specification.</em></p>
+
+<p>The two most significant changes in the proposed EJB 3.0 specification are the use of the program annotation facility introduced in Java 5 and the new O/R mapping model based on Hibernate's pattern.</p>
+
+<p>Java SE 5 has introduced a new program annotation facility to the language. With this facility, you can define custom annotations and then annotate fields, methods, classes, etc., with these annotations. Annotations do not directly affect program semantics, but tools (compile time or runtime) can inspect these annotations to generate additional constructs (like a deployment descriptor) or enforce desired runtime behavior (like an EJB component's stateful nature).</p>
+
+<p>Annotations can be inspected through source parsing (e.g., compilers or IDE tools) or by using the additional reflection APIs added in Java 5. Annotations can be defined to be available only at the source code level, at the compiled class level, or at runtime. All annotations proposed in the EJB 3.0 early draft have a RetentionPolicy of RUNTIME.</p>
+
+<p>This increases the class's memory footprint marginally, but makes the life of container provider and tool provider much easier.This brings to an end the configuration of XML deployment descriptors was a major bottleneck in the path to simplifying development of EJBs. Therefore one of the primary goals of the EJB 3.0 specification was to shield the developer from having to work with XML files.</p>
+
+<p>This is accomplished by the use of metadata annotations that have been added to JDK 5.0 as part of the JSR 175 JCP specification. Annotations are a kind of attribute-oriented programming and are similar to XDoclet.</p>
+
+<p>However, unlike XDoclet, which requires pre-compilation, annotations are compiled into the classes by the Java compiler at compile-time. From the developer's point of view, annotations are modifiers like public/private and can be used in classes, fields, or methods.</p>
+
+<p>Hibernate is a popular, open source O/R mapping framework for Java environments, meant to shield developers from most common data-persistence-related programming tasks. It also has a specific Hibernate Query Language (HQL), imprints of which can be seen in the new EJB QL. Hibernate offers facilities for data retrieval and update, connection pooling, transaction management, declarative entity relationship management, and declarative and programmatic queries.</p>
+
+<p>The new entity beans are also just POJOs with a few annotations and are not persistent entities by birth. An entity instance becomes persistent once it is associated with an EntityManager and becomes part of a persistence context. A persistence context is loosely synonymous with a transaction context; in strict words, it implicitly coexists with a transaction's scope.</p>
+
+<p>The entity relationships are also defined through annotations। In addition, O/R mapping is also done through annotations, and support for several database-specific operations is provided.</p>
+
+<p>With EJB 2.1, developers used their own design patterns or employed nonportable techniques (for example, auto key generation strategies).</p>
+
+<p>The main aim of the <strong>EJB 3.0</strong> is to provide an improved <strong>EJB</strong> architecture by reducing its complexity from enterprise application developer's point of view.</p>
+
+<p><strong>EJB 3.0</strong> is focused on the following goals:</p>
+
+<ul>
+<li><p>Definition of the Java language metadata annotations that can be used to annotate EJB applications. These metadata annotations are targeted at simplifying the developer’s task, at reducing the number of program classes and interfaces the developer is required to implement, and at eliminating the need for the developer to provide an EJB deployment descriptor.</p></li>
+<li><p>Specification of programmatic defaults, including for metadata, to reduce the need for the
+developer to specify common, expected behaviors and requirements on the EJB container. A “configuration by exception” approach is taken whenever possible.</p></li>
+<li><p>Encapsulation of environmental dependencies and JNDI access through the use of annotations,
+dependency injection mechanisms, and simple lookup mechanisms.</p></li>
+<li><p>Simplification of the enterprise bean types.</p></li>
+<li><p>Elimination of the requirement for EJB component interfaces for session beans. The required business interface for a session bean can be a plain Java interface rather than an EJBObject, EJBLocalObject, or java.rmi.Remote interface.</p></li>
+<li><p>Elimination of the requirement for home interfaces for session beans.</p></li>
+<li><p>Simplification of entity persistence through the Java Persistence API. Support for light-weight
+domain modeling, including inheritance and polymorphism.</p></li>
+<li><p>Elimination of all required interfaces for persistent entities.</p></li>
+<li><p>Specification of Java language metadata annotations and XML deployment descriptor elements for the object/relational mapping of persistent entities.</p></li>
+<li><p>A query language for Java Persistence that is an extension to EJB QL, with addition of projection, explicit inner and outer join operations, bulk update and delete, subqueries, and
+group-by. Addition of a dynamic query capability and support for native SQL queries.</p></li>
+<li><p>An interceptor facility for session beans and message-driven beans.</p></li>
+<li><p>Reduction of the requirements for usage of checked exceptions.</p></li>
+<li><p>Elimination of the requirement for the implementation of callback interfaces.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

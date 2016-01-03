@@ -1,0 +1,23 @@
+---
+author: 'Ikenna Okpala'
+comments: true
+date: 2009-06-24 04:48:00
+layout: post
+slug: java-joke
+title: Java Joke
+wordpress_id: 40
+categories:
+- Computing Jokes
+---
+
+A group of 4 Microsoft .NET programmers and a group of 4 Java programmers are going on a train to an expo. The MS programmers buy a ticket each, and then watch the Java programmers proceed to buy one ticket between them.
+
+The MS programmers are intrigued and when they get on the train, they watch the Java programmers to see what they do when the guard comes to check the tickets. It turns out that, before the guard comes, they all cram into the toilet. The guard knocks on the door, and asks for the ticket. The guard takes it from under the door, and slides it back.
+<!--more-->
+
+The MS programmers are all impressed, so on the way back, they buy only one ticket. Only to watch the Java folks get on the train without buying a ticket at all.
+
+<!--more-->
+When they get on the train, the MS people cram into the toilet, as they saw the Java folks on the earlier journey. The Java programmers then knock on the door, and say "Ticket please". The MS programmers slide the ticket under the door, as they saw the Java programmers do earlier.
+
+"Thank you", they say. "You steal our methods, but you don't understand them."
