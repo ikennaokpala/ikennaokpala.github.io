@@ -457,3 +457,9 @@ footer .footer-below {
     display: none;
     opacity: 0;
 }
+
+#profile-image {
+   border-radius: 128px;
+   -webkit-border-radius: 128px;
+   -moz-border-radius: 128px;
+}
