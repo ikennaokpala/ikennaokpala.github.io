@@ -110,47 +110,7 @@
 
 <p>Today, after a bit of housekeeping on my client box, connecting to the OPENVPN server seemed a big ask.</p>
 
-<figure class='code'><figcaption><span>openvpn </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>
-</span><span class='line'>  <span class="nv">$:</span> service openvpn restart
-</span><span class='line'>  Stopping virtual private network daemon:/etc/init.d/openvpn: 98: <span class="nb">kill</span>: No such process
-</span><span class='line'>
-</span><span class='line'>   client server.
-</span><span class='line'>  Starting virtual private network daemon: client server.
-</span><span class='line'>  Stopping virtual private network daemon:/etc/init.d/openvpn: 98: <span class="nb">kill</span>: No such process
-</span><span class='line'>
-</span><span class='line'>   client server.
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<!--more-->
-
-
-<p>After a bit of debugging the VPN client.conf:</p>
-
-<figure class='code'><figcaption><span>openvpn </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'> openvpn --config client.conf
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The result were as follows:</p>
-
-<figure class='code'><figcaption><span>error </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -161,71 +121,86 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>  OPTIONS IMPORT: timers and/or timeouts modified
-</span><span class='line'>  OPTIONS IMPORT: --ifconfig/up options modified
-</span><span class='line'>  OPTIONS IMPORT: route-related options modified
-</span><span class='line'>  Note: Cannot ioctl TUNSETIFF tap0: Device or resource busy <span class="o">(</span><span class="nv">errno</span><span class="o">=</span>16<span class="o">)</span>
-</span><span class='line'>  do_ifconfig, tt-&gt;ipv6<span class="o">=</span>0, tt-&gt;did_ifconfig_ipv6_setup<span class="o">=</span>0
-</span><span class='line'>  /sbin/ifconfig  198.xxx.xxx.xxx netmask 255.255.254.0 mtu 1500 broadcast 198.xxx.xxx.xxx
-</span><span class='line'>  SIOCSIFADDR: No such device
-</span><span class='line'>  : ERROR <span class="k">while </span>getting interface flags: No such device
-</span><span class='line'>  SIOCSIFNETMASK: No such device
-</span><span class='line'>  SIOCSIFMTU: No such device
-</span><span class='line'>  S  IOCSIFBRDADDR: No such device
-</span><span class='line'>  : ERROR <span class="k">while </span>getting interface flags: No such device
-</span><span class='line'>  Linux ifconfig failed: external program exited with error status: 255
-</span><span class='line'>  Exiting
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  <span class="nv">$:</span> service openvpn restart
+</span><span class='line'>  Stopping virtual private network daemon:/etc/init.d/openvpn: 98: <span class="nb">kill</span>: No such process
+</span><span class='line'>
+</span><span class='line'>   client server.
+</span><span class='line'>  Starting virtual private network daemon: client server.
+</span><span class='line'>  Stopping virtual private network daemon:/etc/init.d/openvpn: 98: <span class="nb">kill</span>: No such process
+</span><span class='line'>
+</span><span class='line'>   client server.
+</span><span class='line'> <span class="sb">```</span>
+</span><span class='line'>&lt;!--more--&gt;
+</span><span class='line'>After a bit of debugging the VPN client.conf:
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>As you may have observed above the network interface appeared to be busy or take over by some other service or simply not available.</p>
+<p>bash</p>
 
-<figure class='code'><figcaption><span>brctl </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<pre><code>openvpn --config client.conf
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>The result were as follows:
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>bash
+  OPTIONS IMPORT: timers and/or timeouts modified
+  OPTIONS IMPORT: &#8211;ifconfig/up options modified
+  OPTIONS IMPORT: route-related options modified
+  Note: Cannot ioctl TUNSETIFF tap0: Device or resource busy (errno=16)
+  do_ifconfig, tt->ipv6=0, tt->did_ifconfig_ipv6_setup=0
+  /sbin/ifconfig  198.xxx.xxx.xxx netmask 255.255.254.0 mtu 1500 broadcast 198.xxx.xxx.xxx
+  SIOCSIFADDR: No such device
+  : ERROR while getting interface flags: No such device
+  SIOCSIFNETMASK: No such device
+  SIOCSIFMTU: No such device
+  S  IOCSIFBRDADDR: No such device
+  : ERROR while getting interface flags: No such device
+  Linux ifconfig failed: external program exited with error status: 255
+  Exiting</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>As you may have observed above the network interface appeared to be busy or take over by some other service or simply not available.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>bash</p>
+
+<pre><code>$: brctl show
+bridge name bridge id       STP enabled interfaces
+</code></pre>
+
+<p>vmbrx       xxxxxxxx            no      ethx
+vmbry       xxxxxxxx            no      ehtx</p>
+
+<pre><code>                                    tap0
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>A query on the available network interfaces on the client showed that tap0 was actually available but already taken up.
+</span><span class='line'>
+</span><span class='line'>A way of getting the vpn client to reconnect without interupting the activity on tap0 is to create up.sh and down.sh just <span class="k">for </span>the VPN client, having them to use another tap interface.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>bash</p>
+
+<pre><code>#!/bin/sh
+/sbin/ifconfig vmbrx promisc
+/sbin/ifconfig tapxx up promisc
+/sbin/brctl addif vmbrxx tapxx
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>
-</span><span class='line'>  <span class="nv">$:</span> brctl show
-</span><span class='line'>  bridge name bridge id       STP enabled interfaces
-</span><span class='line'>vmbrx     xxxxxxxx            no      ethx
-</span><span class='line'>vmbry     xxxxxxxx            no      ehtx
-</span><span class='line'>                                      tap0
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>A query on the available network interfaces on the client showed that tap0 was actually available but already taken up.</p>
-
-<p>A way of getting the vpn client to reconnect without interupting the activity on tap0 is to create up.sh and down.sh just for the VPN client, having them to use another tap interface.</p>
-
-<figure class='code'><figcaption><span>up-client.sh </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>
-</span><span class='line'>  <span class="c">#!/bin/sh</span>
-</span><span class='line'>  /sbin/ifconfig vmbrx promisc
-</span><span class='line'>  /sbin/ifconfig tapxx up promisc
-</span><span class='line'>  /sbin/brctl addif vmbrxx tapxx
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>down-client.sh </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="sb">```</span>bash
 </span><span class='line'>  <span class="c">#!/bin/sh</span>
 </span><span class='line'>  /sbin/brctl delif vmbrxx tapxx
 </span><span class='line'>  /sbin/ifconfig tapxx down -promisc

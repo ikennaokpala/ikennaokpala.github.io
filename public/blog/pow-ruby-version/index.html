@@ -108,18 +108,15 @@
 
 <div class="entry-content"><p><strong>If you probably upgraded to the latest RVM and you got the message like i did to use ruby-version and ruby-gemset and you bought the idea.. The below helps set parity with the former.</strong></p>
 
-<figure class='code'><figcaption><span>.powrc </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">if</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;$rvm_path/scripts/rvm&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;.ruby-version&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;.ruby-gemset&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-</span><span class='line'>    <span class="n">source</span> <span class="s2">&quot;$rvm_path/scripts/rvm&quot;</span>
-</span><span class='line'>    <span class="n">rvm</span> <span class="n">use</span> <span class="sb">`cat .ruby-version`</span><span class="err">@</span><span class="sb">`cat .ruby-gemset`</span>
-</span><span class='line'>  <span class="n">fi</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  <span class="k">if</span> <span class="o">[</span> -f <span class="s2">&quot;$rvm_path/scripts/rvm&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> -f <span class="s2">&quot;.ruby-version&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> -f <span class="s2">&quot;.ruby-gemset&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+</span><span class='line'><span class="k">    </span><span class="nb">source</span> <span class="s2">&quot;$rvm_path/scripts/rvm&quot;</span>
+</span><span class='line'>    rvm use <span class="sb">`</span>cat .ruby-version<span class="sb">`</span>@<span class="sb">`</span>cat .ruby-gemset<span class="sb">`</span>
+</span><span class='line'>  <span class="k">fi</span>
 </span></code></pre></td></tr></table></div></figure>
-
-
 
 </div>
 

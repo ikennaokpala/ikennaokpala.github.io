@@ -4,7 +4,7 @@
   <title><![CDATA[Category: RAILS | Ikenna Okpala]]></title>
   <link href="http://ikennaokpala.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://ikennaokpala.com/"/>
-  <updated>2016-01-03T17:19:36+00:00</updated>
+  <updated>2016-01-03T17:30:25+00:00</updated>
   <id>http://ikennaokpala.com/</id>
   <author>
     <name><![CDATA[Ikenna Okpala]]></name>
@@ -20,22 +20,15 @@
     <id>http://ikennaokpala.com/blog/pow-ruby-version</id>
     <content type="html"><![CDATA[<p><strong>If you probably upgraded to the latest RVM and you got the message like i did to use ruby-version and ruby-gemset and you bought the idea.. The below helps set parity with the former.</strong></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>.powrc </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">if</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;$rvm_path/scripts/rvm&quot;</span> <span class="o">]</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;.ruby-version&quot;</span> <span class="o">]</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;.ruby-gemset&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;source &quot;$rvm_path/s</span><span class="n">cripts</span><span class="o">/</span><span class="n">rvm</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="s2">rvm use `cat .ruby-version`@`cat .ruby-gemset`</span>
-</span><span class='line'><span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="s2">&lt;p&gt;  fi</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>```bash
+  if [ -f "$rvm_path/scripts/rvm" ] &amp;&amp; [ -f ".ruby-version" ] &amp;&amp; [ -f ".ruby-gemset" ]; then</p>
+
+<pre><code>source "$rvm_path/scripts/rvm"
+rvm use `cat .ruby-version`@`cat .ruby-gemset`
+</code></pre>
+
+<p>  fi
+```</p>
 ]]></content>
   </entry>
   

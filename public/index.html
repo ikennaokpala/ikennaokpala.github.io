@@ -113,8 +113,7 @@
 
 <p>Today, after a bit of housekeeping on my client box, connecting to the OPENVPN server seemed a big ask.</p>
 
-<figure class='code'><figcaption><span>openvpn </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -124,8 +123,8 @@
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>
-</span><span class='line'>  <span class="nv">$:</span> service openvpn restart
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  <span class="nv">$:</span> service openvpn restart
 </span><span class='line'>  Stopping virtual private network daemon:/etc/init.d/openvpn: 98: <span class="nb">kill</span>: No such process
 </span><span class='line'>
 </span><span class='line'>   client server.
@@ -133,18 +132,88 @@
 </span><span class='line'>  Stopping virtual private network daemon:/etc/init.d/openvpn: 98: <span class="nb">kill</span>: No such process
 </span><span class='line'>
 </span><span class='line'>   client server.
-</span><span class='line'>
+</span><span class='line'> <span class="sb">```</span>
+</span><span class='line'>&lt;!--more--&gt;
+</span><span class='line'>After a bit of debugging the VPN client.conf:
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>bash</p>
+
+<pre><code>openvpn --config client.conf
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>The result were as follows:
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>bash
+  OPTIONS IMPORT: timers and/or timeouts modified
+  OPTIONS IMPORT: &#8211;ifconfig/up options modified
+  OPTIONS IMPORT: route-related options modified
+  Note: Cannot ioctl TUNSETIFF tap0: Device or resource busy (errno=16)
+  do_ifconfig, tt->ipv6=0, tt->did_ifconfig_ipv6_setup=0
+  /sbin/ifconfig  198.xxx.xxx.xxx netmask 255.255.254.0 mtu 1500 broadcast 198.xxx.xxx.xxx
+  SIOCSIFADDR: No such device
+  : ERROR while getting interface flags: No such device
+  SIOCSIFNETMASK: No such device
+  SIOCSIFMTU: No such device
+  S  IOCSIFBRDADDR: No such device
+  : ERROR while getting interface flags: No such device
+  Linux ifconfig failed: external program exited with error status: 255
+  Exiting</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>As you may have observed above the network interface appeared to be busy or take over by some other service or simply not available.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>bash</p>
+
+<pre><code>$: brctl show
+bridge name bridge id       STP enabled interfaces
+</code></pre>
+
+<p>vmbrx       xxxxxxxx            no      ethx
+vmbry       xxxxxxxx            no      ehtx</p>
+
+<pre><code>                                    tap0
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>A query on the available network interfaces on the client showed that tap0 was actually available but already taken up.
+</span><span class='line'>
+</span><span class='line'>A way of getting the vpn client to reconnect without interupting the activity on tap0 is to create up.sh and down.sh just <span class="k">for </span>the VPN client, having them to use another tap interface.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>bash</p>
+
+<pre><code>#!/bin/sh
+/sbin/ifconfig vmbrx promisc
+/sbin/ifconfig tapxx up promisc
+/sbin/brctl addif vmbrxx tapxx
+</code></pre>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="sb">```</span>bash
+</span><span class='line'>  <span class="c">#!/bin/sh</span>
+</span><span class='line'>  /sbin/brctl delif vmbrxx tapxx
+</span><span class='line'>  /sbin/ifconfig tapxx down -promisc
+</span><span class='line'>  /sbin/ifconfig vmbrxx -promisc
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now on testing the VPN client connection again all should be well.</p>
 </div>
   
-  
-    <footer>
-      <a rel="full-article" href="/blog/fix-openvpn-network-interface-mismatch">Read on &rarr;</a>
-    </footer>
   
 
 
@@ -225,18 +294,15 @@
 
   <div class="entry-content"><p><strong>If you probably upgraded to the latest RVM and you got the message like i did to use ruby-version and ruby-gemset and you bought the idea.. The below helps set parity with the former.</strong></p>
 
-<figure class='code'><figcaption><span>.powrc </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">if</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;$rvm_path/scripts/rvm&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;.ruby-version&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;.ruby-gemset&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-</span><span class='line'>    <span class="n">source</span> <span class="s2">&quot;$rvm_path/scripts/rvm&quot;</span>
-</span><span class='line'>    <span class="n">rvm</span> <span class="n">use</span> <span class="sb">`cat .ruby-version`</span><span class="err">@</span><span class="sb">`cat .ruby-gemset`</span>
-</span><span class='line'>  <span class="n">fi</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>  <span class="k">if</span> <span class="o">[</span> -f <span class="s2">&quot;$rvm_path/scripts/rvm&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> -f <span class="s2">&quot;.ruby-version&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> -f <span class="s2">&quot;.ruby-gemset&quot;</span> <span class="o">]</span>; <span class="k">then</span>
+</span><span class='line'><span class="k">    </span><span class="nb">source</span> <span class="s2">&quot;$rvm_path/scripts/rvm&quot;</span>
+</span><span class='line'>    rvm use <span class="sb">`</span>cat .ruby-version<span class="sb">`</span>@<span class="sb">`</span>cat .ruby-gemset<span class="sb">`</span>
+</span><span class='line'>  <span class="k">fi</span>
 </span></code></pre></td></tr></table></div></figure>
-
-
 
 </div>
   

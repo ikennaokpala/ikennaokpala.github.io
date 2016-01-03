@@ -18,7 +18,7 @@ Getting VPN clients-to-server connected should be a piece of cake right. Simply 
 
 Today, after a bit of housekeeping on my client box, connecting to the OPENVPN server seemed a big ask.
 
-{% codeblock openvpn lang:bash %} 
+```bash
   $: service openvpn restart
   Stopping virtual private network daemon:/etc/init.d/openvpn: 98: kill: No such process
 
@@ -27,17 +27,17 @@ Today, after a bit of housekeeping on my client box, connecting to the OPENVPN s
   Stopping virtual private network daemon:/etc/init.d/openvpn: 98: kill: No such process
 
    client server.
- {% endcodeblock %}
+ ```
 <!--more-->
-After a bit of debugging the VPN client.conf: 
+After a bit of debugging the VPN client.conf:
 
-{% codeblock openvpn lang:bash %}
+```bash
 	openvpn --config client.conf
-{% endcodeblock %}
+```
 
-The result were as follows: 
+The result were as follows:
 
-{% codeblock error lang:bash %}
+```bash
   OPTIONS IMPORT: timers and/or timeouts modified
   OPTIONS IMPORT: --ifconfig/up options modified
   OPTIONS IMPORT: route-related options modified
@@ -52,34 +52,34 @@ The result were as follows:
   : ERROR while getting interface flags: No such device
   Linux ifconfig failed: external program exited with error status: 255
   Exiting
-{% endcodeblock %}
+```
 
 As you may have observed above the network interface appeared to be busy or take over by some other service or simply not available.
 
-{% codeblock brctl lang:bash %} 
+```bash
 	$: brctl show
 	bridge name	bridge id		STP enabled	interfaces
 vmbrx		xxxxxxxx			no		ethx
 vmbry		xxxxxxxx			no		ehtx
 										tap0
-{% endcodeblock %}
+```
 
 A query on the available network interfaces on the client showed that tap0 was actually available but already taken up.
 
 A way of getting the vpn client to reconnect without interupting the activity on tap0 is to create up.sh and down.sh just for the VPN client, having them to use another tap interface.
 
-{% codeblock up-client.sh lang:bash %} 
+```bash
 	#!/bin/sh
 	/sbin/ifconfig vmbrx promisc
 	/sbin/ifconfig tapxx up promisc
 	/sbin/brctl addif vmbrxx tapxx
-{% endcodeblock %}
+```
 
-{% codeblock down-client.sh lang:bash %} 
+```bash
 	#!/bin/sh
 	/sbin/brctl delif vmbrxx tapxx
 	/sbin/ifconfig tapxx down -promisc
 	/sbin/ifconfig vmbrxx -promisc
-{% endcodeblock %}
+```
 
 Now on testing the VPN client connection again all should be well.

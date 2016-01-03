@@ -4,7 +4,7 @@
   <title><![CDATA[Category: LINUX | Ikenna Okpala]]></title>
   <link href="http://ikennaokpala.com/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://ikennaokpala.com/"/>
-  <updated>2016-01-03T17:19:36+00:00</updated>
+  <updated>2016-01-03T17:30:25+00:00</updated>
   <id>http://ikennaokpala.com/</id>
   <author>
     <name><![CDATA[Ikenna Okpala]]></name>
@@ -33,45 +33,38 @@
 
 <ul>
 <li><p>Install RPM:
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install RPM </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>  sudo apt-get install rpm
-</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<code>bash
+  sudo apt-get install rpm
+</code></p></li>
 <li><p> Open up the cliv2:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>  tar -xvf  cliv2_LINUX_indep.14.00.00.07.tar.gz
-</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<p><code>bash
+  tar -xvf  cliv2_LINUX_indep.14.00.00.07.tar.gz
+</code></p></li>
 <li><p> Change directory  and Install cliv2:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>  sudo rpm -ivh --nodeps cliv2-14.00.00.07-1.noarch.rpm
-</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<p><code>bash
+  sudo rpm -ivh --nodeps cliv2-14.00.00.07-1.noarch.rpm
+</code></p></li>
 <li><p> Change directory to tdicu:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>   sudo rpm -ivh --nodeps tdicu-14.00.00.00-1.noarch.rpm
-</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<p><code>bash
+   sudo rpm -ivh --nodeps tdicu-14.00.00.00-1.noarch.rpm
+</code></p></li>
 <li><p> Change directory to TeraGSS and install:
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>  sudo rpm -ivh --nodeps TeraGSS_linux_x64-14.00.02.07-1.noarch.rpm
-</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<code>bash
+  sudo rpm -ivh --nodeps TeraGSS_linux_x64-14.00.02.07-1.noarch.rpm
+</code></p></li>
 <li><p> Open up tdodbc:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>  tar -xvf tdodbc__linux_indep.14.00.00.04-1.tar.gz
-</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<p><code>bash
+  tar -xvf tdodbc__linux_indep.14.00.00.04-1.tar.gz
+</code></p></li>
 <li><p> Change dorectory to tdodbc:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>  sudo rpm -ivh --nodeps tdodbc-14.00.00.04-1.noarch.rpm
-</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<p><code>bash
+  sudo rpm -ivh --nodeps tdodbc-14.00.00.04-1.noarch.rpm
+</code></p></li>
 </ul>
 
 
@@ -79,67 +72,47 @@
 
 <ul>
 <li><p>Change directory to rubycli-1.0.0 and run the following commands:
-<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>  make unix &amp;amp;&amp;amp; ruby setup.rb install
-</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<code>bash
+  make unix &amp;&amp; ruby setup.rb install
+</code></p></li>
 <li><p>Add these paths to your .zshrc or .bashrc or .bash_profile files</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;export <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/opt/teradata/client/14.00/lib&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;export <span class="nv">COPLIB</span><span class="o">=</span>/opt/teradata/client/14.00/lib
-</span><span class='line'><span class="nb">export </span><span class="nv">COPERR</span><span class="o">=</span>/opt/teradata/client/14.00/lib
-</span><span class='line'><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/opt/teradata/client/14.00/tbuild/lib:/opt/teradata/client/14.00/lib
-</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<p>```bash</p>
+
+<h1>export LD_LIBRARY_PATH=/opt/teradata/client/14.00/lib</h1>
+
+<p>export COPLIB=/opt/teradata/client/14.00/lib
+export COPERR=/opt/teradata/client/14.00/lib
+export LD_LIBRARY_PATH=/opt/teradata/client/14.00/tbuild/lib:/opt/teradata/client/14.00/lib
+```</p></li>
 <li><p> Finally download or obtain the the 32bit version of the following files:
 bteq, fastload, fexp, mload, ppcmain</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo mkdir -p  /opt/teradata/client/14.00/bin&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;h1&gt;copy files from where you have downloaded them to&lt;/h1&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;sudo cp -R bin/&lt;em&gt; /opt/teradata/client/14.00/bin
-</span><span class='line'>sudo chown -R root:root /opt/teradata/client/14.00/bin/&lt;/em&gt;
-</span><span class='line'>sudo chmod +x /opt/teradata/client/14.00/bin/*
-</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<p>```bash
+sudo mkdir -p  /opt/teradata/client/14.00/bin</p>
+
+<h1>copy files from where you have downloaded them to</h1>
+
+<p>sudo cp -R bin/<em> /opt/teradata/client/14.00/bin
+sudo chown -R root:root /opt/teradata/client/14.00/bin/</em>
+sudo chmod +x /opt/teradata/client/14.00/bin/*
+```</p></li>
 </ul>
 
 
 <p>NB: Check that all the dependencies for each of the bin stubs are present.
 example:</p>
 
-<pre><code><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>  ldd fexp
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<pre><code>```bash
+  ldd fexp
+```
 </code></pre>
 
 <p>You may observe that the libpm.so file 32 bit version is not present, so you then copy the file like this:</p>
 
-<p>  <div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>install teradata rubycli </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>  cp /path to /client/14.00/lib/libpm.so /opt/teradata/client/14.00/lib
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>  <code>bash
+  cp /path to /client/14.00/lib/libpm.so /opt/teradata/client/14.00/lib
+ </code></p>
 
 <p>After this you should be rarring and ready to go.</p>
 ]]></content>
