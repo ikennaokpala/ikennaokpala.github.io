@@ -463,3 +463,7 @@ footer .footer-below {
    -webkit-border-radius: 128px;
    -moz-border-radius: 128px;
 }
+
+#project-description {
+  text-align: left !important;
+}
