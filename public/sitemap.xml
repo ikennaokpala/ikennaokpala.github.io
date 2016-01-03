@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://ikennaokpala.com/</loc>
+    <loc>http://localhost:1313/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://ikennaokpala.com/test/</loc>
+    <loc>http://localhost:1313/test/</loc>
   </url>
   
 </urlset>

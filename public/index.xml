@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>There is not trafic in the extra mile.</title>
-    <link>http://ikennaokpala.com/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on There is not trafic in the extra mile.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://ikennaokpala.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title></title>
-      <link>http://ikennaokpala.com/test/</link>
+      <link>http://localhost:1313/test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://ikennaokpala.com/test/</guid>
+      <guid>http://localhost:1313/test/</guid>
       <description>arch types
 </description>
     </item>

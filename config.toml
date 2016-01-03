@@ -60,7 +60,7 @@ theme = "freelancer"
         right = "I subscribe to agile, pair programming(where required), behaviour driven (BDD), DRY, progressive enhancement, and open source approaches to software development."
 
         [params.about.button]
-            text = "Read more"
+            text = "Profile"
             link = "//uk.linkedin.com/in/ikennaokpala"
             icon = "linkedin"
 
@@ -113,4 +113,4 @@ theme = "freelancer"
 
         [params.footer.credits]
             title = "About Me"
-            text = ""
+            text = "I’m a specialist in web development with experience delivering projects across various sectors (medical, pharmacology, retail, e-commerce and sports betting, web agency.
