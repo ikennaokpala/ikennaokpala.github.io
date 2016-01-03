@@ -110,6 +110,10 @@ theme = "freelancer"
                 icon = "fa-linkedin"
                 link=  "//uk.linkedin.com/in/ikennaokpala"
 
+            [[params.footer.social.networks]]
+                icon = "fa-twitter"
+                link=  "//twitter.com/ikenna_okpala"
+
 
         [params.footer.credits]
             title = "About Me"
