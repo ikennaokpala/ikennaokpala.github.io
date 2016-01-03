@@ -1,7 +1,7 @@
 # Site settings
 baseurl = "http://ikennaokpala.com/"
 languageCode = "en-us"
-title = "There is not trafic in the extra mile."
+title = "Ikenna N. Okpala: Programmer / Software developer based in London."
 theme = "freelancer"
 
 
@@ -36,7 +36,7 @@ theme = "freelancer"
         # Copy your own image into './static/img/'' if you wish
         image = "profile.png"
         name = ""
-        subtitle = "Programmer - Enterpreneur - Consultant"
+        subtitle = "Programmer - Blogger - Pragmatist"
 
 
     [params.portfolio]
