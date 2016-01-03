@@ -1,0 +1,8 @@
+<div class="highlight"><pre>  <span class="k">if</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;$rvm_path/scripts/rvm&quot;</span> <span class="o">]</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;.ruby-version&quot;</span> <span class="o">]</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="o">[</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;.ruby-gemset&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+
+<span class="sr">&lt;pre&gt;&lt;code&gt;source &quot;$rvm_path/s</span><span class="n">cripts</span><span class="o">/</span><span class="n">rvm</span><span class="s2">&quot;</span>
+<span class="s2">rvm use `cat .ruby-version`@`cat .ruby-gemset`</span>
+<span class="s2">&lt;/code&gt;&lt;/pre&gt;</span>
+
+<span class="s2">&lt;p&gt;  fi</span>
+</pre></div>
