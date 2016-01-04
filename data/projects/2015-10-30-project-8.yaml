@@ -11,4 +11,4 @@ Ikenna worked on the medical patient's service app using scrum management method
 
 He built a large part of automated test support environment with Ruby’s cucumber, capybara, nokogiri and R-Spec, selenium that has now been transformed to a company gem used by other teams.<br/><br/>
 
-Additionally, He worked on building an upgrading the content management system using Ruby on Rails and JavaScript with a PostgreSQL back-end. On the JavaScript side, we used the jQuery library (with some coffee-script for syntactic sugar) to provide a highly usable and functional GUI.<br/><br/>"
+Additionally, He worked on building and upgrading the content management system using Ruby on Rails and JavaScript with a PostgreSQL back-end. On the JavaScript side, we used the jQuery library (with some coffee-script for syntactic sugar) to provide a highly usable and functional GUI.<br/><br/>"
