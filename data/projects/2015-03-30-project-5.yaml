@@ -1,23 +1,9 @@
-modalID: 5
-title: "Crowd funding and trading of property shares."
-date: 2015-03-30
-img: elevate.png
-client: Elevate Capital Ltd
-clientLink: "https://www.elevateinvest.com/"
+modalID: 3
+title: "UK Government Tribunal decisions"
+date: 2014-05-30
+img: tribunal.png
+client: Ministry Of Justice
+clientLink: "https://tribunalsdecisions.service.gov.uk/utiac"
 category: Web Development
-description: "This project involved creating the complex mechanisms required in order to allow the purchase and trading of shares for properties with the same liquid behaviours expected by traders buying and selling shares in a stock exchange. The system also keeps track of the P & L for all off the properties, share price changes and dividends and interest payments due to the investors.<br/><br/>
-
-Ikenna worked as part of the team at Elevate Capital. He worked on Transport Links and Schools metadata feature for properties on the elevate platform. This is built as a ruby REST based API that interacts with several sources for data.<br/><br/>
-
-This also calculates the distance of the facilities to the property and also they plotted and displayed on a Google map. He was placed with the responsibility of delivering the work, which involved Devops (Rackspace and setup of Proxmox hypervisor which with setting Up isolated local test environments), Backend and Frontend tasks.<br/><br/>
-
-He implemented elastic search for Marketplace (Property and Business loans) and Knowledgebase CMS. This was deployed to docker container in an Rackspace cloud environment.<br/><br/>
-
-He used docker with vagrant/virtualbox to setup his isolated development environment.<br/><br/>
-
-Also Ikenna worked on the Step 3 Financial Performance feature where he developed a complex rails form for capturing Income and balance sheet figures for rating the respective company performance over a period of time.  He also fixed buys across a number of features on the elevate platform (registration, non-uk residence feature, Effective dates et al).<br/><br/>
-
-He also integrated D3.JS graphs (for reporting) into the Backbone.JS frontend.
-He is currently implementing the APIs (automated docs with swagger ui) for the new Backbone.JS frontend.<br/><br/>
-
-His last assignment was the development of the frontend (Backbone JS) and backend (RoR) of the underwriting section of the Elevate app. This covered calculations of key performance indicators (like EBITDA, Change in turnover/Net Assets, Liabilities) from companies data obtained from Duedil API, Experian (ID HUB) SOAP API and Companies House raw data."
+description: "This is an information system that provides details on various types of court processdings. <br/><br/> Ikenna worked as part of the information services team at MOJ. He worked on two ruby on rails government open source projects (courtfinder and tribunal decision).<br/><br/> His work ranged from bug fixes, addition of new features and a bit of devops.<br/><br/>
+Here is  <a href='https://github.com/ministryofjustice/tribunals/graphs/contributors' target='_blank'>  a link </a> to the projects source repository on Github."

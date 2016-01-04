@@ -1,9 +1,23 @@
-modalID: 3
-title: "UK Government Tribunal decisions"
-date: 2014-05-30
-img: tribunal.png
-client: Ministry Of Justice
-clientLink: "https://tribunalsdecisions.service.gov.uk/utiac"
+modalID: 6
+title: "National Cancer Audit Reports Project"
+date: 2015-07-30
+img: phe.png
+client: Public Health England
+clientLink: "#"
 category: Web Development
-description: "This is an information system that provides details on various types of court processdings. <br/><br/> Ikenna worked as part of the information services team at MOJ. He worked on two ruby on rails government open source projects (courtfinder and tribunal decision).<br/><br/> His work ranged from bug fixes, addition of new features and a bit of devops.<br/><br/>
-Here is  <a href='https://github.com/ministryofjustice/tribunals/graphs/contributors' target='_blank'>  a link </a> to the projects source repository on Github."
+description: "The NCIN is a UK-wide initiative, working to drive improvements in standards of cancer care and clinical outcomes by analysing data collected about cancer patients via internal information systems. <br/><br/>
+
+Ikenna worked as part of the technology team at the National Cancer Registration Service East on the  COSD reporting application written in initially in C#.Net. <br/><br/>
+This project’s conversion to a Rails had already started. He joined to assist accelerate its development.<br/><br/>
+
+He worked on Level 1 to Level 4 National Cancer Audit Reports (COSD) (HTML, Excel, PDF, CSV and Word) rendering using rail’s presenters and Data Access Object (DAO’s) for compositing the report summaries, which are driving by rspec tests.<br/><br/>
+
+Each summary is a collection of rows of ruby structs representing different parts of the reports (TotalStruct, SubTotalStruct. etc). Also the presenters provided that added advantage of sharing several components across report types.<br/><br/>
+
+Also he employed inheritance and composition to shared behavior and properties to similar types of National Audit reports like Lung Cancer (NLCA) and Prostate Cancer (NPCA)<br/><br/>
+
+This approach/pattern helped the uniformity of the report data presentation to different report formats (Excel, HTML, PDF, CSV and Word).<br/><br/>
+
+Ikenna also wrote the HTML to Word converter, which he adapted from ruby wicked pdf library as the already exiting gems did not fit into the Architecture.<br/><br/>
+
+Also, he is also involved in the data extraction from the ERA Oracle database COSD NLCA, NPCA, Clinical Indicators for breast cancers audits. This includes writing raw SQL queries, rake tasks and ruby libraries / import scripts for extraction of data."
