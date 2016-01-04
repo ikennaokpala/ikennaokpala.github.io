@@ -56,7 +56,7 @@ theme = "freelancer"
     [params.about]
         title = "About"
         # The about text is splitted into a left and right column
-        left = "I wake up every morning seeking ways to harness my imagination and technology to benefit mankind.I solve real world problems with practical yet elegant user-centred solutions based on business priorities."
+        left = "I wake up every morning seeking ways to harness my imagination and technology to benefit mankind. I solve real world problems with practical yet elegant user-centred solutions based on business priorities."
         right = "I subscribe to agile, pair programming(where required), behaviour driven (BDD), DRY, progressive enhancement, and open source approaches to software development."
 
         [params.about.button]
