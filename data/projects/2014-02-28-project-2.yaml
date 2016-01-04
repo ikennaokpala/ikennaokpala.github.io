@@ -5,8 +5,8 @@ img: lmi.png
 client: Tesco PLC
 clientLink: "#"
 category: Web Development
-description: "Logistics Management System is a systen which assists with scheduling, forecasting and ordering of Tesco Products / Stock. <br/><br/> This system was first written in the 70's and is based on x3270/s3270. The idea behind this project was to create web browser based emulator for this system. <br/><br/> I worked on this mostly applying screen scrapping techniques. On the frontend BackboneJS/Underscore/JQuery used for rendering and DOM manipulation and the Mousetrap for keyboard key binding/shortcuts. <br/><br/> The backend included Apache ActiveMQ and ruby REST based API that basically handled sending and receiving responses from and to s3270. <br/><br/>
+description: "Logistics Management System is a systen which assists with scheduling, forecasting and ordering of Tesco Products / Stock. <br/><br/> This system was first written in the 70's and is based on x3270/s3270. The idea behind this project was to create web browser based emulator for this system. <br/><br/> Ikenna worked on this mostly applying screen scrapping techniques. On the frontend BackboneJS/Underscore/JQuery used for rendering and DOM manipulation and the Mousetrap for keyboard key binding/shortcuts. <br/><br/> The backend included Apache ActiveMQ and ruby REST based API that basically handled sending and receiving responses from and to s3270. <br/><br/>
 
-Also involved in the defining/architecting of the infrastructure / devops / deployment environment and adding automated deployment processes.<br/><br/>
+Also he was involved in the defining/architecting of the infrastructure / devops / deployment environment and adding automated deployment processes.<br/><br/>
 
 This project also includes a translations engine for each screen, from English to Korean, Hungarian and Thai etc. I developed this engine such a way that this can support more languages if need be."
