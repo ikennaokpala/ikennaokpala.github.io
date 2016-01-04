@@ -6,6 +6,6 @@ client: Laverock Von Schoultz Limited
 clientLink: "#"
 category: Web Development
 description: "LVS is the industry leader in providing full-service betting systems with the most advanced live betting application on the market today. <br/><br/>Ikenna worked as part of a team of up to 7 web engineers, building the ISBB's (The Israel Sports Betting Board) sports betting site.<br/><br/>
-He is responsible for all of the customer chat, account and in-house Captcha tool and refactoring/ performance optimisation on the rails app. <br/><br/>
+He was responsible beginning and developing the customer chat, user account railtie and in-house Captcha tool and refactoring/ performance optimisation on the rails app. <br/><br/>
 The entire component system uses Rails 3 engines. Lots of dynamic code has been written in order to build a nice system for interacting with the REST web interface of the Java-based Advanced Betting Platform backend system. <br/><br/>
 He wrote tests using RSpec and Cucumber and deployment with Capistrano."

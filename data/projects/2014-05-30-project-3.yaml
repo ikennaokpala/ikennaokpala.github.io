@@ -10,7 +10,7 @@ description: "The NCIN is a UK-wide initiative, working to drive improvements in
 Ikenna worked as part of the technology team at the National Cancer Registration Service East on the  COSD reporting application written in initially in C#.Net. <br/><br/>
 This project’s conversion to a Rails had already started. He joined to assist accelerate its development.<br/><br/>
 
-He worked on Level 1 to Level 4 National Cancer Audit Reports (COSD) (HTML, Excel, PDF, CSV and Word) rendering using rail’s presenters and Data Access Object (DAO’s) for compositing the report summaries, which are driving by rspec tests.<br/><br/>
+He worked on Level 1 to Level 4 National Cancer Audit Reports (COSD) (HTML, Excel, PDF, CSV and Word) rendering using rail’s presenters and Data Access Object (DAO’s) for compositing the report summaries, which are driven by rspec tests.<br/><br/>
 
 Each summary is a collection of rows of ruby structs representing different parts of the reports (TotalStruct, SubTotalStruct. etc). Also the presenters provided that added advantage of sharing several components across report types.<br/><br/>
 

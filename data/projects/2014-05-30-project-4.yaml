@@ -15,7 +15,7 @@ He implemented elastic search for Marketplace (Property and Business loans) and 
 
 He used docker with vagrant/virtualbox to setup his isolated development environment.<br/><br/>
 
-Also Ikenna worked on the Step 3 Financial Performance feature where he developed a complex rails form for capturing Income and balance sheet figures for rating the respective company performance over a period of time.  He also fixed buys across a number of features on the elevate platform (registration, non-uk residence feature, Effective dates et al).<br/><br/>
+Also Ikenna worked on the Step 3 Financial Performance feature where he developed a complex rails form for capturing Income and balance sheet figures for rating the respective company performance over a period of time.  He also fixed bugs across a number of features on the elevate platform (registration, non-uk residence feature, Effective dates et al).<br/><br/>
 
 He also integrated D3.JS graphs (for reporting) into the Backbone.JS frontend.
 He is currently implementing the APIs (automated docs with swagger ui) for the new Backbone.JS frontend.<br/><br/>
