@@ -13,7 +13,7 @@ theme = "freelancer"
     # To provide some metadata for search engines feel free to add a few
     # information about you and your website.
     name = "Ikenna N. Okpala"
-    description = "There is not trafic in the extra mile."
+    description = ""
 
     # Since this template is static, the contact form uses www.formspree.io as a
     # proxy. The form makes a POST request to their servers to send the actual
@@ -90,7 +90,7 @@ theme = "freelancer"
 
 
     [params.footer]
-        copyright = "Published under the Apache License 2.0. Powered by [Hugo](//gohugo.io)."
+        copyright = "Published under the Apache License 2.0. Built with [Golang's](//golang.org) Awesome [Hugo](//gohugo.io) Project."
 
         [params.footer.location]
             title = "Location"
