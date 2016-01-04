@@ -91,7 +91,7 @@ theme = "freelancer"
 
     [params.footer]
         # copyright = "Published under the Apache License 2.0. Built by [Golang's](//golang.org) Awesome [Hugo](//gohugo.io) Project."
-        copyright = "Published under the Apache License 2.0. Built with <a href='//golang.org'>Golang's</a> Awesome <a href='//gohugo.io'>Hugo</a> Project."
+        copyright = "Published under the Apache License 2.0. Built with <a href='//golang.org' target='_blank'>Golang's</a> Awesome <a href='//gohugo.io' target='_blank'>Hugo</a> Project."
 
         [params.footer.location]
             title = "Location"
