@@ -5,13 +5,13 @@ img: shopa.png
 client: Shopa Limited
 clientLink: "http://shopa.com"
 category: Web Development
-description: "Shopa is where shopping gets social, connecting retailers with customers through the power of recommendation.<br/<br/>
+description: "Shopa is where shopping gets social, connecting retailers with customers through the power of recommendation.<br/><br/>
 
-Pivotal in the evolution of ecommerce, the UK and US-based business is focused on unlocking the opportunities that social commerce brings and monetising the power of personal recommendation through its social marketplace.<br/<br/>
+Pivotal in the evolution of ecommerce, the UK and US-based business is focused on unlocking the opportunities that social commerce brings and monetising the power of personal recommendation through its social marketplace.<br/><br/>
 
-Ikenna worked as part of the technology team at shopa.com, working mostly on the backend ingester serivce and also the product catalog. This development process was mostly base on pair programming sessions, several code refactoring and bug fixes. This is currently on going work on the Shopa retailer proxy ingester / synchronizer project.<br/<br/>
-The work spans from type re-definition to interfaces to cater for woo-commerce shortcomings of returning strings and floating point types in an unpredictable matter.<br/<br/>
+Ikenna worked as part of the technology team at shopa.com, working mostly on the backend ingester serivce and also the product catalog. This development process was mostly base on pair programming sessions, several code refactoring and bug fixes. This is currently on going work on the Shopa retailer proxy ingester / synchronizer project.<br/><br/>
+The work spans from type re-definition to interfaces to cater for woo-commerce shortcomings of returning strings and floating point types in an unpredictable matter.<br/><br/>
 
-Fixes for several field mappings to Shopa standard fields to be ingested to the Shopa platform.<br/<br/>
+Fixes for several field mappings to Shopa standard fields to be ingested to the Shopa platform.<br/><br/>
 
 Used docker compose to setup development environment and integrate other micro-services (catalog, shopa website, redis, mongo and postgres instances) that the ingester required, in order to function properly."
