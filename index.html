@@ -144,6 +144,28 @@
                 </a>
             </div>
             
+            <div class="col-sm-4 portfolio-item">
+                <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="img/portfolio/phe.png" class="img-responsive">
+                </a>
+            </div>
+            
+            <div class="col-sm-4 portfolio-item">
+                <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="img/portfolio/shopa.png" class="img-responsive">
+                </a>
+            </div>
+            
         </div>
     </div>
 </section>
@@ -468,6 +490,87 @@ His last assignment was the development of the frontend (Backbone JS) and backen
                             </li>
                             <li>Date:
                                 <strong>2015-03-30</strong>
+                            </li>
+                            <li>Category:
+                                <strong>Web Development</strong>
+                            </li>
+                        </ul>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>National Cancer Audit Reports Project</h2>
+                        <hr class="star-primary">
+                        <img src="img/portfolio/phe.png" class="img-responsive img-centered" alt="">
+                        <p id="project-description">The NCIN is a UK-wide initiative, working to drive improvements in standards of cancer care and clinical outcomes by analysing data collected about cancer patients via internal information systems. <br/><br/>
+Ikenna worked as part of the technology team at the National Cancer Registration Service East on the  COSD reporting application written in initially in C#.Net. <br/><br/> This project’s conversion to a Rails had already started. He joined to assist accelerate its development.<br/><br/>
+He worked on Level 1 to Level 4 National Cancer Audit Reports (COSD) (HTML, Excel, PDF, CSV and Word) rendering using rail’s presenters and Data Access Object (DAO’s) for compositing the report summaries, which are driving by rspec tests.<br/><br/>
+Each summary is a collection of rows of ruby structs representing different parts of the reports (TotalStruct, SubTotalStruct. etc). Also the presenters provided that added advantage of sharing several components across report types.<br/><br/>
+Also he employed inheritance and composition to shared behavior and properties to similar types of National Audit reports like Lung Cancer (NLCA) and Prostate Cancer (NPCA)<br/><br/>
+This approach/pattern helped the uniformity of the report data presentation to different report formats (Excel, HTML, PDF, CSV and Word).<br/><br/>
+Ikenna also wrote the HTML to Word converter, which he adapted from ruby wicked pdf library as the already exiting gems did not fit into the Architecture.<br/><br/>
+Also, he is also involved in the data extraction from the ERA Oracle database COSD NLCA, NPCA, Clinical Indicators for breast cancers audits. This includes writing raw SQL queries, rake tasks and ruby libraries / import scripts for extraction of data.</p>
+                        <ul class="list-inline item-details">
+                            <li>Client:
+                                <strong><a href="#">Public Health England</a></strong>
+                            </li>
+                            <li>Date:
+                                <strong>2015-07-30</strong>
+                            </li>
+                            <li>Category:
+                                <strong>Web Development</strong>
+                            </li>
+                        </ul>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>Online Social e-Commerce Project</h2>
+                        <hr class="star-primary">
+                        <img src="img/portfolio/shopa.png" class="img-responsive img-centered" alt="">
+                        <p id="project-description">Shopa is where shopping gets social, connecting retailers with customers through the power of recommendation.<br/<br/>
+Pivotal in the evolution of ecommerce, the UK and US-based business is focused on unlocking the opportunities that social commerce brings and monetising the power of personal recommendation through its social marketplace.<br/<br/>
+Ikenna worked as part of the technology team at shopa.com, working mostly on the backend ingester serivce and also the product catalog. This development process was mostly base on pair programming sessions, several code refactoring and bug fixes. This is currently on going work on the Shopa retailer proxy ingester / synchronizer project.<br/<br/> The work spans from type re-definition to interfaces to cater for woo-commerce shortcomings of returning strings and floating point types in an unpredictable matter.<br/<br/>
+Fixes for several field mappings to Shopa standard fields to be ingested to the Shopa platform.<br/<br/>
+Used docker compose to setup development environment and integrate other micro-services (catalog, shopa website, redis, mongo and postgres instances) that the ingester required, in order to function properly.</p>
+                        <ul class="list-inline item-details">
+                            <li>Client:
+                                <strong><a href="http://shopa.com">Shopa Limited</a></strong>
+                            </li>
+                            <li>Date:
+                                <strong>2015-10-30</strong>
                             </li>
                             <li>Category:
                                 <strong>Web Development</strong>
