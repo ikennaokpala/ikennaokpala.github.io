@@ -1,0 +1,14 @@
+modalID: 8
+title: "Internal Infrastructure Upgrades and Content Management System"
+date: 2012-04-30
+img: img.png
+client: Impact Medical Group
+clientLink: "http://shopa.com"
+category: Web Development
+description: "Impact medical group is a healthcare provider pioneering a new model of medical services in USA and emerging markets around the globe. <br/><br/>
+
+Ikenna worked on the medical patient's service app using scrum management methodology. Applying BDD using RSpec and using Cucumber for user stories in conjunction with major stakeholders, to reveal and document, as well as drive development of  behavior in a large legacy code base (mostly C#. NET).<br/><br/>
+
+He built a large part of automated test support environment with Ruby’s cucumber, capybara, nokogiri and R-Spec, selenium that has now been transformed to a company gem used by other teams.<br/><br/>
+
+Additionally, He worked on building an upgrading the content management system using Ruby on Rails and JavaScript with a PostgreSQL back-end. On the JavaScript side, we used the jQuery library (with some coffee-script for syntactic sugar) to provide a highly usable and functional GUI.<br/><br/>"
