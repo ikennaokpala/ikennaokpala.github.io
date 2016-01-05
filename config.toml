@@ -6,7 +6,7 @@ theme = "freelancer"
 
 aliases = [
     "/blog/fix-openvpn-network-interface-mismatch",
-    "//old.ikennaokpala.com/blog/$1"
+    "http//old.ikennaokpala.com/blog/fix-openvpn-network-interface-mismatch"
 ]
 
 [params]
