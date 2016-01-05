@@ -4,6 +4,10 @@ languageCode = "en-us"
 title = "Ikenna N. Okpala: Programmer / Software developer based in London."
 theme = "freelancer"
 
+aliases = [
+    "/blog/*",
+    "//old.ikennaokpala.com/blog/$1"
+]
 
 [params]
 
