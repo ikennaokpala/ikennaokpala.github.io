@@ -1,0 +1,10 @@
++++
+date = "2016-01-05T16:49:05Z"
+draft = true
+title = "blog"
+
+ aliases = [
+     "/blog/*",
+     "http//old.ikennaokpala.com/blog/$1"
+ ]
++++

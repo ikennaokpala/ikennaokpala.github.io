@@ -4,10 +4,10 @@ languageCode = "en-us"
 title = "Ikenna N. Okpala: Programmer / Software developer based in London."
 theme = "freelancer"
 
-aliases = [
-    "/blog/fix-openvpn-network-interface-mismatch",
-    "http//old.ikennaokpala.com/blog/fix-openvpn-network-interface-mismatch"
-]
+# aliases = [
+#     "/blog/fix-openvpn-network-interface-mismatch",
+#     "http//old.ikennaokpala.com/blog/fix-openvpn-network-interface-mismatch"
+# ]
 
 [params]
 
