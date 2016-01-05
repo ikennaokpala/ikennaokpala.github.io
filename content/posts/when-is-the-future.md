@@ -1,9 +1,12 @@
 +++
-date = "2006-04-14T19:38:54Z"
-draft = true
-title = "when is the future"
-
+date        = "2006-04-14T19:38:54Z"
+title       = "When is the future"
+description = "When is the future"
+tags        = [ "beginning", "future" ]
+topics      = [ "beginning", "future" ]
+slug        = "/posts/when-is-the-future"
 +++
+
 
 # When is the future
 
