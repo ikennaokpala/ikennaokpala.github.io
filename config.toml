@@ -5,7 +5,7 @@ title = "Ikenna N. Okpala: Programmer / Software developer based in London."
 theme = "freelancer"
 
 aliases = [
-    "/blog/*",
+    "/blog/fix-openvpn-network-interface-mismatch",
     "//old.ikennaokpala.com/blog/$1"
 ]
 
