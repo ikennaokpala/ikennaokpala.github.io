@@ -40,7 +40,7 @@ theme = "freelancer"
         # Copy your own image into './static/img/'' if you wish
         image = "profile.png"
         name = ""
-        subtitle = "Programmer - Pragmatist - Thinker"
+        subtitle = "Programmer - Pragmatist - Connector"
 
 
     [params.portfolio]
