@@ -48,7 +48,8 @@ hr.star-primary {
 
 hr.star-light:after,
 hr.star-primary:after {
-    content: "\f005";
+    /*content: "\f005";*/
+    content: "\f120 \f121 \f126 \f0AD \f013 \f0ac \f14a";
     display: inline-block;
     position: relative;
     top: -.8em;
