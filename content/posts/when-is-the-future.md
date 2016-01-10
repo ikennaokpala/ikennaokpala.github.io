@@ -4,7 +4,7 @@ title       = "When is the future"
 description = "When is the future"
 tags        = [ "beginning", "future" ]
 topics      = [ "beginning", "future" ]
-slug        = "/posts/when-is-the-future"
+slug        = "when-is-the-future"
 +++
 
 
