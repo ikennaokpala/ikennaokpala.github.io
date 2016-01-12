@@ -11,26 +11,7 @@
             </button>
             <a class="navbar-brand" href="#page-top">{{ with .Site.Params.navigation.brand }}{{ . }}{{ end }}</a>
         </div>
-        {{ "<!-- Collect the nav links, forms, and other content for toggling -->" | safeHTML }}
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="hidden">
-                    <a href="#page-top"></a>
-                </li>
-                <li class="page-scroll">
-                    <a href="{{.Site.Params.portfolio.path }}">{{ with .Site.Params.portfolio.title }}{{ . }}{{ end }}</a>
-                </li>
-                <li class="page-scroll">
-                    <a href="{{ .Site.Params.about.path }}">{{ with .Site.Params.about.title }}{{ . }}{{ end }}</a>
-                </li>
-                <li class="page-scroll">
-                    <a href="{{ .Site.Params.contact.path }}">{{ with .Site.Params.contact.title }}{{ . }}{{ end }}</a>
-                </li>
-                <li class="page-scroll">
-                    <a href="{{ .Site.Params.blog.path }}">{{ with .Site.Params.blog.title }}{{ . }}{{ end }}</a>
-                </li>
-            </ul>
-        </div>
+        {{ partial "_nav.html" . }}
         {{ "<!-- /.navbar-collapse -->" | safeHTML }}
     </div>
     {{ "<!-- /.container-fluid -->" | safeHTML }}
