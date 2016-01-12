@@ -468,3 +468,7 @@ footer .footer-below {
 #project-description {
   text-align: left !important;
 }
+
+#archives, #post {
+  margin-top: 45px;
+}
