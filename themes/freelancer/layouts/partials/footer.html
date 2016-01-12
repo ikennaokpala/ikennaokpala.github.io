@@ -26,8 +26,13 @@
                     </ul>
                 </div>
                 <div class="footer-col col-md-4">
-                    <h3>{{ with .Site.Params.footer.credits.title }}{{.}}{{ end }}</h3>
-                    <p>{{ with .Site.Params.footer.credits.text }}{{ . | markdownify }}{{ end }}</p>
+                    <h3>{{ with .Site.Params.footer.list.blog.title }}{{.}}{{ end }}</h3>
+                    <ul>
+                      {{ range first 5 .Data.Pages.ByPublishDate }}
+                        <li> <p><a href="{{ .Permalink }}"> {{ .Title }} </a></p> </li>
+                        <div class="meta">{{ .PublishDate.Format "Mon, Jan 2, 2006" }}</div>
+                      {{ end }}
+                    </ul>
                 </div>
             </div>
         </div>
