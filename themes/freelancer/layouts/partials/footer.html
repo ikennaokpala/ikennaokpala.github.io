@@ -26,11 +26,10 @@
                     </ul>
                 </div>
                 <div class="footer-col col-md-4">
-                    <h3>{{ with .Site.Params.footer.list.blog.title }}{{.}}{{ end }}</h3>
-                    <ul>
+                    <h3>{{ with .Site.Params.footer.blog.list.title }}{{.}}{{ end }}</h3>
+                    <ul id="list-blog-footer">
                       {{ range first 5 .Data.Pages.ByPublishDate }}
-                        <li> <p><a href="{{ .Permalink }}"> {{ .Title }} </a></p> </li>
-                        <div class="meta">{{ .PublishDate.Format "Mon, Jan 2, 2006" }}</div>
+                        <li><a href="{{ .Permalink }}"> {{ .Title }} </a></li>
                       {{ end }}
                     </ul>
                 </div>

@@ -472,3 +472,15 @@ footer .footer-below {
 #archives, #post {
   margin-top: 45px;
 }
+
+ul#list-blog-footer{
+  list-style: none;
+}
+
+ul#list-blog-footer li{
+  text-align: center;
+}
+
+ul#list-blog-footer li a{
+  color: white;
+}
