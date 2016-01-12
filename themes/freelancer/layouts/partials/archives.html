@@ -9,9 +9,11 @@
         </div>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-              {{ range first 10 .Data.Pages }}
-                <h1>{{ .Title }}</h1>
-              {{ end }}
+              <ul>
+                {{ range .Data.Pages }}
+                  <li> <h4><a href="{{ .Permalink }}"> {{ .Title }} </a></h4> </li>
+                {{ end }}
+              </ul>
             </div>
         </div>
     </div>
