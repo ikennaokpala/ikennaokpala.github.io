@@ -1,7 +1,8 @@
 # Site settings
 baseurl = "http://ikennaokpala.com/"
 languageCode = "en-us"
-title = "Ikenna N. Okpala: Programmer / Software developer based in London."
+# title = "Ikenna N. Okpala: Programmer / Software developer based in London."
+title = "Ikenna N. Okpala: Freelance Golang/Web/Ruby on Rails developer; London, UK"
 theme = "freelancer"
 
 [permalinks]
@@ -130,3 +131,7 @@ theme = "freelancer"
         [params.footer.credits]
             title = "About Me"
             text = "I’m a specialist in web development with experience delivering projects across various sectors (medical, pharmacology, retail, e-commerce and sports betting, web agency)."
+
+        [params.footer.blog.list]
+            title = "Recent Posts"
+            text = ""
