@@ -6,9 +6,7 @@
     <body id="page-top" class="index">
 
         {{ partial "nav.html" . }}
-        {{ range first 10 .Data.Pages }}
-          <h1>{{ .Title }}</h1>
-        {{ end }}
+        {{ partial "archives.html" . }}
         {{ partial "footer.html" . }}
         {{ partial "modals.html" . }}
         {{ partial "js.html" . }}
