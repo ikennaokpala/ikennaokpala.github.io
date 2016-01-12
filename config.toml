@@ -49,6 +49,7 @@ theme = "freelancer"
         # at the root of this Hugo site.
         # For more informtion take a look at the README.
         title = "Projects"
+        path = "/#portfolio"
 
         [params.portfolio.modal]
             client = "Client"
@@ -59,6 +60,7 @@ theme = "freelancer"
 
     [params.about]
         title = "About"
+        path = "/#about"
         # The about text is splitted into a left and right column
         left = "I wake up every morning seeking ways to harness my imagination and technology to benefit mankind. I solve real world problems with practical yet elegant user-centred solutions based on business priorities."
         right = "I subscribe to agile, pair programming(where required), behaviour driven (BDD), DRY, progressive enhancement, and open source approaches to software development."
@@ -69,8 +71,13 @@ theme = "freelancer"
             icon = "linkedin"
 
 
+    [params.blog]
+        title = "Blog"
+        path = "/posts"
+
     [params.contact]
         title = "Contact"
+        path = "/#contact"
 
         # 'error' defines error messages for invalid inputs
         [params.contact.form.name]
