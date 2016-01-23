@@ -76,6 +76,8 @@ disqusShortname = "ikennaokpalasblog"
     [params.blog]
         title = "Blog"
         path = "posts"
+        listPageTitle = "List of Blog Posts"
+        quote = "Knowledge belongs to the world; Let's keep sharing."
 
     [params.contact]
         title = "Contact"
