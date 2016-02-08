@@ -16,9 +16,9 @@ Then I went on to talk about WHY? ORMs are important and HOW? useful they are.
 
 I continued with some insights on Go's philosophy, well from a newbie's perspective (I am only just a few weeks into practical Golang coding, counting by nights).
 
-Prior to this, I had some earlier introduction to Golang from [Seyi Ogunyemi](http://micrypt.com/){:target="_blank"} from our [podcast episode on Golang](http://freeair.io/2012/08/22/Go-Lang-Chat-Free-Style-with-Seyi-Ogunyemi.html){:target="_blank"} and after a few years later had a chat with [David Hernandez](https://github.com/dahernan){:target="_blank"} as well.
+Prior to this, I had some earlier introduction to Golang from [Seyi Ogunyemi](http://micrypt.com/){:target="_blank"} from our [podcast episode on Golang](http://freeair.io/2012/08/22/Go-Lang-Chat-Free-Style-with-Seyi-Ogunyemi.html){:target="_blank"} and after a few years later had a chat with [David Hernandez](https://github.com/dahernan){:target="_blank"}  as well.
 
-Thanks guys for help me out and reviewing my slides for this talk.
+Thanks guys for sharing your knowledge with me and BigUps to Seyi for reviewing my slides for this talk.
 
 <script async class="speakerdeck-embed" data-id="e23220596c5a4ae39a04323121eeacf2" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
