@@ -31,11 +31,11 @@
 
 &lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;e23220596c5a4ae39a04323121eeacf2&#34; data-ratio=&#34;1.77777777777778&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
 
-&lt;p&gt;Some of the experiences I shared in this talk where base on a small REST API (v1) I built with Golang.&lt;/p&gt;
+&lt;p&gt;Some of the experiences I shared in this talk were based on a small REST API (v1) I built with Golang.&lt;/p&gt;
 
-&lt;p&gt;The idea with this REST API, is to trim down a somewhat monolithic wordpress database to the bare essentials and enough to cater for a mobile/tablet apps et al.&lt;/p&gt;
+&lt;p&gt;The idea with this REST API is to trim down a somewhat monolithic wordpress database to the bare essentials and enough to cater for a mobile/tablet apps et al.&lt;/p&gt;
 
-&lt;p&gt;So here we are the opportunity to try Go out, yay!!.&lt;/p&gt;
+&lt;p&gt;So here it is, an opportunity to give Golang a go, yay!!.&lt;/p&gt;
 
 &lt;p&gt;I will be probably be posting progress as I continue to progress the REST API (v2).&lt;/p&gt;
 

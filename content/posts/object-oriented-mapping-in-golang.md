@@ -24,11 +24,11 @@ Thanks guys for sharing your knowledge with me and BigUps to Seyi for reviewing 
 
 <script async class="speakerdeck-embed" data-id="e23220596c5a4ae39a04323121eeacf2" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
-Some of the experiences I shared in this talk where base on a small REST API (v1) I built with Golang.
+Some of the experiences I shared in this talk were based on a small REST API (v1) I built with Golang.
 
-The idea with this REST API, is to trim down a somewhat monolithic wordpress database to the bare essentials and enough to cater for a mobile/tablet apps et al.
+The idea with this REST API is to trim down a somewhat monolithic wordpress database to the bare essentials and enough to cater for a mobile/tablet apps et al.
 
-So here we are the opportunity to try Go out, yay!!.
+So here it is, an opportunity to give Golang a go, yay!!.
 
 I will be probably be posting progress as I continue to progress the REST API (v2).
 
