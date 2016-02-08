@@ -10,7 +10,7 @@ slug        = "object-oriented-mapping-in-golang"
 
 Today, I gave a talk on ORMs in Golang at the [London Golang Meetup](http://www.meetup.com/Go-London-User-Group/).
 
-Thanks to everyone who turned up and for those who could not make it, here is video recording link https://skillsmatter.com/skillscasts/6162-orms-with-golang.
+Thanks to everyone who turned up and for those who could not make it, here is the video link https://skillsmatter.com/skillscasts/6162-orms-with-golang.
 
 I started my talk by defining what Object Relational Mapping is with a slight detour on its brief history thus far (mostly from what I have witnessed).
 
