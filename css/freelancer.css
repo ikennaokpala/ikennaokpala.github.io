@@ -478,7 +478,9 @@ ul#list-blog-footer{
 }
 
 ul#list-blog-footer li{
-  text-align: center;
+  /*text-align: center;*/
+  text-align: left;
+  margin-left: 40px;
 }
 
 ul#list-blog-footer li a{
