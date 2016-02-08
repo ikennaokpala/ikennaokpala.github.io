@@ -6,24 +6,24 @@
     <description>Recent content in Posts on Ikenna N. Okpala: Freelance Golang/Web/Ruby on Rails developer; London, UK</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 21 Jan 2015 19:38:54 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Jan 2015 23:38:54 +0000</lastBuildDate>
     <atom:link href="http://ikennaokpala.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Object Oriented Mapping in Golang</title>
       <link>http://ikennaokpala.com/posts/object-oriented-mapping-in-golang/</link>
-      <pubDate>Wed, 21 Jan 2015 19:38:54 +0000</pubDate>
+      <pubDate>Wed, 21 Jan 2015 23:38:54 +0000</pubDate>
       
       <guid>http://ikennaokpala.com/posts/object-oriented-mapping-in-golang/</guid>
-      <description>&lt;p&gt;Today, I will be giving a talk ORMs in Golang.&lt;/p&gt;
+      <description>&lt;p&gt;Today, I gave a talk on ORMs in Golang.&lt;/p&gt;
 
-&lt;p&gt;In this talk I define what ORMs are with a detour on brief history of ORMs.&lt;/p&gt;
+&lt;p&gt;In this talk I started by defining what ORMs are with a slight detour on the brief history of Object Oriented Mapping.&lt;/p&gt;
 
-&lt;p&gt;Then on talked about WHY? ORMs are important and HOW? useful they can be.&lt;/p&gt;
+&lt;p&gt;Then I went on to talk about WHY? ORMs are important and HOW? useful they are.&lt;/p&gt;
 
-&lt;p&gt;I continued with some insights on Go philosophy, well from a newbie&amp;rsquo;s perspective (at the time just a few weeks of golang coding, counting by nights).&lt;/p&gt;
+&lt;p&gt;I continued with some insights on Go&amp;rsquo;s philosophy, well from a newbie&amp;rsquo;s perspective (I am only just a few weeks into practical Golang coding, counting by nights).&lt;/p&gt;
 
-&lt;p&gt;Prior to this, I had some earlier introduction to Golang from &lt;a href=&#34;http://micrypt.com/&#34;&gt;Seyi Ogunyemi&lt;/a&gt; from our &lt;a href=&#34;http://freeair.io/2012/08/22/Go-Lang-Chat-Free-Style-with-Seyi-Ogunyemi.html&#34;&gt;podcast episode on Golang&lt;/a&gt; and after a few years later had a chat with &lt;a href=&#34;https://github.com/dahernan&#34;&gt;David Hernandez&lt;/a&gt; as well.&lt;/p&gt;
+&lt;p&gt;Prior to this, I had some earlier introduction to Golang from &lt;a href=&#34;http://micrypt.com/&#34;&gt;Seyi Ogunyemi&lt;/a&gt;{:target=&amp;rdquo;_blank&amp;rdquo;} from our &lt;a href=&#34;http://freeair.io/2012/08/22/Go-Lang-Chat-Free-Style-with-Seyi-Ogunyemi.html&#34;&gt;podcast episode on Golang&lt;/a&gt;{:target=&amp;rdquo;_blank&amp;rdquo;} and after a few years later had a chat with &lt;a href=&#34;https://github.com/dahernan&#34;&gt;David Hernandez&lt;/a&gt;{:target=&amp;rdquo;_blank&amp;rdquo;} as well.&lt;/p&gt;
 
 &lt;p&gt;Thanks guys for help me out and reviewing my slides for this talk.&lt;/p&gt;
 

@@ -1,5 +1,5 @@
 +++
-date        = "2015-01-21T19:38:54Z"
+date        = "2015-01-21T23:38:54Z"
 title       = "Object Oriented Mapping in Golang"
 description = "Here I review some Object Relational Mapping (ORMs) libraries in Go land and also share some nuggets and lessons learnt whilst using Go on a small project."
 tags        = [ "go", "golang", "orm", "object-oriented-mapping" ]
@@ -8,15 +8,15 @@ slug        = "object-oriented-mapping-in-golang"
 # draft = true
 +++
 
-Today, I will be giving a talk ORMs in Golang.
+Today, I gave a talk on ORMs in Golang.
 
-In this talk I define what ORMs are with a detour on brief history of ORMs.
+In this talk I started by defining what ORMs are with a slight detour on the brief history of Object Oriented Mapping.
 
-Then on talked about WHY? ORMs are important and HOW? useful they can be.
+Then I went on to talk about WHY? ORMs are important and HOW? useful they are.
 
-I continued with some insights on Go philosophy, well from a newbie's perspective (at the time just a few weeks of golang coding, counting by nights).
+I continued with some insights on Go's philosophy, well from a newbie's perspective (I am only just a few weeks into practical Golang coding, counting by nights).
 
-Prior to this, I had some earlier introduction to Golang from [Seyi Ogunyemi](http://micrypt.com/) from our [podcast episode on Golang](http://freeair.io/2012/08/22/Go-Lang-Chat-Free-Style-with-Seyi-Ogunyemi.html) and after a few years later had a chat with [David Hernandez](https://github.com/dahernan) as well.
+Prior to this, I had some earlier introduction to Golang from [Seyi Ogunyemi](http://micrypt.com/){:target="_blank"} from our [podcast episode on Golang](http://freeair.io/2012/08/22/Go-Lang-Chat-Free-Style-with-Seyi-Ogunyemi.html){:target="_blank"} and after a few years later had a chat with [David Hernandez](https://github.com/dahernan){:target="_blank"} as well.
 
 Thanks guys for help me out and reviewing my slides for this talk.
 
