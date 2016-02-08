@@ -8,9 +8,11 @@ slug        = "object-oriented-mapping-in-golang"
 # draft = true
 +++
 
-Today, I gave a talk on ORMs in Golang.
+Today, I gave a talk on ORMs in Golang at the [London Golang Meetup](http://www.meetup.com/Go-London-User-Group/).
 
-In this talk I started by defining what ORMs are with a slight detour on the brief history of Object Oriented Mapping.
+Thanks to everyone who turned up and for those who could not make it, here is video recording link https://skillsmatter.com/skillscasts/6162-orms-with-golang.
+
+I started my talk by defining what Object Relational Mapping is with a slight detour on its brief history thus far (mostly from what I have witnessed).
 
 Then I went on to talk about WHY? ORMs are important and HOW? useful they are.
 
@@ -21,8 +23,6 @@ Prior to this, I had some earlier introduction to Golang from [Seyi Ogunyemi](ht
 Thanks guys for sharing your knowledge with me and BigUps to Seyi for reviewing my slides for this talk.
 
 <script async class="speakerdeck-embed" data-id="e23220596c5a4ae39a04323121eeacf2" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
-
-Video Recording Link: https://skillsmatter.com/skillscasts/6162-orms-with-golang
 
 Some of the experiences I shared in this talk where base on a small REST API (v1) I built with Golang.
 
