@@ -23,13 +23,13 @@
 
 &lt;p&gt;I continued with some insights on Go&amp;rsquo;s philosophy, well from a newbie&amp;rsquo;s perspective (I am only just a few weeks into practical Golang coding, counting by nights).&lt;/p&gt;
 
-&lt;p&gt;Prior to this, I had some earlier introduction to Golang from &lt;a href=&#34;http://micrypt.com/&#34;&gt;Seyi Ogunyemi&lt;/a&gt;{:target=&amp;rdquo;_blank&amp;rdquo;} from our &lt;a href=&#34;http://freeair.io/2012/08/22/Go-Lang-Chat-Free-Style-with-Seyi-Ogunyemi.html&#34;&gt;podcast episode on Golang&lt;/a&gt;{:target=&amp;rdquo;_blank&amp;rdquo;} and after a few years later had a chat with &lt;a href=&#34;https://github.com/dahernan&#34;&gt;David Hernandez&lt;/a&gt;{:target=&amp;rdquo;_blank&amp;rdquo;}  as well.&lt;/p&gt;
+&lt;p&gt;Prior to this, I had some earlier introduction to Golang from &lt;a href=&#34;http://micrypt.com/&#34;&gt;Seyi Ogunyemi&lt;/a&gt; from our &lt;a href=&#34;http://freeair.io/2012/08/22/Go-Lang-Chat-Free-Style-with-Seyi-Ogunyemi.html&#34;&gt;podcast episode on Golang&lt;/a&gt; and after a few years later had a chat with &lt;a href=&#34;https://github.com/dahernan&#34;&gt;David Hernandez&lt;/a&gt; as well.&lt;/p&gt;
 
 &lt;p&gt;Thanks guys for sharing your knowledge with me and BigUps to Seyi for reviewing my slides for this talk.&lt;/p&gt;
 
 &lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;e23220596c5a4ae39a04323121eeacf2&#34; data-ratio=&#34;1.77777777777778&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
 
-&lt;p&gt;Video Link: &lt;a href=&#34;https://skillsmatter.com/skillscasts/6162-orms-with-golang&#34;&gt;https://skillsmatter.com/skillscasts/6162-orms-with-golang&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Video Recording Link: &lt;a href=&#34;https://skillsmatter.com/skillscasts/6162-orms-with-golang&#34;&gt;https://skillsmatter.com/skillscasts/6162-orms-with-golang&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Some of the experiences I shared in this talk where base on a small REST API (v1) I built with Golang.&lt;/p&gt;
 
