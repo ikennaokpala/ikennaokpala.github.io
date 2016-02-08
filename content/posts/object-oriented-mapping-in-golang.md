@@ -26,7 +26,7 @@ Thanks guys for sharing your knowledge with me and BigUps to Seyi for reviewing 
 
 Some of the experiences I shared in this talk where base on a small REST API (v1) I built with Golang.
 
-The idea with this REST API, is to trim down a somewhat monolithic wordpress database to the bare essentials and enough to cater for a mobile et al.
+The idea with this REST API, is to trim down a somewhat monolithic wordpress database to the bare essentials and enough to cater for a mobile/tablet apps et al.
 
 So here we are the opportunity to try Go out, yay!!.
 
