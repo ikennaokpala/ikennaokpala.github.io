@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "http://ikennaokpala.com/"
+baseurl = "//ikennaokpala.com/"
 languageCode = "en-us"
 # title = "Ikenna N. Okpala: Programmer / Software developer based in London."
 title = "Ikenna N. Okpala: Freelance Golang/Web/Ruby on Rails developer; London, UK"
