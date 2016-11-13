@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Object Oriented Mapping on Ikenna N. Okpala: Freelance Golang/Web/Ruby on Rails developer; London, UK</title>
-    <link>http://ikennaokpala.com/tags/object-oriented-mapping/</link>
+    <link>//ikennaokpala.com/tags/object-oriented-mapping/</link>
     <description>Recent content in Object Oriented Mapping on Ikenna N. Okpala: Freelance Golang/Web/Ruby on Rails developer; London, UK</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 21 Jan 2015 23:38:54 +0000</lastBuildDate>
-    <atom:link href="http://ikennaokpala.com/tags/object-oriented-mapping/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//ikennaokpala.com/tags/object-oriented-mapping/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Object Oriented Mapping in Golang</title>
-      <link>http://ikennaokpala.com/posts/object-oriented-mapping-in-golang/</link>
+      <link>//ikennaokpala.com/posts/object-oriented-mapping-in-golang/</link>
       <pubDate>Wed, 21 Jan 2015 23:38:54 +0000</pubDate>
       
-      <guid>http://ikennaokpala.com/posts/object-oriented-mapping-in-golang/</guid>
+      <guid>//ikennaokpala.com/posts/object-oriented-mapping-in-golang/</guid>
       <description>&lt;p&gt;Today, I gave a talk on ORMs in Golang at the &lt;a href=&#34;http://www.meetup.com/Go-London-User-Group/&#34;&gt;London Golang Meetup&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Thanks to everyone who turned up and for those who could not make it, here is the video link &lt;a href=&#34;https://skillsmatter.com/skillscasts/6162-orms-with-golang&#34;&gt;https://skillsmatter.com/skillscasts/6162-orms-with-golang&lt;/a&gt;.&lt;/p&gt;
