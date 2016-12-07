@@ -14,12 +14,12 @@ Features include:<br/><br/>
 
  - Recipes, Detailed description, Nutrition label info, Videos, Images and Meta data
  - Blog Posts Detailed description of the health related topics.
- - Quotes *Snippets of motivating food related quotes.
+ - Quotes i.e Snippets of motivating food related quotes.
  - Products *Description of products mostly cooking utensils and recipe ingredient.
- - Sitemap *Collection of all the content and formats.
+ - Sitemap i.e Collection of all the content and formats.
  - Site settings *Holds all the site settings, navigational and meta data etc.
- - Taxonomies *This holds data on categories and terms that posts are tagged.
- - Podcasts *This contains podcasts description and audio file location or url.
+ - Taxonomies i.e This holds data on categories and terms that posts are tagged.
+ - Podcasts i.e This contains podcasts description and audio file location or url.
 
 Used docker to setup(i.e development and production) environment and integrate other micro-services like the nutriition facts and SEO services.
 
