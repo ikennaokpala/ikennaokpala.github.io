@@ -19,4 +19,4 @@ git commit -m "$msg"
 
 # Push source and build repos.
 git push origin develop
-git subtree push --force --prefix=public git@github.com:ikennaokpala/ikennaokpala.github.io.git master
+git subtree push --prefix=public git@github.com:ikennaokpala/ikennaokpala.github.io.git master --force
